@@ -1,41 +1,43 @@
 # Kaushik Kuberanathan — Product Leadership Portfolio
 
-Live site: https://kaushikkuberanathan.github.io/
+Live site: <https://kaushikkuberanathan.github.io/>
 
-This repository hosts my personal product leadership portfolio using GitHub Pages. The site is intentionally lightweight: a single `index.html` file with inline CSS and minimal vanilla JavaScript for tabs and page navigation.
+This repository hosts my personal product leadership portfolio on GitHub Pages. The site is intentionally lightweight: a single `index.html` with inline CSS and minimal vanilla JavaScript for tab and section navigation. No build step, no framework, no dependencies.
 
 ## Positioning
 
-Digital Commerce Platform Leader · AI-Assisted Builder · Systems Thinker
+**Digital Commerce Platform Leader · AI-Assisted Builder · Systems Thinker**
 
-I build and lead digital commerce, self-service, and platform products across B2B and B2C environments. The portfolio highlights enterprise product leadership, platform modernization, regulated commerce, AI-assisted product building, and hands-on projects such as Dugout Lineup.
+I build and lead digital commerce, self-service, and platform products across B2B and B2C environments. The portfolio highlights enterprise product leadership, platform modernization, regulated commerce, hands-on AI-assisted building, and shipped projects such as Dugout Lineup.
 
 ## Site structure
 
-```text
-index.html
-kaushik-headshot.jpg
-dugout-lineup-logo.png
+```
+index.html              # the entire site
+kaushik-headshot.jpg     # hero headshot
+dugout-lineup-logo.png   # Dugout Lineup project card logo
 README.md
 ```
 
 ## Main sections
 
-- **Overview** — headline positioning, career-at-a-glance, builder proof, operating principles, and community/service.
-- **Enterprise Impact** — selected platform, commerce, regulated CX, and modernization stories.
-- **Builder Projects** — Dugout Lineup, AI Career Strategy Team, and product/AI writing.
-- **Metrics** — public-safe evidence index linking quantified outcomes back to source stories.
-- **Experience** — role cards with accomplishments, expandable details, and LinkedIn links.
+The site is organized into five tabs:
+
+- **Overview** — headline positioning, career-at-a-glance, the coaching-to-product builder story, positioning proof, operating principles, enterprise impact stories, named recommendations, and community/service.
+- **Enterprise Impact** — selected platform, commerce, regulated-CX, and modernization stories at the role level.
+- **Builder Projects** — Dugout Lineup, the AI Career Strategy Team custom GPT, and product/AI writing.
+- **Metrics** — a public-safe evidence index linking quantified outcomes back to the source story behind each one.
+- **Experience** — role cards with title, company, duration, and most significant accomplishments, each linking out to LinkedIn for detail.
 
 ## Updating the site
 
-1. Edit or replace `index.html`.
+1. Edit `index.html`.
 2. Keep image filenames consistent:
    - `kaushik-headshot.jpg`
    - `dugout-lineup-logo.png`
-3. Commit changes to the `main` branch.
-4. GitHub Pages will republish automatically after a short delay.
+3. Commit to the `main` branch.
+4. GitHub Pages republishes automatically after a short delay. Confirm via the commits view and the Actions tab, then hard-refresh in a private/incognito window to bypass edge cache.
 
 ## Notes
 
-This portfolio is designed as a public-facing homepage. Internal metrics are intentionally generalized where appropriate for public sharing.
+This portfolio is a public-facing homepage. Confidential operating metrics are intentionally generalized (e.g., ranges or qualitative scale) for public sharing; exact figures are reserved for direct conversations.
