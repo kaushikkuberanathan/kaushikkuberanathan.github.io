@@ -1,1 +1,0 @@
-# kaushikkuberanathan.github.io
