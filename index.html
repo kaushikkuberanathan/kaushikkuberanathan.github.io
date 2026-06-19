@@ -771,8 +771,18 @@
       gap: 18px;
     }
     .community-item { flex: 1 1 200px; }
-    .community-item .ci-title { font-weight: 800; margin-bottom: 2px; }
-    .community-item .ci-sub { color: var(--muted); font-size: 13px; }
+    .community-item .ci-title { font-weight: 800; margin-bottom: 4px; }
+    .community-item .ci-sub { color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .community-item .ci-sub .ci-org { color: var(--ink); font-weight: 650; }
+
+    .photo-slot {
+      width: 100%;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      display: block;
+      margin-top: 12px;
+      object-fit: cover;
+    }
 
 
     .footer {
@@ -1008,16 +1018,47 @@
 <h2 class="section-title" id="community-title">Community &amp; service</h2>
 <div class="community">
 <div class="community-item">
-<div class="ci-title">Head Baseball Coach</div>
-<div class="ci-sub">Sharon Springs Athletics · 8U · player development, fairness, and family community.</div>
+<div class="ci-title">Children &amp; youth development</div>
+<div class="ci-sub">
+<span class="ci-org">Head baseball coach, 8U</span> · Sharon Springs Athletics — player development, fairness, and team culture.<br/>
+<span class="ci-org">Chess coach for kids</span> — teaching focus, patience, and strategic thinking.<br/>
+<span class="ci-org">Youth mentor</span> — giving kids small side projects to spark discovery, building, and confidence.
+</div>
+<!-- PHOTO SLOT (optional): add a real coaching photo (just you / no other kids' faces — they're minors). Save the file to the repo root, then uncomment:
+<img class="photo-slot" src="coaching-photo.jpg" alt="Coaching youth baseball" loading="lazy" style="max-height:220px;">
+-->
 </div>
 <div class="community-item">
-<div class="ci-title">Animal welfare volunteer</div>
-<div class="ci-sub">Atlanta Humane Society · adoption events, outreach, and shelter operations.</div>
+<div class="ci-title">Animal welfare</div>
+<div class="ci-sub">
+<span class="ci-org">Atlanta Humane Society</span> — adoption events, outreach, and shelter operations.<br/>
+<span class="ci-org">Forsyth County Animal Control</span> — volunteer support for animals in care.
+</div>
 </div>
 <div class="community-item">
-<div class="ci-title">Community service</div>
-<div class="ci-sub">Environmental stewardship, youth mentoring, and education-support initiatives.</div>
+<div class="ci-title">Environmental stewardship</div>
+<div class="ci-sub">
+<span class="ci-org">Chattahoochee River bed clearing</span> — waterway cleanup and habitat protection.<br/>
+<span class="ci-org">Dunwoody Nature Center</span> — trail and green-space cleanups.
+</div>
+</div>
+</div>
+</section>
+<section aria-labelledby="about-title" class="card">
+<h2 class="section-title" id="about-title">Beyond work</h2>
+<p style="margin:0 0 16px;color:var(--muted);font-size:14px;max-width:760px;">The same instincts that show up in my product work show up away from it — a pull toward systems, strategy, and doing things with care.</p>
+<div class="community">
+<div class="community-item">
+<div class="ci-title">How I think for fun</div>
+<div class="ci-sub">Chess and cricket — pattern, position, and the long game. The strategy habits that bleed into how I frame product decisions.</div>
+</div>
+<div class="community-item">
+<div class="ci-title">What grounds me</div>
+<div class="ci-sub">Family, two dogs, and an ethical, animal-first way of living. The outdoors — travel, trails, and time away from screens.</div>
+</div>
+<div class="community-item">
+<div class="ci-title">What I value</div>
+<div class="ci-sub">Building things that respect people's time and trust — at work, on the field, and in the community.</div>
 </div>
 </div>
 </section>
@@ -1076,6 +1117,7 @@
                 <div aria-hidden="true" class="project-logo-fallback" style="display:none;">DL</div>
 </div>
 <p class="project-copy">A mobile-first lineup and game-coordination tool built from lived customer discovery: quick taps, fewer mistakes, clearer roles — designed for actual dugout pressure.</p>
+<img class="photo-slot" src="dugout-screenshot.png" alt="Dugout Lineup app screenshot" loading="lazy" style="max-height:260px;" onerror="this.style.display='none';"/>
 <ul class="mini-list">
 <li>Live, production-style PWA with active iteration.</li>
 <li>Full end-to-end ownership: discovery, UX, build, deploy, feedback, and roadmap.</li>
