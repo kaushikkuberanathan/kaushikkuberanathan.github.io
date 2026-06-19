@@ -230,7 +230,7 @@
     }
 
     .education-logo,
-    .education-logo-fallback {
+    .education-monogram {
       width: 58px;
       height: 58px;
       border-radius: 14px;
@@ -245,15 +245,29 @@
       padding: 6px;
     }
 
-    .education-logo-fallback {
+    .education-monogram {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      font-weight: 900;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 19px;
       color: var(--accent);
       background: var(--accent-soft);
       border: 1px solid #bfdbfe;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.02em;
+    }
+
+    .education-monogram.uf {
+      color: #0021a5;
+      background: #eef1fb;
+      border-color: #c9d4f3;
+    }
+
+    .education-monogram.au {
+      color: #6d28d9;
+      background: var(--purple-soft);
+      border-color: #ddd0ff;
     }
 
     .education-school {
@@ -1335,8 +1349,7 @@
 <div class="education-grid">
 <article class="education-card">
 <div>
-<img alt="University of Florida logo" class="education-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" src="university-of-florida-logo.png"/>
-<div aria-hidden="true" class="education-logo-fallback" style="display:none;">UF</div>
+<div aria-hidden="true" class="education-monogram uf">UF</div>
 </div>
 <div>
 <div class="education-school">University of Florida</div>
@@ -1353,7 +1366,7 @@
 <article class="education-card">
 <div>
 <img alt="Anna University Chennai logo" class="education-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" src="anna-university-logo.png"/>
-<div aria-hidden="true" class="education-logo-fallback" style="display:none;">AU</div>
+<div aria-hidden="true" class="education-monogram au" style="display:none;">AU</div>
 </div>
 <div>
 <div class="education-school">Anna University Chennai</div>
