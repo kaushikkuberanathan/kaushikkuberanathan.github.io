@@ -725,9 +725,9 @@
     .mini-list li { margin-bottom: 4px; }
     .project-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; }
 
-    .signal-grid { display: grid; gap: 12px; }
-    @media (min-width: 820px) {
-      .signal-grid { grid-template-columns: 1fr 1fr 1fr; }
+    .signal-grid { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media (min-width: 620px) {
+      .signal-grid { grid-template-columns: 1fr 1fr; }
     }
     .signal {
       border: 1px solid var(--border);
@@ -780,14 +780,47 @@
     .action-sub { color: var(--muted); font-size: 13px; }
 
     .community {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
     }
-    .community-item { flex: 1 1 200px; }
-    .community-item .ci-title { font-weight: 800; margin-bottom: 4px; }
-    .community-item .ci-sub { color: var(--muted); font-size: 13px; line-height: 1.55; }
-    .community-item .ci-sub .ci-org { color: var(--ink); font-weight: 650; }
+    @media (min-width: 620px) {
+      .community { grid-template-columns: 1fr 1fr; }
+    }
+    @media (min-width: 900px) {
+      .community { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .community-item {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      background: #fbfcfe;
+    }
+    .community-item .ci-title {
+      font-weight: 800;
+      margin-bottom: 10px;
+      padding-bottom: 9px;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+    .community-item .ci-marker {
+      width: 24px; height: 24px;
+      flex: 0 0 auto;
+      border-radius: 7px;
+      background: var(--accent-soft);
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 850;
+    }
+    .community-item .ci-sub { color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .community-item .ci-sub .ci-org { color: var(--ink); font-weight: 700; }
+    .community-item .ci-sub + .ci-sub,
+    .community-item .ci-line { margin-top: 9px; display: block; }
 
     .photo-slot {
       width: 100%;
@@ -1016,40 +1049,40 @@
 <p style="margin:0 0 16px;color:var(--muted);font-size:14px;max-width:760px;">The same instincts that show up in my product work show up away from it — a pull toward systems, strategy, service, and doing things with care.</p>
 <div class="community">
 <div class="community-item">
-<div class="ci-title">Children &amp; youth development</div>
+<div class="ci-title"><span class="ci-marker">1</span>Children &amp; youth development</div>
 <div class="ci-sub">
-<span class="ci-org">Head baseball coach, 8U</span> · Sharon Springs Athletics — player development, fairness, and team culture.<br/>
-<span class="ci-org">Chess coach for kids</span> — teaching focus, patience, and strategic thinking.<br/>
-<span class="ci-org">Youth mentor</span> — giving kids small side projects to spark discovery, building, and confidence.
+<span class="ci-line"><span class="ci-org">Head baseball coach, 8U</span> · Sharon Springs Athletics — player development, fairness, and team culture.</span>
+<span class="ci-line"><span class="ci-org">Chess coach for kids</span> — teaching focus, patience, and strategic thinking.</span>
+<span class="ci-line"><span class="ci-org">Youth mentor</span> — giving kids small side projects to spark discovery, building, and confidence.</span>
 </div>
 <!-- PHOTO SLOT (optional): add a real coaching photo (just you / no other kids' faces — they're minors). Save the file to the repo root, then uncomment:
 <img class="photo-slot" src="coaching-photo.jpg" alt="Coaching youth baseball" loading="lazy" style="max-height:220px;">
 -->
 </div>
 <div class="community-item">
-<div class="ci-title">Animal welfare</div>
+<div class="ci-title"><span class="ci-marker">2</span>Animal welfare</div>
 <div class="ci-sub">
-<span class="ci-org">Atlanta Humane Society</span> — adoption events, outreach, and shelter operations.<br/>
-<span class="ci-org">Forsyth County Animal Control</span> — volunteer support for animals in care.
+<span class="ci-line"><span class="ci-org">Atlanta Humane Society</span> — adoption events, outreach, and shelter operations.</span>
+<span class="ci-line"><span class="ci-org">Forsyth County Animal Control</span> — volunteer support for animals in care.</span>
 </div>
 </div>
 <div class="community-item">
-<div class="ci-title">Environmental stewardship</div>
+<div class="ci-title"><span class="ci-marker">3</span>Environmental stewardship</div>
 <div class="ci-sub">
-<span class="ci-org">Chattahoochee River bed clearing</span> — waterway cleanup and habitat protection.<br/>
-<span class="ci-org">Dunwoody Nature Center</span> — trail and green-space cleanups.
+<span class="ci-line"><span class="ci-org">Chattahoochee River bed clearing</span> — waterway cleanup and habitat protection.</span>
+<span class="ci-line"><span class="ci-org">Dunwoody Nature Center</span> — trail and green-space cleanups.</span>
 </div>
 </div>
 <div class="community-item">
-<div class="ci-title">How I think for fun</div>
+<div class="ci-title"><span class="ci-marker">4</span>How I think for fun</div>
 <div class="ci-sub">Chess and cricket — pattern, position, and the long game. The strategy habits that bleed into how I frame product decisions.</div>
 </div>
 <div class="community-item">
-<div class="ci-title">What grounds me</div>
+<div class="ci-title"><span class="ci-marker">5</span>What grounds me</div>
 <div class="ci-sub">Family, two dogs, and an ethical, animal-first way of living. The outdoors — travel, trails, and time away from screens.</div>
 </div>
 <div class="community-item">
-<div class="ci-title">What I value</div>
+<div class="ci-title"><span class="ci-marker">6</span>What I value</div>
 <div class="ci-sub">Building things that respect people's time and trust — at work, on the field, and in the community.</div>
 </div>
 </div>
@@ -1085,6 +1118,7 @@
 <article class="signal"><div class="signal-mark">“</div><p class="signal-quote">He builds operating frameworks teams adopt because they make everyone's lives easier — moving spaces from ad hoc and reactive to governed and trusted, without slowing anyone down.</p><div class="signal-by">Rob Schmelz</div><div class="signal-role">Senior Digital Product Manager</div></article>
 <article class="signal"><div class="signal-mark">“</div><p class="signal-quote">He combines deep customer insight with strong technical depth that makes his decisions feel spot-on. His grasp of mobile experiences is particularly impressive.</p><div class="signal-by">Nikki Hogan</div><div class="signal-role">Digital Product Manager, Cox Communications</div></article>
 <article class="signal"><div class="signal-mark">“</div><p class="signal-quote">A rare blend of strategic thinker and relationship builder — equally comfortable discussing platform modernization and driving cross-functional alignment.</p><div class="signal-by">Emily Auldren</div><div class="signal-role">Digital Product Leader</div></article>
+<article class="signal"><div class="signal-mark">“</div><p class="signal-quote">For native app eCommerce and monetization — recurring revenue, add-ons, scalable onboarding frameworks — Kaushik is the ideal candidate. He balances revenue, customer experience, and compliance into one design.</p><div class="signal-by">Scott MacDonald</div><div class="signal-role">Senior Communications Manager, Customer Technology Platforms</div></article>
 </div>
 </section>
 </section>
