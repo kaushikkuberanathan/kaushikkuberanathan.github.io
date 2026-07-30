@@ -37,6 +37,17 @@ The site is organized into five tabs:
 - **Metrics** — a public-safe evidence index linking quantified outcomes back to the source story behind each one.
 - **Experience** — role cards with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
 
+## Automated product activity
+
+The Overview page includes a **Building in Public** section for Dugout Lineup.
+
+- `assets/product-activity.css` contains the responsive presentation.
+- `assets/product-activity.js` loads and renders the public activity JSON.
+- The JSON is generated in `kaushikkuberanathan/lineup_generator` and published to its `activity-data` branch.
+- Counts distinguish merged pull requests, product improvements, production releases, quality improvements, and non-merge development commits.
+
+The section intentionally emphasizes product delivery rather than raw contribution volume.
+
 ## Updating the site
 
 1. Edit `index.html`.
