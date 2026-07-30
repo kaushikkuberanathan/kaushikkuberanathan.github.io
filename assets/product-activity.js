@@ -1,4 +1,4 @@
-﻿(function () {
+(function () {
   'use strict';
 
   function escapeHtml(value) {
