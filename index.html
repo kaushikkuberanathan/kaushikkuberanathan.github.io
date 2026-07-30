@@ -949,6 +949,7 @@
       .experience-section-link .social-link { width: 100%; justify-content: center; }
     }
 </style>
+<link href="assets/product-activity.css" rel="stylesheet"/>
 </head>
 <body>
 <main class="page">
@@ -1032,6 +1033,44 @@
 <article class="metric"><div class="metric-label">Revenue growth</div><div class="metric-number">+32%</div><div class="metric-note">YoY app eCommerce growth through native commerce modernization</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View commerce story</button></div></article>
 <article class="metric"><div class="metric-label">Builder mode</div><div class="metric-number">Live</div><div class="metric-note">AI-assisted products shipped outside work, not just conceptual demos</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="project-dugout" data-tab-target="builder">View projects</button></div></article>
 </div>
+</section>
+
+<section
+  aria-labelledby="building-public-title"
+  class="card"
+  data-activity-url="https://raw.githubusercontent.com/kaushikkuberanathan/lineup_generator/activity-data/product-activity.json"
+  data-product-activity
+  id="building-in-public"
+>
+  <h2 class="section-title" id="building-public-title">Building in public</h2>
+  <p class="section-intro">A rolling six-month view of how Dugout Lineup moves from product decisions into reviewed, released, and continuously improved software.</p>
+
+  <div aria-live="polite" class="activity-status" data-activity-status>Loading current product activity…</div>
+
+  <div class="activity-shell" data-activity-content hidden>
+    <div class="activity-summary-grid" data-activity-summary></div>
+
+    <div class="activity-layout">
+      <article class="activity-panel">
+        <h3 class="activity-panel-title">Monthly delivery trend</h3>
+        <p class="activity-panel-copy">Bar length represents merged pull requests. The detail line separates product, release, and quality work.</p>
+        <div class="activity-trend" data-activity-trend></div>
+      </article>
+
+      <aside class="activity-panel">
+        <h3 class="activity-panel-title">Latest product improvements</h3>
+        <p class="activity-panel-copy">The most recent user-facing improvements identified through product labels and pull-request signals.</p>
+        <div data-activity-highlights></div>
+      </aside>
+    </div>
+
+    <div data-activity-table></div>
+
+    <div class="activity-meta">
+      <p class="activity-definition">Commits exclude merge commits, bots, and generated activity updates. Counts emphasize shipped product progress rather than contribution volume.</p>
+      <span data-activity-updated></span>
+    </div>
+  </div>
 </section>
 
 <section aria-labelledby="principles-title" class="card">
@@ -1469,6 +1508,7 @@
       Kaushik Kuberanathan · Atlanta, GA · Digital commerce, AI-assisted products, and platform product work. · Last updated: June 2026.
     </footer>
 </main>
+<script src="assets/product-activity.js"></script>
 <script>
     (function () {
       const buttons = Array.from(document.querySelectorAll('.tab-button'));
