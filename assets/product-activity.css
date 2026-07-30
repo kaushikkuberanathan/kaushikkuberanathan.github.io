@@ -12,6 +12,13 @@
   min-width: 0;
 }
 
+.activity-shell > *,
+.activity-layout > *,
+[data-activity-table] {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .activity-summary-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
