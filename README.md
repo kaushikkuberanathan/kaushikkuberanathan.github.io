@@ -2,7 +2,7 @@
 
 Live site: <https://kaushikkuberanathan.github.io/>
 
-This repository hosts my personal product portfolio on GitHub Pages. The site is intentionally lightweight: a single `index.html` with inline CSS and minimal vanilla JavaScript for tab and section navigation. No build step, no framework, no dependencies.
+This repository hosts my personal product portfolio on GitHub Pages. The site is intentionally lightweight: a single `index.html`, dedicated product-activity assets, and minimal vanilla JavaScript for tab and section navigation. No build step, no framework, no dependencies.
 
 ## Positioning
 
@@ -13,10 +13,12 @@ I build digital commerce, self-service, and platform products across B2B and B2C
 ## Site structure
 
 ```
-index.html                 # the entire site
-kaushik-headshot.jpg       # hero headshot
-dugout-lineup-logo.png     # Dugout Lineup project card logo
-anna-university-logo.png   # Anna University education card logo
+index.html                         # primary site markup and navigation
+assets/product-activity.css        # Building in Public presentation
+assets/product-activity.js         # activity tab installation and JSON rendering
+kaushik-headshot.jpg               # hero headshot
+dugout-lineup-logo.png             # Dugout Lineup project card logo
+anna-university-logo.png           # Anna University education card logo
 README.md
 ```
 
@@ -29,31 +31,34 @@ coaching-photo.jpg         # optional coaching photo (commented out by default)
 
 ## Main sections
 
-The site is organized into five tabs:
+The site is organized into six tabs:
 
 - **Overview** — headline positioning, career-at-a-glance, operating principles, and a "Who I am" section (community, service, and personal interests).
 - **Enterprise Impact** — an enterprise proof summary, the full role-level impact stories (commerce, regulated CX, modernization), and named recommendations from colleagues.
 - **Builder Projects** — a builder signal, the coaching-to-product discovery story, Dugout Lineup, the AI Career Strategy Team custom GPT, and product/AI writing.
+- **Building in Public** — a dedicated responsive view of Dugout Lineup delivery activity, monthly trends, release notes, and the detailed six-month table.
 - **Metrics** — a public-safe evidence index linking quantified outcomes back to the source story behind each one.
 - **Experience** — role cards with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
 
 ## Automated product activity
 
-The Overview page includes a **Building in Public** section for Dugout Lineup.
+The **Building in Public** tab displays a rolling six-month view of Dugout Lineup delivery.
 
-- `assets/product-activity.css` contains the responsive presentation.
-- `assets/product-activity.js` loads and renders the public activity JSON.
+- `assets/product-activity.css` contains the dedicated desktop and mobile presentation.
+- `assets/product-activity.js` installs the tab before the core navigation initializes, moves the dashboard into its own panel, and loads the public activity JSON.
 - The JSON is generated in `kaushikkuberanathan/lineup_generator` and published to its `activity-data` branch.
 - Counts distinguish merged pull requests, product improvements, production releases, quality improvements, and non-merge development commits.
+- The latest links come from production release promotion PRs rather than individual story PRs.
 
-The section intentionally emphasizes product delivery rather than raw contribution volume.
+The dashboard intentionally emphasizes product delivery and release evidence rather than raw contribution volume.
 
 ## Updating the site
 
-1. Edit `index.html`.
+1. Edit `index.html` or the relevant file under `assets/`.
 2. Keep image filenames consistent (`kaushik-headshot.jpg`, `dugout-lineup-logo.png`, `anna-university-logo.png`).
-3. Commit to the `main` branch.
-4. GitHub Pages republishes automatically after a short delay. Confirm via the commits view and the Actions tab, then hard-refresh in a private/incognito window to bypass edge cache.
+3. Validate JavaScript syntax, responsive behavior, navigation, and the live JSON fallback before merging.
+4. Commit to the `main` branch.
+5. GitHub Pages republishes automatically after a short delay. Confirm via the commits view and the Actions tab, then hard-refresh in a private/incognito window to bypass edge cache.
 
 ## Notes
 
