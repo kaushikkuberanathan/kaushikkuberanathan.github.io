@@ -1,0 +1,49 @@
+name: Live portfolio smoke
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/**'
+      - 'scripts/live-smoke.py'
+      - '.github/workflows/live-smoke.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/**'
+      - 'scripts/live-smoke.py'
+      - '.github/workflows/live-smoke.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-portfolio-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install browser test dependency
+        run: python -m pip install --disable-pip-version-check selenium==4.34.2
+
+      - name: Run live desktop and mobile smoke test
+        env:
+          PORTFOLIO_SITE_URL: https://kaushikkuberanathan.github.io/
+          PORTFOLIO_ACTIVITY_URL: https://raw.githubusercontent.com/kaushikkuberanathan/lineup_generator/activity-data/product-activity.json
+          PORTFOLIO_DEPLOY_WAIT_SECONDS: '300'
+        run: python scripts/live-smoke.py
