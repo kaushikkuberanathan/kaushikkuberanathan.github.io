@@ -16,6 +16,8 @@ I build digital commerce, self-service, and platform products across B2B and B2C
 index.html                         # primary site markup and navigation
 assets/product-activity.css        # Building in Public presentation
 assets/product-activity.js         # activity tab installation and JSON rendering
+scripts/live-smoke.py              # deployed desktop/mobile browser validation
+.github/workflows/live-smoke.yml   # automatic and manual live smoke workflow
 kaushik-headshot.jpg               # hero headshot
 dugout-lineup-logo.png             # Dugout Lineup project card logo
 anna-university-logo.png           # Anna University education card logo
@@ -48,9 +50,24 @@ The **Building in Public** tab displays a rolling six-month view of Dugout Lineu
 - `assets/product-activity.js` installs the tab before the core navigation initializes, moves the dashboard into its own panel, and loads the public activity JSON.
 - The JSON is generated in `kaushikkuberanathan/lineup_generator` and published to its `activity-data` branch.
 - Counts distinguish merged pull requests, product improvements, production releases, quality improvements, and non-merge development commits.
-- The latest links come from production release promotion PRs rather than individual story PRs.
+- The latest links come from summarized production release promotion PRs rather than individual story PRs.
 
 The dashboard intentionally emphasizes product delivery and release evidence rather than raw contribution volume.
+
+## Live smoke test
+
+The **Live portfolio smoke** GitHub Actions workflow validates the deployed GitHub Pages site after relevant changes and can also be run manually.
+
+It waits for the new deployment, verifies the site, JavaScript, CSS, and activity JSON endpoints, then opens the real portfolio in headless Chrome at desktop and 390px mobile widths. The test confirms:
+
+- The Building in Public tab activates from its URL hash.
+- The dashboard is no longer inside Overview.
+- Live data replaces the fallback state.
+- Four metric cards, six monthly rows, and at least three release-note links render.
+- Story PRs do not appear in the release-note list.
+- The page has no document-level horizontal overflow.
+- The mobile table scrolls inside its own container.
+- The browser console contains no severe errors.
 
 ## Updating the site
 
@@ -58,7 +75,8 @@ The dashboard intentionally emphasizes product delivery and release evidence rat
 2. Keep image filenames consistent (`kaushik-headshot.jpg`, `dugout-lineup-logo.png`, `anna-university-logo.png`).
 3. Validate JavaScript syntax, responsive behavior, navigation, and the live JSON fallback before merging.
 4. Commit to the `main` branch.
-5. GitHub Pages republishes automatically after a short delay. Confirm via the commits view and the Actions tab, then hard-refresh in a private/incognito window to bypass edge cache.
+5. GitHub Pages republishes automatically after a short delay, and the live smoke workflow validates the deployed result.
+6. Hard-refresh in a private/incognito window to bypass edge cache when reviewing manually.
 
 ## Notes
 
