@@ -54,7 +54,7 @@ def fetch_text(url: str, timeout: int = 30) -> tuple[int, str]:
         },
     )
     with urllib.request.urlopen(request, timeout=timeout) as response:
-        return response.status, response.read().decode("utf-8")
+        return response.status, response.read().decode("utf-8", errors="replace")
 
 
 def wait_for_live_deployment() -> dict:
@@ -66,6 +66,7 @@ def wait_for_live_deployment() -> dict:
             site_status, site_html = fetch_text(SITE_URL)
             js_status, activity_js = fetch_text(f"{SITE_URL}assets/product-activity.js")
             css_status, activity_css = fetch_text(f"{SITE_URL}assets/product-activity.css")
+            favicon_status, _ = fetch_text(f"{SITE_URL}favicon.ico")
             data_status, data_text = fetch_text(DATA_URL)
             data = json.loads(data_text)
 
@@ -74,6 +75,7 @@ def wait_for_live_deployment() -> dict:
                     site_status == 200,
                     js_status == 200,
                     css_status == 200,
+                    favicon_status == 200,
                     data_status == 200,
                     "assets/product-activity.js" in site_html,
                     "installActivityTab" in activity_js,
@@ -88,6 +90,7 @@ def wait_for_live_deployment() -> dict:
                     "siteStatus": site_status,
                     "javascriptStatus": js_status,
                     "cssStatus": css_status,
+                    "faviconStatus": favicon_status,
                     "dataStatus": data_status,
                     "generatedAt": data.get("generatedAt"),
                     "currentMonth": data.get("currentMonth", {}).get("label"),
