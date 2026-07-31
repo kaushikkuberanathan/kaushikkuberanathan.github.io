@@ -14,6 +14,26 @@
     return Number.isFinite(Number(value)) ? Number(value) : 0;
   }
 
+  function hasNumericValue(object, key) {
+    return object && object[key] !== undefined && Number.isFinite(Number(object[key]));
+  }
+
+  function commitMetrics(month) {
+    const total = number(month?.developmentCommits);
+    const product = hasNumericValue(month, 'productCommits')
+      ? number(month.productCommits)
+      : number(month?.productImprovements);
+    const quality = hasNumericValue(month, 'qualityCommits')
+      ? number(month.qualityCommits)
+      : number(month?.qualityImprovements);
+    const other = number(month?.otherCommits);
+    const delivery = hasNumericValue(month, 'deliveryCommits')
+      ? number(month.deliveryCommits)
+      : Math.max(0, total - product - quality - other);
+
+    return { total, product, quality, delivery, other };
+  }
+
   function formatGeneratedAt(value) {
     const date = new Date(value);
     if (Number.isNaN(date.getTime())) return 'Unknown';
@@ -62,7 +82,7 @@
     const releaseCopy = section.querySelector('.activity-layout aside .activity-panel-copy');
     if (releaseTitle) releaseTitle.textContent = 'Latest release notes';
     if (releaseCopy) {
-      releaseCopy.textContent = 'The most recent production releases, sourced from the release promotion pull requests merged into main.';
+      releaseCopy.textContent = 'The most recent user-facing production releases, summarized from promotion notes merged into main.';
     }
 
     return section;
@@ -77,22 +97,28 @@
       </article>`;
   }
 
+  function breakdownText(metrics) {
+    const parts = [
+      `${metrics.product} product`,
+      `${metrics.quality} quality`,
+      `${metrics.delivery} delivery`,
+    ];
+    if (metrics.other) parts.push(`${metrics.other} other`);
+    return parts.join(' · ');
+  }
+
   function renderTrend(months) {
-    const max = Math.max(1, ...months.map((month) => number(month.mergedPullRequests)));
+    const max = Math.max(1, ...months.map((month) => commitMetrics(month).total));
     return months
       .map((month) => {
-        const prs = number(month.mergedPullRequests);
-        const width = Math.max(prs > 0 ? 3 : 0, Math.round((prs / max) * 100));
+        const metrics = commitMetrics(month);
+        const width = Math.max(metrics.total > 0 ? 3 : 0, Math.round((metrics.total / max) * 100));
         return `
           <div class="activity-trend-row">
             <div class="activity-month">${escapeHtml(month.label)}</div>
             <div class="activity-bar-track" aria-hidden="true"><span class="activity-bar" style="width:${width}%"></span></div>
-            <div class="activity-pr-count">${prs} PRs</div>
-            <div class="activity-detail-line">
-              ${number(month.productImprovements)} product ·
-              ${number(month.productionReleases)} releases ·
-              ${number(month.qualityImprovements)} quality
-            </div>
+            <div class="activity-commit-count">${metrics.total} commits</div>
+            <div class="activity-detail-line">${escapeHtml(breakdownText(metrics))}</div>
           </div>`;
       })
       .join('');
@@ -102,30 +128,33 @@
     return `
       <div class="activity-table-wrap" tabindex="0" aria-label="Scrollable monthly activity table">
         <table class="activity-table">
-          <caption>Rolling six-month Dugout Lineup product delivery</caption>
+          <caption>Rolling six-month Dugout Lineup commit delivery</caption>
           <thead>
             <tr>
               <th scope="col">Month</th>
-              <th scope="col">Merged PRs</th>
-              <th scope="col">Product</th>
-              <th scope="col">Releases</th>
-              <th scope="col">Quality</th>
               <th scope="col">Commits</th>
+              <th scope="col">Product</th>
+              <th scope="col">Quality</th>
+              <th scope="col">Delivery</th>
+              <th scope="col">Other</th>
+              <th scope="col">Releases</th>
             </tr>
           </thead>
           <tbody>
             ${months
-              .map(
-                (month) => `
+              .map((month) => {
+                const metrics = commitMetrics(month);
+                return `
                   <tr>
                     <td>${escapeHtml(month.label)}</td>
-                    <td>${number(month.mergedPullRequests)}</td>
-                    <td>${number(month.productImprovements)}</td>
+                    <td>${metrics.total}</td>
+                    <td>${metrics.product}</td>
+                    <td>${metrics.quality}</td>
+                    <td>${metrics.delivery}</td>
+                    <td>${metrics.other}</td>
                     <td>${number(month.productionReleases)}</td>
-                    <td>${number(month.qualityImprovements)}</td>
-                    <td>${number(month.developmentCommits)}</td>
-                  </tr>`,
-              )
+                  </tr>`;
+              })
               .join('')}
           </tbody>
         </table>
@@ -157,12 +186,13 @@
     const months = Array.isArray(data.months) ? data.months : [];
     const current = data.currentMonth || months.at(-1) || {};
     const currentLabel = current.label || 'Current month';
+    const metrics = commitMetrics(current);
 
     section.querySelector('[data-activity-summary]').innerHTML = [
-      metricCard('Merged PRs', current.mergedPullRequests, `${currentLabel} completed work`),
-      metricCard('Product improvements', current.productImprovements, 'User-facing features and enhancements'),
-      metricCard('Production releases', current.productionReleases, 'Promotions merged into main'),
-      metricCard('Quality improvements', current.qualityImprovements, 'Testing, reliability, fixes, and technical debt'),
+      metricCard('Commits', metrics.total, `${currentLabel} delivery effort`),
+      metricCard('Product commits', metrics.product, 'Features and experience improvements'),
+      metricCard('Quality commits', metrics.quality, 'Fixes, tests, security, and reliability'),
+      metricCard('Delivery commits', metrics.delivery, 'Documentation, CI, release, and maintenance work'),
     ].join('');
 
     section.querySelector('[data-activity-trend]').innerHTML = renderTrend(months);
@@ -199,7 +229,7 @@
       } else {
         console.error('Unable to load product activity:', error);
       }
-      status.innerHTML = `Monthly activity is temporarily unavailable. <a href="https://github.com/kaushikkuberanathan/lineup_generator/pulls?q=is%3Apr+is%3Amerged" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:800;">View merged work on GitHub →</a>`;
+      status.innerHTML = `Monthly activity is temporarily unavailable. <a href="https://github.com/kaushikkuberanathan/lineup_generator/commits/develop/" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:800;">View development commits on GitHub →</a>`;
       status.classList.add('error');
     }
   }
