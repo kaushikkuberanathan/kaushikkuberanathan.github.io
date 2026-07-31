@@ -24,6 +24,13 @@ DATA_URL = os.environ.get(
     "https://raw.githubusercontent.com/kaushikkuberanathan/lineup_generator/activity-data/product-activity.json",
 )
 DEPLOY_WAIT_SECONDS = int(os.environ.get("PORTFOLIO_DEPLOY_WAIT_SECONDS", "300"))
+EXPECTED_METRIC_LABELS = [
+    "Committed improvements",
+    "Product improvements",
+    "Quality & delivery",
+    "Production releases",
+]
+EXPECTED_TABLE_HEADERS = ["Month", "Commits", "Product", "Quality & delivery", "Releases"]
 
 
 @dataclass
@@ -32,6 +39,9 @@ class ViewportResult:
     height: int
     active_tab: str
     metric_count: int
+    metric_labels: list[str]
+    metric_values: list[int]
+    table_headers: list[str]
     month_rows: int
     release_links: int
     release_titles: list[str]
@@ -69,6 +79,11 @@ def wait_for_live_deployment() -> dict:
             favicon_status, _ = fetch_text(f"{SITE_URL}favicon.ico")
             data_status, data_text = fetch_text(DATA_URL)
             data = json.loads(data_text)
+            current = data.get("currentMonth", {})
+            commits_reconcile = (
+                current.get("developmentCommits")
+                == current.get("productImprovements", 0) + current.get("qualityImprovements", 0)
+            )
 
             deployed = all(
                 [
@@ -79,9 +94,11 @@ def wait_for_live_deployment() -> dict:
                     data_status == 200,
                     "assets/product-activity.js" in site_html,
                     "installActivityTab" in activity_js,
+                    "Committed improvements" in activity_js,
                     "Latest release notes" in activity_js,
                     ".activity-tab-panel" in activity_css,
                     data.get("schemaVersion") == 1,
+                    commits_reconcile,
                     len(data.get("latestReleaseNotes", [])) >= 3,
                 ]
             )
@@ -93,10 +110,14 @@ def wait_for_live_deployment() -> dict:
                     "faviconStatus": favicon_status,
                     "dataStatus": data_status,
                     "generatedAt": data.get("generatedAt"),
-                    "currentMonth": data.get("currentMonth", {}).get("label"),
+                    "currentMonth": current.get("label"),
+                    "committedImprovements": current.get("developmentCommits"),
+                    "productImprovements": current.get("productImprovements"),
+                    "qualityAndDelivery": current.get("qualityImprovements"),
+                    "productionReleases": current.get("productionReleases"),
                     "releaseTitles": [note.get("title") for note in data.get("latestReleaseNotes", [])[:3]],
                 }
-            last_error = "live endpoints responded but did not contain the merged tab/feed markers"
+            last_error = "live endpoints responded but did not contain the commit-centric tab/feed markers"
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as error:
             last_error = f"{type(error).__name__}: {error}"
 
@@ -143,6 +164,9 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
               contentVisible: !content.hidden,
               fallbackVisible: !status.hidden,
               metricCount: panel.querySelectorAll('.activity-metric').length,
+              metricLabels: Array.from(panel.querySelectorAll('.activity-metric-label')).map((item) => item.textContent.trim()),
+              metricValues: Array.from(panel.querySelectorAll('.activity-metric-value')).map((item) => Number(item.textContent.trim())),
+              tableHeaders: Array.from(panel.querySelectorAll('.activity-table thead th')).map((item) => item.textContent.trim()),
               monthRows: panel.querySelectorAll('.activity-table tbody tr').length,
               releaseLinks: panel.querySelectorAll('.activity-release-notes a').length,
               releaseTitles: Array.from(panel.querySelectorAll('.activity-release-notes a')).map((link) => link.textContent.trim()),
@@ -167,6 +191,12 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             failures.append("Live activity content did not replace the fallback state")
         if state["metricCount"] != 4:
             failures.append(f"Expected 4 metric cards, found {state['metricCount']}")
+        if state["metricLabels"] != EXPECTED_METRIC_LABELS:
+            failures.append(f"Unexpected metric labels: {state['metricLabels']}")
+        if len(state["metricValues"]) == 4 and state["metricValues"][0] != state["metricValues"][1] + state["metricValues"][2]:
+            failures.append(f"Committed improvements do not reconcile: {state['metricValues']}")
+        if state["tableHeaders"] != EXPECTED_TABLE_HEADERS:
+            failures.append(f"Unexpected table headers: {state['tableHeaders']}")
         if state["monthRows"] != 6:
             failures.append(f"Expected 6 monthly table rows, found {state['monthRows']}")
         if state["releaseLinks"] < 3:
@@ -188,6 +218,9 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             height=height,
             active_tab=state["activeTab"],
             metric_count=state["metricCount"],
+            metric_labels=state["metricLabels"],
+            metric_values=state["metricValues"],
+            table_headers=state["tableHeaders"],
             month_rows=state["monthRows"],
             release_links=state["releaseLinks"],
             release_titles=state["releaseTitles"],
