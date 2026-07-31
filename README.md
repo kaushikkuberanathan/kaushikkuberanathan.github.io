@@ -49,16 +49,17 @@ The **Building in Public** tab displays a rolling six-month view of Dugout Lineu
 - `assets/product-activity.css` contains the dedicated desktop and mobile presentation.
 - `assets/product-activity.js` installs the tab before the core navigation initializes, moves the dashboard into its own panel, and loads the public activity JSON.
 - The JSON is generated in `kaushikkuberanathan/lineup_generator` and published to its `activity-data` branch.
-- Counts distinguish merged pull requests, product improvements, production releases, quality improvements, and non-merge development commits.
-- The latest links come from summarized production release promotion PRs rather than individual story PRs.
+- Each eligible non-merge commit is counted once and classified as product, quality, delivery, or other work.
+- Merge commits, bot commits, and the generated activity refresh commit are excluded.
+- Production release links still come from summarized release promotion PRs because those notes provide the clearest view of what reached users.
 
-The dashboard intentionally emphasizes product delivery and release evidence rather than raw contribution volume.
+The dashboard intentionally emphasizes the underlying delivery effort rather than treating one pull request as one unit of work.
 
 ## Live smoke test
 
 The **Live portfolio smoke** GitHub Actions workflow validates the deployed GitHub Pages site after relevant changes and can also be run manually.
 
-It waits for the new deployment, verifies the site, JavaScript, CSS, and activity JSON endpoints, then opens the real portfolio in headless Chrome at desktop and 390px mobile widths. The test confirms:
+It waits for the new deployment, verifies the site, JavaScript, CSS, favicon, and activity JSON endpoints, then opens the real portfolio in headless Chrome at desktop and 390px mobile widths. The test confirms:
 
 - The Building in Public tab activates from its URL hash.
 - The dashboard is no longer inside Overview.
