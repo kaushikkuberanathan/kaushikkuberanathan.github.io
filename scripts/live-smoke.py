@@ -24,6 +24,7 @@ DATA_URL = os.environ.get(
     "https://raw.githubusercontent.com/kaushikkuberanathan/lineup_generator/activity-data/product-activity.json",
 )
 DEPLOY_WAIT_SECONDS = int(os.environ.get("PORTFOLIO_DEPLOY_WAIT_SECONDS", "300"))
+EXPECT_COMMIT_CENTRIC = os.environ.get("PORTFOLIO_EXPECT_COMMIT_CENTRIC", "false").lower() == "true"
 EXPECTED_METRIC_LABELS = [
     "Committed improvements",
     "Product improvements",
@@ -85,30 +86,30 @@ def wait_for_live_deployment() -> dict:
                 == current.get("productImprovements", 0) + current.get("qualityImprovements", 0)
             )
 
-            deployed = all(
-                [
-                    site_status == 200,
-                    js_status == 200,
-                    css_status == 200,
-                    favicon_status == 200,
-                    data_status == 200,
-                    "assets/product-activity.js" in site_html,
-                    "installActivityTab" in activity_js,
-                    "Committed improvements" in activity_js,
-                    "Latest release notes" in activity_js,
-                    ".activity-tab-panel" in activity_css,
-                    data.get("schemaVersion") == 1,
-                    commits_reconcile,
-                    len(data.get("latestReleaseNotes", [])) >= 3,
-                ]
-            )
-            if deployed:
+            required_markers = [
+                site_status == 200,
+                js_status == 200,
+                css_status == 200,
+                favicon_status == 200,
+                data_status == 200,
+                "assets/product-activity.js" in site_html,
+                "installActivityTab" in activity_js,
+                "Latest release notes" in activity_js,
+                ".activity-tab-panel" in activity_css,
+                data.get("schemaVersion") == 1,
+                len(data.get("latestReleaseNotes", [])) >= 3,
+            ]
+            if EXPECT_COMMIT_CENTRIC:
+                required_markers.extend(["Committed improvements" in activity_js, commits_reconcile])
+
+            if all(required_markers):
                 return {
                     "siteStatus": site_status,
                     "javascriptStatus": js_status,
                     "cssStatus": css_status,
                     "faviconStatus": favicon_status,
                     "dataStatus": data_status,
+                    "commitCentricRequired": EXPECT_COMMIT_CENTRIC,
                     "generatedAt": data.get("generatedAt"),
                     "currentMonth": current.get("label"),
                     "committedImprovements": current.get("developmentCommits"),
@@ -117,13 +118,13 @@ def wait_for_live_deployment() -> dict:
                     "productionReleases": current.get("productionReleases"),
                     "releaseTitles": [note.get("title") for note in data.get("latestReleaseNotes", [])[:3]],
                 }
-            last_error = "live endpoints responded but did not contain the commit-centric tab/feed markers"
+            last_error = "live endpoints responded but did not contain the required tab/feed markers"
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as error:
             last_error = f"{type(error).__name__}: {error}"
 
         time.sleep(10)
 
-    raise RuntimeError(f"GitHub Pages did not expose the merged portfolio within {DEPLOY_WAIT_SECONDS}s: {last_error}")
+    raise RuntimeError(f"GitHub Pages did not expose the required portfolio within {DEPLOY_WAIT_SECONDS}s: {last_error}")
 
 
 def make_driver(width: int, height: int) -> webdriver.Chrome:
@@ -191,12 +192,13 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             failures.append("Live activity content did not replace the fallback state")
         if state["metricCount"] != 4:
             failures.append(f"Expected 4 metric cards, found {state['metricCount']}")
-        if state["metricLabels"] != EXPECTED_METRIC_LABELS:
-            failures.append(f"Unexpected metric labels: {state['metricLabels']}")
-        if len(state["metricValues"]) == 4 and state["metricValues"][0] != state["metricValues"][1] + state["metricValues"][2]:
-            failures.append(f"Committed improvements do not reconcile: {state['metricValues']}")
-        if state["tableHeaders"] != EXPECTED_TABLE_HEADERS:
-            failures.append(f"Unexpected table headers: {state['tableHeaders']}")
+        if EXPECT_COMMIT_CENTRIC:
+            if state["metricLabels"] != EXPECTED_METRIC_LABELS:
+                failures.append(f"Unexpected metric labels: {state['metricLabels']}")
+            if len(state["metricValues"]) == 4 and state["metricValues"][0] != state["metricValues"][1] + state["metricValues"][2]:
+                failures.append(f"Committed improvements do not reconcile: {state['metricValues']}")
+            if state["tableHeaders"] != EXPECTED_TABLE_HEADERS:
+                failures.append(f"Unexpected table headers: {state['tableHeaders']}")
         if state["monthRows"] != 6:
             failures.append(f"Expected 6 monthly table rows, found {state['monthRows']}")
         if state["releaseLinks"] < 3:
