@@ -103,7 +103,7 @@
 
 .activity-trend-row {
   display: grid;
-  grid-template-columns: 64px minmax(0, 1fr) 48px;
+  grid-template-columns: 64px minmax(0, 1fr) 72px;
   align-items: center;
   gap: 10px;
   min-width: 0;
@@ -132,7 +132,7 @@
   transition: width 280ms ease;
 }
 
-.activity-pr-count {
+.activity-commit-count {
   font-size: 12px;
   font-weight: 850;
   text-align: right;
@@ -184,7 +184,7 @@
 .activity-table {
   width: 100%;
   border-collapse: collapse;
-  min-width: 690px;
+  min-width: 760px;
   font-size: 12px;
 }
 
@@ -275,7 +275,7 @@
     grid-column: 1;
   }
 
-  .activity-pr-count {
+  .activity-commit-count {
     grid-column: 2;
   }
 
@@ -289,7 +289,7 @@
   }
 
   .activity-table {
-    min-width: 610px;
+    min-width: 700px;
   }
 
   .activity-meta {
