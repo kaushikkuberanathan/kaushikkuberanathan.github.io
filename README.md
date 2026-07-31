@@ -16,8 +16,8 @@ I build digital commerce, self-service, and platform products across B2B and B2C
 index.html                         # primary site markup and navigation
 assets/product-activity.css        # Building in Public presentation
 assets/product-activity.js         # activity tab installation and JSON rendering
-scripts/live-smoke.py              # deployed desktop/mobile browser validation
-.github/workflows/live-smoke.yml   # automatic and manual live smoke workflow
+scripts/live-smoke.py              # desktop/mobile browser validation
+.github/workflows/live-smoke.yml   # local PR smoke + deployed main smoke
 kaushik-headshot.jpg               # hero headshot
 dugout-lineup-logo.png             # Dugout Lineup project card logo
 anna-university-logo.png           # Anna University education card logo
@@ -38,7 +38,7 @@ The site is organized into six tabs:
 - **Overview** — headline positioning, career-at-a-glance, operating principles, and a "Who I am" section (community, service, and personal interests).
 - **Enterprise Impact** — an enterprise proof summary, the full role-level impact stories (commerce, regulated CX, modernization), and named recommendations from colleagues.
 - **Builder Projects** — a builder signal, the coaching-to-product discovery story, Dugout Lineup, the AI Career Strategy Team custom GPT, and product/AI writing.
-- **Building in Public** — a dedicated responsive view of Dugout Lineup delivery activity, monthly trends, release notes, and the detailed six-month table.
+- **Building in Public** — a dedicated responsive view of Dugout Lineup commit activity, monthly trends, production release notes, and the detailed six-month table.
 - **Metrics** — a public-safe evidence index linking quantified outcomes back to the source story behind each one.
 - **Experience** — role cards with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
 
@@ -49,34 +49,26 @@ The **Building in Public** tab displays a rolling six-month view of Dugout Lineu
 - `assets/product-activity.css` contains the dedicated desktop and mobile presentation.
 - `assets/product-activity.js` installs the tab before the core navigation initializes, moves the dashboard into its own panel, and loads the public activity JSON.
 - The JSON is generated in `kaushikkuberanathan/lineup_generator` and published to its `activity-data` branch.
-- Counts distinguish merged pull requests, product improvements, production releases, quality improvements, and non-merge development commits.
-- The latest links come from summarized production release promotion PRs rather than individual story PRs.
+- Delivery volume is commit-driven: each eligible non-merge commit is counted once and classified as either a product improvement or a quality improvement.
+- Product and quality counts reconcile to the committed-improvements total for every month.
+- Production releases and the latest links remain release-note driven, using user-facing promotion PRs rather than story PRs.
 
-The dashboard intentionally emphasizes product delivery and release evidence rather than raw contribution volume.
+The dashboard intentionally emphasizes sustained product-building effort and production evidence rather than PR volume.
 
-## Live smoke test
+## Deployment validation
 
-The **Live portfolio smoke** GitHub Actions workflow validates the deployed GitHub Pages site after relevant changes and can also be run manually.
+The smoke workflow uses the same browser assertions in two modes:
 
-It waits for the new deployment, verifies the site, JavaScript, CSS, and activity JSON endpoints, then opens the real portfolio in headless Chrome at desktop and 390px mobile widths. The test confirms:
-
-- The Building in Public tab activates from its URL hash.
-- The dashboard is no longer inside Overview.
-- Live data replaces the fallback state.
-- Four metric cards, six monthly rows, and at least three release-note links render.
-- Story PRs do not appear in the release-note list.
-- The page has no document-level horizontal overflow.
-- The mobile table scrolls inside its own container.
-- The browser console contains no severe errors.
+1. Pull requests start a local static server and validate the proposed branch at desktop and 390px mobile widths.
+2. Pushes to `main` wait for GitHub Pages propagation and validate the deployed site, activity JSON, favicon, navigation, responsive containment, release-note links, and browser console.
 
 ## Updating the site
 
 1. Edit `index.html` or the relevant file under `assets/`.
 2. Keep image filenames consistent (`kaushik-headshot.jpg`, `dugout-lineup-logo.png`, `anna-university-logo.png`).
-3. Validate JavaScript syntax, responsive behavior, navigation, and the live JSON fallback before merging.
-4. Commit to the `main` branch.
-5. GitHub Pages republishes automatically after a short delay, and the live smoke workflow validates the deployed result.
-6. Hard-refresh in a private/incognito window to bypass edge cache when reviewing manually.
+3. Validate JavaScript syntax, responsive behavior, navigation, and the live JSON before merging.
+4. Commit through a feature branch and pull request into `main`.
+5. Confirm the post-merge live smoke workflow succeeds, then hard-refresh in a private/incognito window to bypass edge cache.
 
 ## Notes
 
