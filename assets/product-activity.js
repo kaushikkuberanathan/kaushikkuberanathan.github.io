@@ -27,6 +27,14 @@
     }).format(date);
   }
 
+  function configureResumeDownload() {
+    const resumeLink = document.querySelector('a.social-link.resume');
+    if (!resumeLink) return;
+
+    resumeLink.setAttribute('download', 'Kaushik Kuberanathan.pdf');
+    resumeLink.removeAttribute('target');
+  }
+
   function installActivityTab() {
     const section = document.querySelector('[data-product-activity]');
     const tabs = document.querySelector('.tabs');
@@ -174,6 +182,8 @@
   const installedSection = installActivityTab();
 
   async function init() {
+    configureResumeDownload();
+
     const section = installedSection || document.querySelector('[data-product-activity]');
     if (!section) return;
 
