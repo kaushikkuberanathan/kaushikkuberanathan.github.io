@@ -37,6 +37,8 @@ class ViewportResult:
     table_headers: list[str]
     release_links: int
     release_titles: list[str]
+    resume_filename: str
+    resume_target: str | None
     document_overflow_px: int
     table_scrollable: bool
     fallback_visible: bool
@@ -90,6 +92,7 @@ def wait_for_live_deployment() -> dict:
                     data_status == 200,
                     "assets/product-activity.js" in site_html,
                     "installActivityTab" in activity_js,
+                    "Kaushik Kuberanathan.pdf" in activity_js,
                     "Committed improvements" in activity_js,
                     "Latest release notes" in activity_js,
                     ".activity-tab-panel" in activity_css,
@@ -110,13 +113,13 @@ def wait_for_live_deployment() -> dict:
                     "currentCommits": data.get("currentMonth", {}).get("developmentCommits"),
                     "releaseTitles": [note.get("title") for note in data.get("latestReleaseNotes", [])[:3]],
                 }
-            last_error = "live endpoints responded but did not contain the commit-driven tab/feed markers"
+            last_error = "live endpoints responded but did not contain the expected portfolio markers"
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as error:
             last_error = f"{type(error).__name__}: {error}"
 
         time.sleep(10)
 
-    raise RuntimeError(f"Portfolio did not expose the expected commit-driven experience within {DEPLOY_WAIT_SECONDS}s: {last_error}")
+    raise RuntimeError(f"Portfolio did not expose the expected experience within {DEPLOY_WAIT_SECONDS}s: {last_error}")
 
 
 def make_driver(width: int, height: int) -> webdriver.Chrome:
@@ -150,6 +153,7 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             const content = panel.querySelector('[data-activity-content]');
             const tableWrap = panel.querySelector('.activity-table-wrap');
             const activeButton = document.querySelector('.tab-button.active');
+            const resumeLink = document.querySelector('a.social-link.resume');
             return {
               activeTab: activeButton ? activeButton.id : null,
               panelActive: panel.classList.contains('active'),
@@ -162,6 +166,8 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
               tableHeaders: Array.from(panel.querySelectorAll('.activity-table thead th')).map((node) => node.textContent.trim()),
               releaseLinks: panel.querySelectorAll('.activity-release-notes a').length,
               releaseTitles: Array.from(panel.querySelectorAll('.activity-release-notes a')).map((link) => link.textContent.trim()),
+              resumeFilename: resumeLink ? resumeLink.getAttribute('download') : null,
+              resumeTarget: resumeLink ? resumeLink.getAttribute('target') : null,
               documentOverflowPx: Math.max(0, root.scrollWidth - root.clientWidth),
               tableScrollable: tableWrap ? tableWrap.scrollWidth > tableWrap.clientWidth : false,
             };
@@ -198,6 +204,10 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             failures.append(f"Expected at least 3 release-note links, found {state['releaseLinks']}")
         if any("story" in title.lower() or title.lower().startswith("feat") for title in state["releaseTitles"]):
             failures.append(f"Story/feature PR appeared in release notes: {state['releaseTitles']}")
+        if state["resumeFilename"] != "Kaushik Kuberanathan.pdf":
+            failures.append(f"Unexpected resume download filename: {state['resumeFilename']}")
+        if state["resumeTarget"] is not None:
+            failures.append(f"Resume download should not open a new tab: {state['resumeTarget']}")
         if state["documentOverflowPx"] > 1:
             failures.append(f"Document overflows viewport by {state['documentOverflowPx']}px")
         if width <= 620 and not state["tableScrollable"]:
@@ -218,6 +228,8 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             table_headers=state["tableHeaders"],
             release_links=state["releaseLinks"],
             release_titles=state["releaseTitles"],
+            resume_filename=state["resumeFilename"],
+            resume_target=state["resumeTarget"],
             document_overflow_px=state["documentOverflowPx"],
             table_scrollable=state["tableScrollable"],
             fallback_visible=state["fallbackVisible"],
