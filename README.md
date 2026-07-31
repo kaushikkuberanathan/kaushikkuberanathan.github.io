@@ -49,11 +49,12 @@ The **Building in Public** tab displays a rolling six-month view of Dugout Lineu
 - `assets/product-activity.css` contains the dedicated desktop and mobile presentation.
 - `assets/product-activity.js` installs the tab before the core navigation initializes, moves the dashboard into its own panel, and loads the public activity JSON.
 - The JSON is generated in `kaushikkuberanathan/lineup_generator` and published to its `activity-data` branch.
-- Each eligible non-merge commit is counted once and classified as product, quality, delivery, or other work.
+- Every eligible non-merge commit counts as a committed improvement.
+- Feature commits count as product improvements; fixes, tests, security, documentation, refactoring, build, and maintenance commits count as quality and delivery improvements.
 - Merge commits, bot commits, and the generated activity refresh commit are excluded.
 - Production release links still come from summarized release promotion PRs because those notes provide the clearest view of what reached users.
 
-The dashboard intentionally emphasizes the underlying delivery effort rather than treating one pull request as one unit of work.
+The dashboard emphasizes the individual improvements that make up delivery rather than treating one pull request as one unit of effort.
 
 ## Live smoke test
 
