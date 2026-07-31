@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Smoke-test the deployed GitHub Pages portfolio at desktop and mobile widths."""
+"""Smoke-test the portfolio at desktop and mobile widths."""
 
 from __future__ import annotations
 
@@ -32,7 +32,9 @@ class ViewportResult:
     height: int
     active_tab: str
     metric_count: int
+    metric_labels: list[str]
     month_rows: int
+    table_headers: list[str]
     release_links: int
     release_titles: list[str]
     document_overflow_px: int
@@ -57,6 +59,15 @@ def fetch_text(url: str, timeout: int = 30) -> tuple[int, str]:
         return response.status, response.read().decode("utf-8", errors="replace")
 
 
+def uses_commit_model(data: dict) -> bool:
+    months = data.get("months", [])
+    return len(months) == 6 and all(
+        int(month.get("productImprovements", 0)) + int(month.get("qualityImprovements", 0))
+        == int(month.get("developmentCommits", 0))
+        for month in months
+    )
+
+
 def wait_for_live_deployment() -> dict:
     deadline = time.monotonic() + DEPLOY_WAIT_SECONDS
     last_error = "deployment not checked"
@@ -79,9 +90,11 @@ def wait_for_live_deployment() -> dict:
                     data_status == 200,
                     "assets/product-activity.js" in site_html,
                     "installActivityTab" in activity_js,
+                    "Committed improvements" in activity_js,
                     "Latest release notes" in activity_js,
                     ".activity-tab-panel" in activity_css,
                     data.get("schemaVersion") == 1,
+                    uses_commit_model(data),
                     len(data.get("latestReleaseNotes", [])) >= 3,
                 ]
             )
@@ -94,15 +107,16 @@ def wait_for_live_deployment() -> dict:
                     "dataStatus": data_status,
                     "generatedAt": data.get("generatedAt"),
                     "currentMonth": data.get("currentMonth", {}).get("label"),
+                    "currentCommits": data.get("currentMonth", {}).get("developmentCommits"),
                     "releaseTitles": [note.get("title") for note in data.get("latestReleaseNotes", [])[:3]],
                 }
-            last_error = "live endpoints responded but did not contain the merged tab/feed markers"
+            last_error = "live endpoints responded but did not contain the commit-driven tab/feed markers"
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, OSError) as error:
             last_error = f"{type(error).__name__}: {error}"
 
         time.sleep(10)
 
-    raise RuntimeError(f"GitHub Pages did not expose the merged portfolio within {DEPLOY_WAIT_SECONDS}s: {last_error}")
+    raise RuntimeError(f"Portfolio did not expose the expected commit-driven experience within {DEPLOY_WAIT_SECONDS}s: {last_error}")
 
 
 def make_driver(width: int, height: int) -> webdriver.Chrome:
@@ -143,7 +157,9 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
               contentVisible: !content.hidden,
               fallbackVisible: !status.hidden,
               metricCount: panel.querySelectorAll('.activity-metric').length,
+              metricLabels: Array.from(panel.querySelectorAll('.activity-metric-label')).map((node) => node.textContent.trim()),
               monthRows: panel.querySelectorAll('.activity-table tbody tr').length,
+              tableHeaders: Array.from(panel.querySelectorAll('.activity-table thead th')).map((node) => node.textContent.trim()),
               releaseLinks: panel.querySelectorAll('.activity-release-notes a').length,
               releaseTitles: Array.from(panel.querySelectorAll('.activity-release-notes a')).map((link) => link.textContent.trim()),
               documentOverflowPx: Math.max(0, root.scrollWidth - root.clientWidth),
@@ -167,8 +183,17 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             failures.append("Live activity content did not replace the fallback state")
         if state["metricCount"] != 4:
             failures.append(f"Expected 4 metric cards, found {state['metricCount']}")
+        if state["metricLabels"] != [
+            "Committed improvements",
+            "Product improvements",
+            "Quality improvements",
+            "Production releases",
+        ]:
+            failures.append(f"Unexpected commit metric labels: {state['metricLabels']}")
         if state["monthRows"] != 6:
             failures.append(f"Expected 6 monthly table rows, found {state['monthRows']}")
+        if state["tableHeaders"] != ["Month", "Commits", "Product", "Quality", "Releases"]:
+            failures.append(f"Unexpected commit table headers: {state['tableHeaders']}")
         if state["releaseLinks"] < 3:
             failures.append(f"Expected at least 3 release-note links, found {state['releaseLinks']}")
         if any("story" in title.lower() or title.lower().startswith("feat") for title in state["releaseTitles"]):
@@ -188,7 +213,9 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             height=height,
             active_tab=state["activeTab"],
             metric_count=state["metricCount"],
+            metric_labels=state["metricLabels"],
             month_rows=state["monthRows"],
+            table_headers=state["tableHeaders"],
             release_links=state["releaseLinks"],
             release_titles=state["releaseTitles"],
             document_overflow_px=state["documentOverflowPx"],
@@ -197,7 +224,7 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             console_errors=console_errors,
         )
     except TimeoutException as error:
-        raise AssertionError(f"Timed out waiting for the live dashboard at {width}x{height}") from error
+        raise AssertionError(f"Timed out waiting for the portfolio dashboard at {width}x{height}") from error
     finally:
         driver.quit()
 
