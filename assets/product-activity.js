@@ -62,7 +62,7 @@
     const releaseCopy = section.querySelector('.activity-layout aside .activity-panel-copy');
     if (releaseTitle) releaseTitle.textContent = 'Latest release notes';
     if (releaseCopy) {
-      releaseCopy.textContent = 'The most recent production releases, sourced from the release promotion pull requests merged into main.';
+      releaseCopy.textContent = 'The most recent user-facing production releases, summarized from the release notes promoted into main.';
     }
 
     return section;
@@ -78,20 +78,20 @@
   }
 
   function renderTrend(months) {
-    const max = Math.max(1, ...months.map((month) => number(month.mergedPullRequests)));
+    const max = Math.max(1, ...months.map((month) => number(month.developmentCommits)));
     return months
       .map((month) => {
-        const prs = number(month.mergedPullRequests);
-        const width = Math.max(prs > 0 ? 3 : 0, Math.round((prs / max) * 100));
+        const commits = number(month.developmentCommits);
+        const width = Math.max(commits > 0 ? 3 : 0, Math.round((commits / max) * 100));
         return `
           <div class="activity-trend-row">
             <div class="activity-month">${escapeHtml(month.label)}</div>
             <div class="activity-bar-track" aria-hidden="true"><span class="activity-bar" style="width:${width}%"></span></div>
-            <div class="activity-pr-count">${prs} PRs</div>
+            <div class="activity-pr-count">${commits} commits</div>
             <div class="activity-detail-line">
               ${number(month.productImprovements)} product ·
-              ${number(month.productionReleases)} releases ·
-              ${number(month.qualityImprovements)} quality
+              ${number(month.qualityImprovements)} quality ·
+              ${number(month.productionReleases)} releases
             </div>
           </div>`;
       })
@@ -102,15 +102,14 @@
     return `
       <div class="activity-table-wrap" tabindex="0" aria-label="Scrollable monthly activity table">
         <table class="activity-table">
-          <caption>Rolling six-month Dugout Lineup product delivery</caption>
+          <caption>Rolling six-month Dugout Lineup commit activity and production releases</caption>
           <thead>
             <tr>
               <th scope="col">Month</th>
-              <th scope="col">Merged PRs</th>
-              <th scope="col">Product</th>
-              <th scope="col">Releases</th>
-              <th scope="col">Quality</th>
               <th scope="col">Commits</th>
+              <th scope="col">Product</th>
+              <th scope="col">Quality</th>
+              <th scope="col">Releases</th>
             </tr>
           </thead>
           <tbody>
@@ -119,11 +118,10 @@
                 (month) => `
                   <tr>
                     <td>${escapeHtml(month.label)}</td>
-                    <td>${number(month.mergedPullRequests)}</td>
-                    <td>${number(month.productImprovements)}</td>
-                    <td>${number(month.productionReleases)}</td>
-                    <td>${number(month.qualityImprovements)}</td>
                     <td>${number(month.developmentCommits)}</td>
+                    <td>${number(month.productImprovements)}</td>
+                    <td>${number(month.qualityImprovements)}</td>
+                    <td>${number(month.productionReleases)}</td>
                   </tr>`,
               )
               .join('')}
@@ -159,10 +157,10 @@
     const currentLabel = current.label || 'Current month';
 
     section.querySelector('[data-activity-summary]').innerHTML = [
-      metricCard('Merged PRs', current.mergedPullRequests, `${currentLabel} completed work`),
-      metricCard('Product improvements', current.productImprovements, 'User-facing features and enhancements'),
-      metricCard('Production releases', current.productionReleases, 'Promotions merged into main'),
-      metricCard('Quality improvements', current.qualityImprovements, 'Testing, reliability, fixes, and technical debt'),
+      metricCard('Committed improvements', current.developmentCommits, `${currentLabel} individual changes`),
+      metricCard('Product improvements', current.productImprovements, 'Feature and customer-experience commits'),
+      metricCard('Quality improvements', current.qualityImprovements, 'Fixes, tests, security, refactors, and docs'),
+      metricCard('Production releases', current.productionReleases, 'User-facing promotions merged into main'),
     ].join('');
 
     section.querySelector('[data-activity-trend]').innerHTML = renderTrend(months);
@@ -199,7 +197,7 @@
       } else {
         console.error('Unable to load product activity:', error);
       }
-      status.innerHTML = `Monthly activity is temporarily unavailable. <a href="https://github.com/kaushikkuberanathan/lineup_generator/pulls?q=is%3Apr+is%3Amerged" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:800;">View merged work on GitHub →</a>`;
+      status.innerHTML = `Monthly activity is temporarily unavailable. <a href="https://github.com/kaushikkuberanathan/lineup_generator/commits/develop" target="_blank" rel="noreferrer" style="color:var(--accent);font-weight:800;">View commit activity on GitHub →</a>`;
       status.classList.add('error');
     }
   }

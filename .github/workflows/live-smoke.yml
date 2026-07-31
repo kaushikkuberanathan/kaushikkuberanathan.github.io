@@ -41,9 +41,15 @@ jobs:
       - name: Install browser test dependency
         run: python -m pip install --disable-pip-version-check selenium==4.34.2
 
-      - name: Run live desktop and mobile smoke test
+      - name: Start pull-request preview server
+        if: github.event_name == 'pull_request'
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 > /tmp/portfolio-http.log 2>&1 &
+          echo $! > /tmp/portfolio-http.pid
+
+      - name: Run desktop and mobile smoke test
         env:
-          PORTFOLIO_SITE_URL: https://kaushikkuberanathan.github.io/
+          PORTFOLIO_SITE_URL: ${{ github.event_name == 'pull_request' && 'http://127.0.0.1:8000/' || 'https://kaushikkuberanathan.github.io/' }}
           PORTFOLIO_ACTIVITY_URL: https://raw.githubusercontent.com/kaushikkuberanathan/lineup_generator/activity-data/product-activity.json
-          PORTFOLIO_DEPLOY_WAIT_SECONDS: '300'
+          PORTFOLIO_DEPLOY_WAIT_SECONDS: ${{ github.event_name == 'pull_request' && '45' || '300' }}
         run: python scripts/live-smoke.py
