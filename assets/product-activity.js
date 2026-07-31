@@ -14,24 +14,13 @@
     return Number.isFinite(Number(value)) ? Number(value) : 0;
   }
 
-  function hasNumericValue(object, key) {
-    return object && object[key] !== undefined && Number.isFinite(Number(object[key]));
-  }
-
   function commitMetrics(month) {
-    const total = number(month?.developmentCommits);
-    const product = hasNumericValue(month, 'productCommits')
-      ? number(month.productCommits)
-      : number(month?.productImprovements);
-    const quality = hasNumericValue(month, 'qualityCommits')
-      ? number(month.qualityCommits)
-      : number(month?.qualityImprovements);
-    const other = number(month?.otherCommits);
-    const delivery = hasNumericValue(month, 'deliveryCommits')
-      ? number(month.deliveryCommits)
-      : Math.max(0, total - product - quality - other);
-
-    return { total, product, quality, delivery, other };
+    return {
+      total: number(month?.developmentCommits),
+      product: number(month?.productImprovements),
+      quality: number(month?.qualityImprovements),
+      releases: number(month?.productionReleases),
+    };
   }
 
   function formatGeneratedAt(value) {
@@ -97,16 +86,6 @@
       </article>`;
   }
 
-  function breakdownText(metrics) {
-    const parts = [
-      `${metrics.product} product`,
-      `${metrics.quality} quality`,
-      `${metrics.delivery} delivery`,
-    ];
-    if (metrics.other) parts.push(`${metrics.other} other`);
-    return parts.join(' · ');
-  }
-
   function renderTrend(months) {
     const max = Math.max(1, ...months.map((month) => commitMetrics(month).total));
     return months
@@ -118,7 +97,9 @@
             <div class="activity-month">${escapeHtml(month.label)}</div>
             <div class="activity-bar-track" aria-hidden="true"><span class="activity-bar" style="width:${width}%"></span></div>
             <div class="activity-commit-count">${metrics.total} commits</div>
-            <div class="activity-detail-line">${escapeHtml(breakdownText(metrics))}</div>
+            <div class="activity-detail-line">
+              ${metrics.product} product · ${metrics.quality} quality &amp; delivery · ${metrics.releases} releases
+            </div>
           </div>`;
       })
       .join('');
@@ -134,9 +115,7 @@
               <th scope="col">Month</th>
               <th scope="col">Commits</th>
               <th scope="col">Product</th>
-              <th scope="col">Quality</th>
-              <th scope="col">Delivery</th>
-              <th scope="col">Other</th>
+              <th scope="col">Quality &amp; delivery</th>
               <th scope="col">Releases</th>
             </tr>
           </thead>
@@ -150,9 +129,7 @@
                     <td>${metrics.total}</td>
                     <td>${metrics.product}</td>
                     <td>${metrics.quality}</td>
-                    <td>${metrics.delivery}</td>
-                    <td>${metrics.other}</td>
-                    <td>${number(month.productionReleases)}</td>
+                    <td>${metrics.releases}</td>
                   </tr>`;
               })
               .join('')}
@@ -189,10 +166,10 @@
     const metrics = commitMetrics(current);
 
     section.querySelector('[data-activity-summary]').innerHTML = [
-      metricCard('Commits', metrics.total, `${currentLabel} delivery effort`),
-      metricCard('Product commits', metrics.product, 'Features and experience improvements'),
-      metricCard('Quality commits', metrics.quality, 'Fixes, tests, security, and reliability'),
-      metricCard('Delivery commits', metrics.delivery, 'Documentation, CI, release, and maintenance work'),
+      metricCard('Committed improvements', metrics.total, `${currentLabel} individual commits`),
+      metricCard('Product improvements', metrics.product, 'Feature commits improving user experiences'),
+      metricCard('Quality & delivery', metrics.quality, 'Fixes, tests, security, docs, and delivery work'),
+      metricCard('Production releases', metrics.releases, 'User-facing promotions merged into main'),
     ].join('');
 
     section.querySelector('[data-activity-trend]').innerHTML = renderTrend(months);
