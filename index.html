@@ -1055,7 +1055,12 @@
     <div class="activity-layout">
       <article class="activity-panel">
         <h3 class="activity-panel-title">Monthly delivery trend</h3>
-        <p class="activity-panel-copy">Bar length represents merged pull requests. The detail line separates product, release, and quality work.</p>
+        <p class="activity-panel-copy">Each bar splits product work from quality work; the badge marks production releases that shipped that month.</p>
+        <div class="activity-legend" aria-hidden="true">
+          <span class="legend-item legend-product">Product</span>
+          <span class="legend-item legend-quality">Quality</span>
+          <span class="legend-item legend-release">Releases</span>
+        </div>
         <div class="activity-trend" data-activity-trend></div>
       </article>
 

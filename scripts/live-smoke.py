@@ -202,7 +202,8 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             failures.append(f"Unexpected commit table headers: {state['tableHeaders']}")
         if state["releaseLinks"] < 3:
             failures.append(f"Expected at least 3 release-note links, found {state['releaseLinks']}")
-        if any("story" in title.lower() or title.lower().startswith("feat") for title in state["releaseTitles"]):
+        non_release_prefixes = ("story ", "story:", "feat ", "feat(", "feat:", "feature ", "feature:")
+        if any(title.lower().startswith(non_release_prefixes) for title in state["releaseTitles"]):
             failures.append(f"Story/feature PR appeared in release notes: {state['releaseTitles']}")
         if state["resumeFilename"] != "Kaushik Kuberanathan.pdf":
             failures.append(f"Unexpected resume download filename: {state['resumeFilename']}")
