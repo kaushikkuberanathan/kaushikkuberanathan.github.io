@@ -76,11 +76,42 @@
     return section;
   }
 
-  function metricCard(label, value, note) {
+  function sparkline(values) {
+    const nums = Array.isArray(values) ? values.map(number) : [];
+    if (nums.length < 2) return '';
+    const min = Math.min(...nums);
+    const max = Math.max(...nums);
+    const range = max - min || 1;
+    const step = 96 / (nums.length - 1);
+    const points = nums
+      .map((v, i) => `${(2 + i * step).toFixed(2)},${(28 - ((v - min) / range) * 26).toFixed(2)}`)
+      .join(' ');
+    const last = points.split(' ').at(-1).split(',');
     return `
-      <article class="activity-metric">
+      <svg class="activity-metric-spark" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true">
+        <polyline points="${points}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="${last[0]}" cy="${last[1]}" r="2.6" fill="currentColor"/>
+      </svg>`;
+  }
+
+  function monthShort(label) {
+    return String(label ?? '').split(' ')[0] || label;
+  }
+
+  function metricCard(label, value, note, { series, accent, deltaVsPrevious } = {}) {
+    const accentClass = accent ? ` metric-accent-${accent}` : '';
+    const delta = number(deltaVsPrevious?.diff);
+    const deltaHtml = deltaVsPrevious
+      ? `<span class="activity-metric-delta${delta < 0 ? ' is-down' : ''}">${delta > 0 ? '+' : ''}${delta} vs ${escapeHtml(monthShort(deltaVsPrevious.label))}</span>`
+      : '';
+    return `
+      <article class="activity-metric${accentClass}">
         <div class="activity-metric-label">${escapeHtml(label)}</div>
-        <div class="activity-metric-value">${number(value)}</div>
+        <div class="activity-metric-num-row">
+          <div class="activity-metric-value">${number(value)}</div>
+          ${deltaHtml}
+        </div>
+        ${sparkline(series)}
         <div class="activity-metric-note">${escapeHtml(note)}</div>
       </article>`;
   }
@@ -90,17 +121,20 @@
     return months
       .map((month) => {
         const commits = number(month.developmentCommits);
-        const width = Math.max(commits > 0 ? 3 : 0, Math.round((commits / max) * 100));
+        const product = number(month.productImprovements);
+        const quality = number(month.qualityImprovements);
+        const releases = number(month.productionReleases);
+        const productWidth = (product / max) * 100;
+        const qualityWidth = (quality / max) * 100;
         return `
           <div class="activity-trend-row">
             <div class="activity-month">${escapeHtml(month.label)}</div>
-            <div class="activity-bar-track" aria-hidden="true"><span class="activity-bar" style="width:${width}%"></span></div>
-            <div class="activity-pr-count">${commits} commits</div>
-            <div class="activity-detail-line">
-              ${number(month.productImprovements)} product ·
-              ${number(month.qualityImprovements)} quality ·
-              ${number(month.productionReleases)} releases
+            <div class="activity-bar-track" aria-hidden="true">
+              <span class="activity-bar-seg activity-bar-product" style="width:${productWidth}%"></span>
+              <span class="activity-bar-seg activity-bar-quality" style="left:${productWidth}%;width:${qualityWidth}%"></span>
             </div>
+            <div class="activity-pr-count">${commits}</div>
+            <span class="activity-release-chip${releases ? '' : ' is-zero'}" title="${releases} production release${releases === 1 ? '' : 's'}"><span class="dot" aria-hidden="true"></span>${releases}</span>
           </div>`;
       })
       .join('');
@@ -151,7 +185,7 @@
       return `<p class="activity-panel-copy">No production release notes have been published in this reporting window yet.</p>`;
     }
 
-    return `<ol class="activity-highlights activity-release-notes">${notes
+    return `<ol class="activity-highlights activity-release-notes activity-ship-list">${notes
       .map((item) => {
         const safeUrl = item.url || `https://github.com/${repository}/pull/${number(item.number)}`;
         return `<li><a href="${escapeHtml(safeUrl)}" target="_blank" rel="noreferrer">${escapeHtml(item.title)}</a></li>`;
@@ -163,12 +197,28 @@
     const months = Array.isArray(data.months) ? data.months : [];
     const current = data.currentMonth || months.at(-1) || {};
     const currentLabel = current.label || 'Current month';
+    const previous = months.length >= 2 ? months.at(-2) : null;
+    const commitDelta = previous
+      ? { diff: number(current.developmentCommits) - number(previous.developmentCommits), label: previous.label }
+      : null;
 
     section.querySelector('[data-activity-summary]').innerHTML = [
-      metricCard('Committed improvements', current.developmentCommits, `${currentLabel} individual changes`),
-      metricCard('Product improvements', current.productImprovements, 'Feature and customer-experience commits'),
-      metricCard('Quality improvements', current.qualityImprovements, 'Fixes, tests, security, refactors, and docs'),
-      metricCard('Production releases', current.productionReleases, 'User-facing promotions merged into main'),
+      metricCard('Committed improvements', current.developmentCommits, `${currentLabel} individual changes`, {
+        series: months.map((m) => m.developmentCommits),
+        deltaVsPrevious: commitDelta,
+      }),
+      metricCard('Product improvements', current.productImprovements, 'Feature and customer-experience commits', {
+        series: months.map((m) => m.productImprovements),
+        accent: 'green',
+      }),
+      metricCard('Quality improvements', current.qualityImprovements, 'Fixes, tests, security, refactors, and docs', {
+        series: months.map((m) => m.qualityImprovements),
+        accent: 'blue',
+      }),
+      metricCard('Production releases', current.productionReleases, 'User-facing promotions merged into main', {
+        series: months.map((m) => m.productionReleases),
+        accent: 'amber',
+      }),
     ].join('');
 
     section.querySelector('[data-activity-trend]').innerHTML = renderTrend(months);
