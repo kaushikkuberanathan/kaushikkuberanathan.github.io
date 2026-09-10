@@ -48,7 +48,7 @@ The **Building in Public** tab displays a rolling six-month view of Dugout Lineu
 
 - `assets/product-activity.css` contains the dedicated desktop and mobile presentation.
 - `assets/product-activity.js` installs the tab before the core navigation initializes, moves the dashboard into its own panel, and loads the public activity JSON.
-- The JSON is generated in `kaushikkuberanathan/lineup_generator` and published to its `activity-data` branch.
+- The JSON is generated in `kaushikkuberanathan/lineup_generator` (private) and published to the `activity-data` branch of **this** repo, so the sanitized metrics stay public even though the app source does not.
 - Delivery volume is commit-driven: each eligible non-merge commit is counted once and classified as either a product improvement or a quality improvement.
 - Product and quality counts reconcile to the committed-improvements total for every month.
 - Production releases and the latest links remain release-note driven, using user-facing promotion PRs rather than story PRs.
