@@ -989,6 +989,116 @@
     @media (max-width: 620px) {
       .experience-section-link .social-link { width: 100%; justify-content: center; }
     }
+
+    .resume-gate-backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 20, 32, 0.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 1000;
+    }
+
+    .resume-gate-backdrop[hidden] { display: none; }
+
+    .resume-gate-dialog {
+      background: var(--card);
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      max-width: 380px;
+      width: 100%;
+      padding: 24px;
+      box-shadow: 0 20px 50px rgba(15, 20, 32, 0.25);
+      font-family: var(--font-sans);
+    }
+
+    .resume-gate-dialog h2 {
+      margin: 0 0 8px;
+      font-size: 18px;
+      color: var(--ink);
+    }
+
+    .resume-gate-dialog p {
+      margin: 0 0 16px;
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .resume-gate-field {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 6px;
+    }
+
+    .resume-gate-field label {
+      font-size: 12px;
+      font-weight: 750;
+      color: var(--ink);
+    }
+
+    .resume-gate-field input {
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 10px 12px;
+      font-size: 14px;
+      font-family: var(--font-sans);
+      color: var(--ink);
+    }
+
+    .resume-gate-field input:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 1px;
+    }
+
+    .resume-gate-error {
+      color: var(--red);
+      font-size: 12.5px;
+      min-height: 16px;
+      margin: 4px 0 12px;
+    }
+
+    .resume-gate-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .resume-gate-actions button {
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      font-weight: 750;
+      border-radius: 999px;
+      padding: 9px 16px;
+      cursor: pointer;
+      border: 1px solid var(--border);
+    }
+
+    .resume-gate-submit {
+      background: var(--ink);
+      color: #fff;
+      border-color: var(--ink);
+      flex: 1;
+    }
+
+    .resume-gate-submit:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .resume-gate-cancel {
+      background: var(--card);
+      color: var(--ink);
+    }
+
+    .resume-gate-note {
+      font-size: 12px;
+      color: var(--muted-2);
+      margin-top: 12px;
+    }
 </style>
 <link href="assets/product-activity.css" rel="stylesheet"/>
 </head>
@@ -1030,7 +1140,7 @@
 <svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><path d="M5 8.2h14v8.1H5z" fill="none" stroke="#172033" stroke-width="1.7"></path><path d="M5.5 8.7 12 13l6.5-4.3" fill="none" stroke="#172033" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>
               Get in touch
             </a>
-<a aria-label="View résumé (PDF, opens in a new tab)" class="social-link resume" href="Kaushik%20Kuberanathan%20-%20Resume.pdf" rel="noreferrer" target="_blank">
+<a aria-label="View résumé (PDF, opens in a new tab)" class="social-link resume" href="Kaushik%20Kuberanathan%20-%20Resume.pdf" rel="noreferrer" target="_blank" data-lead-endpoint="PASTE_APPS_SCRIPT_WEB_APP_URL_HERE">
 <svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><path d="M9 15 17 7M17 7h-5M17 7v5" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>
               View résumé
             </a>
