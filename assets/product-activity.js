@@ -51,8 +51,9 @@
     button.setAttribute('aria-selected', 'false');
     button.textContent = 'Building in Public';
 
-    const metricsButton = document.getElementById('tab-metrics');
-    tabs.insertBefore(button, metricsButton || null);
+    // Appended after the last static tab (Builder Projects) so it reads as
+    // a drill-down of that tab rather than sitting between unrelated ones.
+    tabs.appendChild(button);
 
     const panel = document.createElement('section');
     panel.id = 'panel-building';
@@ -60,9 +61,9 @@
     panel.setAttribute('role', 'tabpanel');
     panel.setAttribute('aria-labelledby', 'tab-building');
 
-    const metricsPanel = document.getElementById('panel-metrics');
-    const panelParent = metricsPanel?.parentNode || section.closest('main');
-    if (panelParent) panelParent.insertBefore(panel, metricsPanel || null);
+    const panelParent = section.closest('main');
+    const footer = panelParent?.querySelector('.footer');
+    if (panelParent) panelParent.insertBefore(panel, footer || null);
     panel.appendChild(section);
     section.classList.add('activity-tab-card');
 
