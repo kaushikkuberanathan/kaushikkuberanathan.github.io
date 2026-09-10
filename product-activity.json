@@ -1,0 +1,349 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-10T16:52:29.934Z",
+  "repository": "kaushikkuberanathan/lineup_generator",
+  "sourceBranch": "develop",
+  "windowMonths": 6,
+  "definitions": {
+    "mergedPullRequests": "Merged PR count retained for backward compatibility; the public dashboard uses individual commits as the primary delivery measure.",
+    "productImprovements": "Individual non-merge feature commits on the source branch, excluding bots and generated activity refreshes.",
+    "productionReleases": "User-facing release or promotion PRs merged into main.",
+    "qualityImprovements": "All other eligible individual commits, including fixes, tests, security, reliability, accessibility, documentation, refactoring, build work, and technical debt.",
+    "developmentCommits": "All eligible individual non-merge, non-bot commits on the source branch. Product and quality counts reconcile to this total.",
+    "latestReleaseNotes": "The three most recent user-facing production releases, summarized from the first Shipping bullet; internal-only releases are excluded."
+  },
+  "months": [
+    {
+      "key": "2026-04",
+      "label": "Apr 2026",
+      "mergedPullRequests": 25,
+      "productImprovements": 18,
+      "productionReleases": 9,
+      "qualityImprovements": 153,
+      "developmentCommits": 171,
+      "otherPullRequests": 16,
+      "releaseNotes": [
+        {
+          "number": 29,
+          "title": "Release v2.5.2: Game Mode polish — count strip, Toast, mercy banner symmetry",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/29"
+        },
+        {
+          "number": 27,
+          "title": "Release: v2.5.1 to production (bundles v2.4.0 + v2.5.0 + v2.5.1)",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/27"
+        },
+        {
+          "number": 17,
+          "title": "docs: add Pre-release Docs Checklist to CLAUDE.md",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/17"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 29,
+          "title": "Release v2.5.2: Game Mode polish — count strip, Toast, mercy banner symmetry",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/29"
+        },
+        {
+          "number": 27,
+          "title": "Release: v2.5.1 to production (bundles v2.4.0 + v2.5.0 + v2.5.1)",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/27"
+        },
+        {
+          "number": 17,
+          "title": "docs: add Pre-release Docs Checklist to CLAUDE.md",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/17"
+        }
+      ]
+    },
+    {
+      "key": "2026-05",
+      "label": "May 2026",
+      "mergedPullRequests": 150,
+      "productImprovements": 20,
+      "productionReleases": 21,
+      "qualityImprovements": 136,
+      "developmentCommits": 156,
+      "otherPullRequests": 129,
+      "releaseNotes": [
+        {
+          "number": 250,
+          "title": "chore: promote v2.5.23 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/250"
+        },
+        {
+          "number": 239,
+          "title": "release: v2.5.22 — DefenseDiamond + MaintenanceScreen token migration; sync-script CRLF fix",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/239"
+        },
+        {
+          "number": 222,
+          "title": "chore: promote v2.5.21 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/222"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 250,
+          "title": "chore: promote v2.5.23 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/250"
+        },
+        {
+          "number": 239,
+          "title": "release: v2.5.22 — DefenseDiamond + MaintenanceScreen token migration; sync-script CRLF fix",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/239"
+        },
+        {
+          "number": 222,
+          "title": "chore: promote v2.5.21 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/222"
+        }
+      ]
+    },
+    {
+      "key": "2026-06",
+      "label": "Jun 2026",
+      "mergedPullRequests": 47,
+      "productImprovements": 9,
+      "productionReleases": 7,
+      "qualityImprovements": 29,
+      "developmentCommits": 38,
+      "otherPullRequests": 40,
+      "releaseNotes": [
+        {
+          "number": 334,
+          "title": "Release v2.5.30 — Demo All-Stars team",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/334"
+        },
+        {
+          "number": 327,
+          "title": "Release v2.5.29 - brand mark on About tab + printed lineups",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/327"
+        },
+        {
+          "number": 323,
+          "title": "Release v2.5.28 — Dugout Lineup brand mark across app + share surfaces",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/323"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 334,
+          "title": "Release v2.5.30 — Demo All-Stars team",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/334"
+        },
+        {
+          "number": 327,
+          "title": "Release v2.5.29 - brand mark on About tab + printed lineups",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/327"
+        },
+        {
+          "number": 323,
+          "title": "Release v2.5.28 — Dugout Lineup brand mark across app + share surfaces",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/323"
+        }
+      ]
+    },
+    {
+      "key": "2026-07",
+      "label": "Jul 2026",
+      "mergedPullRequests": 75,
+      "productImprovements": 11,
+      "productionReleases": 9,
+      "qualityImprovements": 88,
+      "developmentCommits": 99,
+      "otherPullRequests": 66,
+      "releaseNotes": [
+        {
+          "number": 414,
+          "title": "Release 2.8.0 — Set your name",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/414"
+        },
+        {
+          "number": 409,
+          "title": "Release 2.7.0 — Google sign-in",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/409"
+        },
+        {
+          "number": 393,
+          "title": "release: v2.6.0 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/393"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 414,
+          "title": "Release 2.8.0 — Set your name",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/414"
+        },
+        {
+          "number": 409,
+          "title": "Release 2.7.0 — Google sign-in",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/409"
+        },
+        {
+          "number": 393,
+          "title": "release: v2.6.0 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/393"
+        }
+      ]
+    },
+    {
+      "key": "2026-08",
+      "label": "Aug 2026",
+      "mergedPullRequests": 354,
+      "productImprovements": 34,
+      "productionReleases": 15,
+      "qualityImprovements": 385,
+      "developmentCommits": 419,
+      "otherPullRequests": 339,
+      "releaseNotes": [
+        {
+          "number": 991,
+          "title": "release: promote v3.1.1 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/991"
+        },
+        {
+          "number": 959,
+          "title": "release: promote v3.1.0 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/959"
+        },
+        {
+          "number": 912,
+          "title": "docs: correct stale test-count references + FEATURE_MAP row 11 typo (main)",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/912"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 991,
+          "title": "release: promote v3.1.1 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/991"
+        },
+        {
+          "number": 959,
+          "title": "release: promote v3.1.0 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/959"
+        },
+        {
+          "number": 912,
+          "title": "docs: correct stale test-count references + FEATURE_MAP row 11 typo (main)",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/912"
+        }
+      ]
+    },
+    {
+      "key": "2026-09",
+      "label": "Sep 2026",
+      "mergedPullRequests": 161,
+      "productImprovements": 64,
+      "productionReleases": 11,
+      "qualityImprovements": 161,
+      "developmentCommits": 225,
+      "otherPullRequests": 150,
+      "releaseNotes": [
+        {
+          "number": 1359,
+          "title": "Release v4.2.0: promote develop to main",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1359"
+        },
+        {
+          "number": 1298,
+          "title": "Release v4.1.0: reliable team updates and restored player records",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1298"
+        },
+        {
+          "number": 1219,
+          "title": "release: promote v4.0.0 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1219"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 1359,
+          "title": "Release v4.2.0: promote develop to main",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1359"
+        },
+        {
+          "number": 1298,
+          "title": "Release v4.1.0: reliable team updates and restored player records",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1298"
+        },
+        {
+          "number": 1219,
+          "title": "release: promote v4.0.0 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1219"
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "mergedPullRequests": 812,
+    "productImprovements": 156,
+    "productionReleases": 72,
+    "qualityImprovements": 952,
+    "developmentCommits": 1108
+  },
+  "currentMonth": {
+    "key": "2026-09",
+    "label": "Sep 2026",
+    "mergedPullRequests": 161,
+    "productImprovements": 64,
+    "productionReleases": 11,
+    "qualityImprovements": 161,
+    "developmentCommits": 225,
+    "otherPullRequests": 150,
+    "releaseNotes": [
+      {
+        "number": 1359,
+        "title": "Release v4.2.0: promote develop to main",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1359"
+      },
+      {
+        "number": 1298,
+        "title": "Release v4.1.0: reliable team updates and restored player records",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1298"
+      },
+      {
+        "number": 1219,
+        "title": "release: promote v4.0.0 to production",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1219"
+      }
+    ],
+    "highlights": [
+      {
+        "number": 1359,
+        "title": "Release v4.2.0: promote develop to main",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1359"
+      },
+      {
+        "number": 1298,
+        "title": "Release v4.1.0: reliable team updates and restored player records",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1298"
+      },
+      {
+        "number": 1219,
+        "title": "release: promote v4.0.0 to production",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1219"
+      }
+    ]
+  },
+  "latestReleaseNotes": [
+    {
+      "number": 1359,
+      "title": "Release v4.2.0: promote develop to main",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1359"
+    },
+    {
+      "number": 1298,
+      "title": "Release v4.1.0: reliable team updates and restored player records",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1298"
+    },
+    {
+      "number": 1219,
+      "title": "release: promote v4.0.0 to production",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1219"
+    }
+  ]
+}
