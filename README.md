@@ -19,8 +19,14 @@ assets/product-activity.js         # activity tab installation and JSON renderin
 scripts/live-smoke.py              # desktop/mobile browser validation
 .github/workflows/live-smoke.yml   # local PR smoke + deployed main smoke
 kaushik-headshot.jpg               # hero headshot
-dugout-lineup-logo.png             # Dugout Lineup project card logo
-anna-university-logo.png           # Anna University education card logo
+icons/                             # project, employer, and education logos
+  dugout-lineup-logo.png             # Dugout Lineup project card logo
+  anna-university-logo.png           # Anna University education card logo
+  university-of-florida-logo.png     # University of Florida education card logo (unused, kept for future use)
+  charter-communications-logo.png    # Charter Communications experience card logo
+  cox-communications-logo.png        # Cox Communications experience card logo
+  cox-automotive-logo.png            # Cox Automotive experience card logo (uses parent Cox Enterprises mark)
+  equifax-logo.png                   # Equifax experience card logo
 README.md
 ```
 
@@ -65,7 +71,7 @@ The smoke workflow uses the same browser assertions in two modes:
 ## Updating the site
 
 1. Edit `index.html` or the relevant file under `assets/`.
-2. Keep image filenames consistent (`kaushik-headshot.jpg`, `dugout-lineup-logo.png`, `anna-university-logo.png`).
+2. Keep image filenames consistent (`kaushik-headshot.jpg` at the repo root; project, employer, and education logos under `icons/`).
 3. Validate JavaScript syntax, responsive behavior, navigation, and the live JSON before merging.
 4. Commit through a feature branch and pull request into `main`.
 5. Confirm the post-merge live smoke workflow succeeds, then hard-refresh in a private/incognito window to bypass edge cache.
