@@ -27,6 +27,135 @@
     }).format(date);
   }
 
+  function installResumeGate() {
+    const resumeLink = document.querySelector('a.social-link.resume');
+    if (!resumeLink) return;
+
+    const STORAGE_KEY = 'resumeLeadEmail';
+    const endpoint = resumeLink.dataset.leadEndpoint;
+    const resumeHref = resumeLink.getAttribute('href');
+
+    function getStoredEmail() {
+      try {
+        return window.localStorage.getItem(STORAGE_KEY) || '';
+      } catch {
+        return '';
+      }
+    }
+
+    function storeEmail(email) {
+      try {
+        window.localStorage.setItem(STORAGE_KEY, email);
+      } catch {
+        // Private browsing / storage disabled — the gate will just reappear next visit.
+      }
+    }
+
+    function isValidEmail(value) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+    }
+
+    function openResume() {
+      window.open(resumeHref, '_blank', 'noopener,noreferrer');
+    }
+
+    function notifyBackend(email) {
+      if (!endpoint || endpoint.startsWith('PASTE_')) return;
+      // Apps Script web apps don't return CORS headers, so this is a fire-and-forget
+      // "no-cors" request: the script still runs server-side, we just can't read the response.
+      fetch(endpoint, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          email,
+          userAgent: navigator.userAgent,
+          referrer: document.referrer,
+          timestamp: new Date().toISOString(),
+        }),
+      }).catch((error) => console.error('Unable to send resume lead notification:', error));
+    }
+
+    let backdrop;
+    let lastFocused;
+
+    function buildDialog() {
+      backdrop = document.createElement('div');
+      backdrop.className = 'resume-gate-backdrop';
+      backdrop.hidden = true;
+      backdrop.innerHTML = `
+        <div class="resume-gate-dialog" role="dialog" aria-modal="true" aria-labelledby="resume-gate-title" aria-describedby="resume-gate-copy">
+          <h2 id="resume-gate-title">Get Kaushik's résumé</h2>
+          <p id="resume-gate-copy">Enter your email to view the résumé — I'll also send you a copy.</p>
+          <form class="resume-gate-form" novalidate>
+            <div class="resume-gate-field">
+              <label for="resume-gate-email">Email address</label>
+              <input autocomplete="email" id="resume-gate-email" name="email" placeholder="you@company.com" required type="email" />
+            </div>
+            <div class="resume-gate-error" role="alert"></div>
+            <div class="resume-gate-actions">
+              <button class="resume-gate-cancel" type="button">Cancel</button>
+              <button class="resume-gate-submit" type="submit">Send &amp; view résumé</button>
+            </div>
+          </form>
+          <p class="resume-gate-note">Used only to send your copy — never shared.</p>
+        </div>`;
+      document.body.appendChild(backdrop);
+
+      const form = backdrop.querySelector('form');
+      const input = backdrop.querySelector('#resume-gate-email');
+      const errorEl = backdrop.querySelector('.resume-gate-error');
+      const submitBtn = backdrop.querySelector('.resume-gate-submit');
+      const cancelBtn = backdrop.querySelector('.resume-gate-cancel');
+
+      cancelBtn.addEventListener('click', closeDialog);
+      backdrop.addEventListener('click', (event) => {
+        if (event.target === backdrop) closeDialog();
+      });
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !backdrop.hidden) closeDialog();
+      });
+
+      form.addEventListener('submit', (event) => {
+        event.preventDefault();
+        const email = input.value.trim();
+        if (!isValidEmail(email)) {
+          errorEl.textContent = 'Enter a valid email address.';
+          input.focus();
+          return;
+        }
+
+        storeEmail(email);
+        openResume();
+        notifyBackend(email);
+        closeDialog();
+      });
+
+      backdrop._els = { input, errorEl };
+    }
+
+    function openDialog() {
+      if (!backdrop) buildDialog();
+      lastFocused = document.activeElement;
+      backdrop.hidden = false;
+      backdrop._els.errorEl.textContent = '';
+      backdrop._els.input.value = '';
+      backdrop._els.input.focus();
+    }
+
+    function closeDialog() {
+      if (!backdrop) return;
+      backdrop.hidden = true;
+      if (lastFocused && typeof lastFocused.focus === 'function') lastFocused.focus();
+    }
+
+    resumeLink.addEventListener('click', (event) => {
+      if (getStoredEmail()) return;
+      event.preventDefault();
+      openDialog();
+    });
+  }
+
   function installActivityTab() {
     const section = document.querySelector('[data-product-activity]');
     const tabs = document.querySelector('.tabs');
@@ -221,6 +350,8 @@
     section.querySelector('[data-activity-status]').hidden = true;
     section.querySelector('[data-activity-content]').hidden = false;
   }
+
+  installResumeGate();
 
   const installedSection = installActivityTab();
 
