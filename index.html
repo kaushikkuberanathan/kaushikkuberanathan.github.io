@@ -85,7 +85,7 @@
     }
 
     @media (min-width: 820px) {
-      .hero { grid-template-columns: 1.45fr 0.8fr; }
+      .hero { grid-template-columns: 1fr 1fr 1fr; }
     }
 
     .eyebrow {
@@ -974,12 +974,17 @@
 </nav>
 <!-- HERO -->
 <header class="card" id="top">
-<div class="hero">
-<div>
-<div class="eyebrow">Product Portfolio</div>
-<h1>Kaushik Kuberanathan</h1>
+<div class="identity-cluster">
+  <div class="identity-photo-wrap">
+    <img alt="Headshot of Kaushik Kuberanathan" class="identity-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" src="kaushik-headshot.jpg"/>
+    <div aria-hidden="true" class="identity-fallback identity-photo-fallback" style="display:none;">KK</div>
+  </div>
+  <div>
+    <div class="eyebrow">Product Portfolio</div>
+    <h1>Kaushik Kuberanathan</h1>
+  </div>
+</div>
 <p class="positioning">Product &amp; Platform Leader · Digital Commerce · Enterprise Transformation · AI-Assisted Builder</p>
-<p class="subtitle">15+ years building, scaling, and modernizing digital products across consumer apps, digital commerce, marketplace platforms, self-service, and enterprise systems. I turn complex customer and operational problems into scalable product strategies, reusable platforms, and measurable business outcomes — while building hands-on with AI to stay close to the craft.</p>
 <div class="location-row" aria-label="Location"><span class="location-dot">⌖</span><span>Atlanta, GA</span></div>
 <div aria-label="Focus areas" class="header-tags">
 <span class="pill green">Product Strategy</span>
@@ -1006,17 +1011,20 @@
               GitHub
             </a>
 </div>
-</div>
-<aside aria-label="Positioning summary" class="hero-panel">
-<div class="identity-cluster">
-  <div class="identity-photo-wrap">
-    <img alt="Headshot of Kaushik Kuberanathan" class="identity-photo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" src="kaushik-headshot.jpg"/>
-    <div aria-hidden="true" class="identity-fallback identity-photo-fallback" style="display:none;">KK</div>
-  </div>
-</div>
-<p class="panel-title">Builder. Coach. Systems thinker.</p>
-<p class="panel-copy">By day: high-scale, regulated app commerce and self-service platforms. Outside work: I coach 8U baseball and build AI-assisted products. The common thread — simplify complexity, build reusable systems, and make decisions easier for the people who use them.</p>
-<div class="touch-box" aria-label="Get in touch">
+</header>
+<!-- OVERVIEW TAB -->
+<section aria-labelledby="tab-overview" class="tab-panel active" id="panel-overview" role="tabpanel">
+<section class="card">
+<div class="hero">
+<aside aria-label="About" class="hero-panel">
+<div class="touch-title">About</div>
+<p class="subtitle" style="font-size:15px;">15+ years building, scaling, and modernizing digital products across consumer apps, digital commerce, marketplace platforms, self-service, and enterprise systems. I turn complex customer and operational problems into scalable product strategies, reusable platforms, and measurable business outcomes — while building hands-on with AI to stay close to the craft.</p>
+</aside>
+<aside aria-label="Who I am" class="hero-panel">
+<div class="touch-title">Who I am</div>
+<p class="panel-copy">Builder. Coach. Systems thinker. By day: high-scale, regulated app commerce and self-service platforms. Outside work: I coach 8U baseball and build AI-assisted products. The common thread — simplify complexity, build reusable systems, and make decisions easier for the people who use them.</p>
+</aside>
+<aside aria-label="Open to" class="hero-panel">
   <div class="touch-title">Open to</div>
   <p class="touch-copy">Senior product leadership opportunities across digital commerce, consumer platforms, marketplaces, self-service, and enterprise platform modernization — particularly roles combining product strategy, team development, complex systems, and measurable customer/business outcomes.</p>
   <div class="link-row">
@@ -1029,12 +1037,9 @@
       Connect
     </a>
   </div>
-</div>
 </aside>
 </div>
-</header>
-<!-- OVERVIEW TAB -->
-<section aria-labelledby="tab-overview" class="tab-panel active" id="panel-overview" role="tabpanel">
+</section>
 <section aria-labelledby="glance-title" class="card">
 <h2 class="section-title" id="glance-title">Career at a glance</h2>
 <p class="section-intro">The short version. Quantified proof lives in the Metrics tab, where each number links back to the story behind it.</p>
