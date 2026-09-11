@@ -47,16 +47,16 @@ The site is organized into six tabs, in this order:
 - **Enterprise Impact** — an enterprise proof summary, the full role-level impact stories (commerce, regulated CX, modernization), and named recommendations from colleagues.
 - **Metrics** — an evidence index linking quantified outcomes back to the source story behind each one; a handful of figures are redacted (see Confidential metrics below).
 - **Experience** — role cards with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
-- **Builder Projects** — a builder signal, the coaching-to-product discovery story, Dugout Lineup, the AI Career Strategy Team custom GPT, and product/AI writing.
-- **Building in Public** — a dedicated responsive view of Dugout Lineup commit activity, monthly trends, production release notes, and the detailed six-month table.
+- **Product Lab** — a builder signal, the coaching-to-product discovery story, Dugout Lineup, the AI Career Strategy Team custom GPT, and product/AI writing.
+- **Building in Public** — a dedicated responsive view of combined Dugout Lineup and portfolio-repo commit activity, monthly trends, production release notes, and the detailed six-month table.
 
 ## Automated product activity
 
-The **Building in Public** tab displays a rolling six-month view of Dugout Lineup delivery.
+The **Building in Public** tab displays a rolling six-month view of shipped work, combining Dugout Lineup delivery with this portfolio repo's own commit activity into one set of monthly totals.
 
 - `assets/product-activity.css` contains the dedicated desktop and mobile presentation.
 - `assets/product-activity.js` installs the tab before the core navigation initializes, moves the dashboard into its own panel, and loads the public activity JSON.
-- The JSON is generated in `kaushikkuberanathan/lineup_generator` (private) and published to the `activity-data` branch of **this** repo, so the sanitized metrics stay public even though the app source does not.
+- The JSON is generated in `kaushikkuberanathan/lineup_generator` (private) — its `generate-product-activity.mjs` fetches commits/PRs from both that repo (`develop`) and this one (`main`) and merges them before publishing — then published to the `activity-data` branch of **this** repo, so the sanitized metrics stay public even though the lineup_generator app source does not. The `repositories` field in the published JSON lists every source included.
 - Delivery volume is commit-driven: each eligible non-merge commit is counted once and classified as either a product improvement or a quality improvement.
 - Product and quality counts reconcile to the committed-improvements total for every month.
 - Production releases and the latest links remain release-note driven, using user-facing promotion PRs rather than story PRs.
