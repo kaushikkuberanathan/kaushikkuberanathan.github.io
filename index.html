@@ -1099,6 +1099,59 @@
       color: var(--muted-2);
       margin-top: 12px;
     }
+
+    .confidential-figure {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      cursor: help;
+      border-bottom: 1px dashed var(--muted-2);
+    }
+
+    .confidential-figure .confidential-mask {
+      filter: blur(3px);
+      user-select: none;
+    }
+
+    .confidential-figure .confidential-lock {
+      font-size: 0.75em;
+      filter: none;
+    }
+
+    .confidential-figure::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--ink);
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      padding: 8px 10px;
+      border-radius: 8px;
+      width: max-content;
+      max-width: 220px;
+      text-align: left;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+      z-index: 20;
+      white-space: normal;
+    }
+
+    .confidential-figure:hover::after,
+    .confidential-figure:focus-visible::after {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 620px) {
+      .confidential-figure::after { left: 0; transform: none; }
+    }
 </style>
 <link href="assets/product-activity.css" rel="stylesheet"/>
 </head>
@@ -1308,7 +1361,7 @@
 <h2 class="section-title" id="impact-title">Enterprise impact stories</h2>
 <p class="section-intro">The role-level narratives behind the numbers — the deeper proof layer for how each outcome was delivered.</p>
 <div class="callouts">
-<article class="callout green" id="impact-cox-commerce"><div class="callout-title">Cox Communications — turned a support app into a native commerce platform.</div><p class="callout-text">Led the shift from link-out dependency to native in-app purchase, compressing high-intent journeys from <code>5 steps</code> to <code>2 steps</code> and enabling native add-on commerce, pricing clarity, regulatory consent, and scalable catalog governance — delivering <code>+32% YoY</code> eCommerce growth and <code>4×</code> order growth. Native mobile plan-management conversion reached <code>11.12%</code> versus <code>3.74%</code> after a web link-out model — a case study in prioritizing first-channel completion.</p></article>
+<article class="callout green" id="impact-cox-commerce"><div class="callout-title">Cox Communications — turned a support app into a native commerce platform.</div><p class="callout-text">Led the shift from link-out dependency to native in-app purchase, compressing high-intent journeys from <code>5 steps</code> to <code>2 steps</code> and enabling native add-on commerce, pricing clarity, regulatory consent, and scalable catalog governance — delivering <code>+32% YoY</code> eCommerce growth and <code>4×</code> order growth. Native mobile plan-management conversion reached <code><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██.██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></code> versus <code><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">█.██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></code> after a web link-out model — a case study in prioritizing first-channel completion.</p></article>
 <article class="callout green" id="impact-cox-regulated"><div class="callout-title">Cox Communications — built trust-critical patterns for regulated commerce.</div><p class="callout-text">Delivered reusable disclosure, consent, All-In Pricing, FCC Broadband Facts Label, FTC Click-to-Cancel readiness, Massachusetts CTC, and device financing patterns that improved customer clarity while reducing legal, billing, and operational risk — including <code>~$450K</code> annual savings from retiring third-party financing dependency.</p></article>
 <article class="callout purple" id="impact-cb-app"><div class="callout-title">Cox Business App — laid the foundation for an enterprise-grade business platform.</div><p class="callout-text">Defined RBAC, enhanced analytics, role-aware deep links, push notification architecture, and native call-forwarding discovery to move the CB App from a viewer channel toward a self-service platform for SMB and multi-location customers.</p></article>
 <article class="callout amber" id="impact-charter-transition"><div class="callout-title">Charter Communications / Spectrum — navigating enterprise platform integration.</div><p class="callout-text">Following the 2026 Cox–Charter combination, transitioned from primarily owning Cox digital product experiences into integration-oriented product leadership spanning customer experience, platform boundaries, identity, digital self-service, analytics, and cross-company dependencies. Active focus spans brand and navigation continuity, identity and authentication hand-offs, notification parity, and regulatory disclosure alignment — always protecting customer continuity, clarifying system ownership, and avoiding duplicated capability across legacy Cox and Charter/Spectrum systems. This is ongoing integration work, not a completed migration.</p></article>
@@ -1342,7 +1395,7 @@
 <article class="metric"><div class="metric-label">eCommerce revenue</div><div class="metric-number">+32%</div><div class="metric-note">YoY growth through native commerce modernization</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">Order growth</div><div class="metric-number">4×</div><div class="metric-note">order volume increase since app-native commerce launch</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">Digital containment</div><div class="metric-number">~96%</div><div class="metric-note">self-service containment across supported app flows</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
-<article class="metric"><div class="metric-label">Native vs. web conversion</div><div class="metric-number">11.12%</div><div class="metric-note">vs 3.74% via web link-out — the case for first-channel completion</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
+<article class="metric"><div class="metric-label">Native vs. web conversion</div><div class="metric-number"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██.██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></div><div class="metric-note">vs <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">█.██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> via web link-out — the case for first-channel completion</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 </div>
 </section>
 <section aria-labelledby="regulated-metrics-title" class="card">
@@ -1357,12 +1410,12 @@
 <section aria-labelledby="ai-metrics-title" class="card">
 <h2 class="section-title" id="ai-metrics-title">Commerce depth &amp; AI-assisted delivery</h2>
 <div class="metric-grid">
-<article class="metric"><div class="metric-label">Add-on automation</div><div class="metric-number">87%+</div><div class="metric-note">automation rate across native Add-On purchase flows</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
+<article class="metric"><div class="metric-label">Add-on automation</div><div class="metric-number"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%+</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></div><div class="metric-note">automation rate across native Add-On purchase flows</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">Campaign conversion</div><div class="metric-number">+11%</div><div class="metric-note">lift in in-app campaign conversion through targeted messaging</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">Onboarding velocity</div><div class="metric-number">8w→2w</div><div class="metric-note">reduction in add-on onboarding timeline, eight weeks to under two</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">AI-assisted productivity</div><div class="metric-number">60%+</div><div class="metric-note">reduction in research and documentation effort via AI-assisted product workflows</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-ai-workflows" data-tab-target="enterprise">View source story</button></div></article>
-<article class="metric"><div class="metric-label">Add-on visits</div><div class="metric-number">797K+</div><div class="metric-note">visits to the native Add-Ons commerce experience</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
-<article class="metric"><div class="metric-label">Add-on orders</div><div class="metric-number">16.5K+</div><div class="metric-note">orders placed through the native Add-Ons experience</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
+<article class="metric"><div class="metric-label">Add-on visits</div><div class="metric-number"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">███K+</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></div><div class="metric-note">visits to the native Add-Ons commerce experience</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
+<article class="metric"><div class="metric-label">Add-on orders</div><div class="metric-number"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██.█K+</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></div><div class="metric-note">orders placed through the native Add-Ons experience</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 </div>
 </section>
 <section aria-labelledby="builder-metrics-title" class="card">
@@ -1475,7 +1528,7 @@
 <div class="experience-top">
 <div>
 <div class="experience-kicker">Field modernization &amp; self-service</div>
-<h3 class="experience-title">Senior Product Owner / Principal Business Analyst</h3>
+<h3 class="experience-title">Principal Product Owner</h3>
 <a class="experience-company" href="https://www.linkedin.com/in/kaushikkumarkuberanathan/details/experience/" rel="noreferrer" target="_blank">Cox Automotive</a>
 <div class="experience-meta">2018–2020 · Atlanta, GA · Auction, logistics, and back-office modernization</div>
 </div>
