@@ -1,8 +1,21 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-10T16:52:29.934Z",
-  "repository": "kaushikkuberanathan/lineup_generator",
-  "sourceBranch": "develop",
+  "generatedAt": "2026-09-11T03:40:34.219Z",
+  "repository": "kaushikkuberanathan/lineup_generator + kaushikkuberanathan/kaushikkuberanathan.github.io",
+  "repositories": [
+    "kaushikkuberanathan/lineup_generator",
+    "kaushikkuberanathan/kaushikkuberanathan.github.io"
+  ],
+  "sources": [
+    {
+      "repository": "kaushikkuberanathan/lineup_generator",
+      "branch": "develop"
+    },
+    {
+      "repository": "kaushikkuberanathan/kaushikkuberanathan.github.io",
+      "branch": "main"
+    }
+  ],
   "windowMonths": 6,
   "definitions": {
     "mergedPullRequests": "Merged PR count retained for backward compatibility; the public dashboard uses individual commits as the primary delivery measure.",
@@ -107,8 +120,8 @@
       "mergedPullRequests": 47,
       "productImprovements": 9,
       "productionReleases": 7,
-      "qualityImprovements": 29,
-      "developmentCommits": 38,
+      "qualityImprovements": 60,
+      "developmentCommits": 69,
       "otherPullRequests": 40,
       "releaseNotes": [
         {
@@ -148,56 +161,56 @@
     {
       "key": "2026-07",
       "label": "Jul 2026",
-      "mergedPullRequests": 75,
-      "productImprovements": 11,
-      "productionReleases": 9,
-      "qualityImprovements": 88,
-      "developmentCommits": 99,
-      "otherPullRequests": 66,
+      "mergedPullRequests": 82,
+      "productImprovements": 13,
+      "productionReleases": 13,
+      "qualityImprovements": 105,
+      "developmentCommits": 118,
+      "otherPullRequests": 69,
       "releaseNotes": [
         {
-          "number": 414,
-          "title": "Release 2.8.0 — Set your name",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/414"
+          "number": 6,
+          "title": "Show commit-driven Building in Public metrics",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/6"
         },
         {
-          "number": 409,
-          "title": "Release 2.7.0 — Google sign-in",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/409"
+          "number": 3,
+          "title": "Add automated live portfolio smoke testing",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/3"
         },
         {
-          "number": 393,
-          "title": "release: v2.6.0 to production",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/393"
+          "number": 2,
+          "title": "Move Building in Public into a responsive tab",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/2"
         }
       ],
       "highlights": [
         {
-          "number": 414,
-          "title": "Release 2.8.0 — Set your name",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/414"
+          "number": 6,
+          "title": "Show commit-driven Building in Public metrics",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/6"
         },
         {
-          "number": 409,
-          "title": "Release 2.7.0 — Google sign-in",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/409"
+          "number": 3,
+          "title": "Add automated live portfolio smoke testing",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/3"
         },
         {
-          "number": 393,
-          "title": "release: v2.6.0 to production",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/393"
+          "number": 2,
+          "title": "Move Building in Public into a responsive tab",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/2"
         }
       ]
     },
     {
       "key": "2026-08",
       "label": "Aug 2026",
-      "mergedPullRequests": 354,
-      "productImprovements": 34,
+      "mergedPullRequests": 356,
+      "productImprovements": 36,
       "productionReleases": 15,
-      "qualityImprovements": 385,
-      "developmentCommits": 419,
-      "otherPullRequests": 339,
+      "qualityImprovements": 387,
+      "developmentCommits": 423,
+      "otherPullRequests": 341,
       "releaseNotes": [
         {
           "number": 991,
@@ -236,12 +249,12 @@
     {
       "key": "2026-09",
       "label": "Sep 2026",
-      "mergedPullRequests": 161,
-      "productImprovements": 64,
+      "mergedPullRequests": 178,
+      "productImprovements": 72,
       "productionReleases": 11,
-      "qualityImprovements": 161,
-      "developmentCommits": 225,
-      "otherPullRequests": 150,
+      "qualityImprovements": 178,
+      "developmentCommits": 250,
+      "otherPullRequests": 167,
       "releaseNotes": [
         {
           "number": 1359,
@@ -279,21 +292,21 @@
     }
   ],
   "totals": {
-    "mergedPullRequests": 812,
-    "productImprovements": 156,
-    "productionReleases": 72,
-    "qualityImprovements": 952,
-    "developmentCommits": 1108
+    "mergedPullRequests": 838,
+    "productImprovements": 168,
+    "productionReleases": 76,
+    "qualityImprovements": 1019,
+    "developmentCommits": 1187
   },
   "currentMonth": {
     "key": "2026-09",
     "label": "Sep 2026",
-    "mergedPullRequests": 161,
-    "productImprovements": 64,
+    "mergedPullRequests": 178,
+    "productImprovements": 72,
     "productionReleases": 11,
-    "qualityImprovements": 161,
-    "developmentCommits": 225,
-    "otherPullRequests": 150,
+    "qualityImprovements": 178,
+    "developmentCommits": 250,
+    "otherPullRequests": 167,
     "releaseNotes": [
       {
         "number": 1359,
