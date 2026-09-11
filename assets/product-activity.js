@@ -172,7 +172,7 @@
     button.setAttribute('aria-selected', 'false');
     button.textContent = 'Building in Public';
 
-    // Appended after the last static tab (Builder Projects) so it reads as
+    // Appended after the last static tab (Product Lab) so it reads as
     // a drill-down of that tab rather than sitting between unrelated ones.
     tabs.appendChild(button);
 
