@@ -13,20 +13,22 @@ I build digital commerce, self-service, and platform products across B2B and B2C
 ## Site structure
 
 ```
-index.html                         # primary site markup and navigation
-assets/product-activity.css        # Building in Public presentation
-assets/product-activity.js         # activity tab installation and JSON rendering
-scripts/live-smoke.py              # desktop/mobile browser validation
-.github/workflows/live-smoke.yml   # local PR smoke + deployed main smoke
-kaushik-headshot.jpg               # hero headshot
-icons/                             # project, employer, and education logos
-  dugout-lineup-logo.png             # Dugout Lineup project card logo
-  anna-university-logo.png           # Anna University education card logo
-  university-of-florida-logo.png     # University of Florida education card logo (unused, kept for future use)
-  charter-communications-logo.png    # Charter Communications experience card logo
-  cox-communications-logo.png        # Cox Communications experience card logo
-  cox-automotive-logo.png            # Cox Automotive experience card logo (uses parent Cox Enterprises mark)
-  equifax-logo.png                   # Equifax experience card logo
+index.html                              # primary site markup and navigation
+assets/product-activity.css             # Building in Public presentation
+assets/product-activity.js              # activity tab install, JSON rendering, résumé lead gate
+scripts/live-smoke.py                   # desktop/mobile browser validation
+.github/workflows/live-smoke.yml        # local PR smoke + deployed main smoke
+kaushik-headshot.jpg                    # hero headshot
+Kaushik Kuberanathan - Resume.pdf       # résumé served by the "View résumé" CTA
+resume-lead-apps-script.gs              # Google Apps Script source for the résumé lead-capture backend (deployed separately, not built by this repo)
+icons/                                  # project, employer, and education logos
+  dugout-lineup-logo.png                  # Dugout Lineup project card logo
+  anna-university-logo.png                # Anna University education card logo
+  university-of-florida-logo.png          # University of Florida education card logo (unused, kept for future use)
+  charter-communications-logo.png         # Charter Communications experience card logo
+  cox-communications-logo.png             # Cox Communications experience card logo
+  cox-automotive-logo.svg                 # Cox Automotive experience card logo
+  equifax-logo.png                        # Equifax experience card logo
 README.md
 ```
 
@@ -39,14 +41,14 @@ coaching-photo.jpg         # optional coaching photo (commented out by default)
 
 ## Main sections
 
-The site is organized into six tabs:
+The site is organized into six tabs, in this order:
 
 - **Overview** — headline positioning, career-at-a-glance, operating principles, and a "Who I am" section (community, service, and personal interests).
 - **Enterprise Impact** — an enterprise proof summary, the full role-level impact stories (commerce, regulated CX, modernization), and named recommendations from colleagues.
+- **Metrics** — an evidence index linking quantified outcomes back to the source story behind each one; a handful of figures are redacted (see Confidential metrics below).
+- **Experience** — role cards with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
 - **Builder Projects** — a builder signal, the coaching-to-product discovery story, Dugout Lineup, the AI Career Strategy Team custom GPT, and product/AI writing.
 - **Building in Public** — a dedicated responsive view of Dugout Lineup commit activity, monthly trends, production release notes, and the detailed six-month table.
-- **Metrics** — a public-safe evidence index linking quantified outcomes back to the source story behind each one.
-- **Experience** — role cards with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
 
 ## Automated product activity
 
@@ -60,6 +62,19 @@ The **Building in Public** tab displays a rolling six-month view of Dugout Lineu
 - Production releases and the latest links remain release-note driven, using user-facing promotion PRs rather than story PRs.
 
 The dashboard intentionally emphasizes sustained product-building effort and production evidence rather than PR volume.
+
+## Résumé download & lead capture
+
+The "View résumé" CTA opens `Kaushik Kuberanathan - Resume.pdf` view-only in a new tab (no forced download).
+
+- First-time visitors are gated behind an email-address form (`installResumeGate` in `assets/product-activity.js`) before the résumé opens; the email is remembered in `localStorage` so returning visitors aren't asked again.
+- On submit, the site fires a `no-cors` POST to a Google Apps Script Web App (URL configured via `data-lead-endpoint` on the résumé link in `index.html`) that logs the request to a Google Sheet and emails the visitor a copy of the live résumé PDF.
+- `resume-lead-apps-script.gs` is the source for that Apps Script — it isn't deployed by this repo; it's pasted into a separate Google Apps Script project and deployed as a Web App from a Google account. See the setup comment at the top of the file.
+- Because Apps Script Web Apps don't return CORS headers, the front end can't confirm the email actually sent — treat the Google Sheet as the source of truth for delivery.
+
+## Confidential metrics
+
+Most figures on the site are shown as literal, specific numbers. A small number of figures that are proprietary Cox Communications performance data are redacted instead of generalized: the digits are replaced with a masked placeholder (e.g. `██.██%`) plus a lock icon, with a tooltip explaining the figure is withheld (`.confidential-figure` in `index.html`). The real values are removed from the markup entirely, not just visually blurred, so they aren't recoverable via page source or copy/paste.
 
 ## Deployment validation
 
@@ -78,4 +93,4 @@ The smoke workflow uses the same browser assertions in two modes:
 
 ## Notes
 
-This portfolio is a public-facing homepage. Confidential operating metrics are intentionally generalized (ranges or qualitative scale) for public sharing; exact figures are reserved for direct conversations.
+This portfolio is a public-facing homepage. See Confidential metrics above for how sensitive figures are handled.
