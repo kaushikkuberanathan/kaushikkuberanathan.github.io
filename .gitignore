@@ -1,0 +1,4 @@
+# Plaintext source for the Confidential Projects tab. Only the encrypted
+# output (assets/confidential-projects.json) is committed — see README.
+scripts/confidential-content.local.json
+scripts/*.local.json
