@@ -31,16 +31,13 @@ class ViewportResult:
     width: int
     height: int
     active_tab: str
-    metric_count: int
-    metric_labels: list[str]
-    month_rows: int
-    table_headers: list[str]
+    northstar_length: int
+    signal_length: int
     release_links: int
     release_titles: list[str]
     resume_filename: str
     resume_target: str | None
     document_overflow_px: int
-    table_scrollable: bool
     fallback_visible: bool
     console_errors: list[str]
 
@@ -92,8 +89,8 @@ def wait_for_live_deployment() -> dict:
                     data_status == 200,
                     "assets/product-activity.js" in site_html,
                     "installActivityTab" in activity_js,
-                    "Committed improvements" in activity_js,
-                    "Latest release notes" in activity_js,
+                    "renderSignal" in activity_js,
+                    "activity-northstar" in site_html,
                     ".activity-tab-panel" in activity_css,
                     data.get("schemaVersion") == 1,
                     uses_commit_model(data),
@@ -150,7 +147,8 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             const overview = document.getElementById('panel-overview');
             const status = panel.querySelector('[data-activity-status]');
             const content = panel.querySelector('[data-activity-content]');
-            const tableWrap = panel.querySelector('.activity-table-wrap');
+            const northstar = panel.querySelector('.activity-northstar-copy');
+            const signal = panel.querySelector('[data-activity-signal]');
             const activeButton = document.querySelector('.tab-button.active');
             const resumeLink = document.querySelector('a.social-link.resume');
             return {
@@ -159,16 +157,13 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
               overviewContainsActivity: Boolean(overview.querySelector('[data-product-activity]')),
               contentVisible: !content.hidden,
               fallbackVisible: !status.hidden,
-              metricCount: panel.querySelectorAll('.activity-metric').length,
-              metricLabels: Array.from(panel.querySelectorAll('.activity-metric-label')).map((node) => node.textContent.trim()),
-              monthRows: panel.querySelectorAll('.activity-table tbody tr').length,
-              tableHeaders: Array.from(panel.querySelectorAll('.activity-table thead th')).map((node) => node.textContent.trim()),
+              northstarLength: northstar ? northstar.textContent.trim().length : 0,
+              signalLength: signal ? signal.textContent.trim().length : 0,
               releaseLinks: panel.querySelectorAll('.activity-release-notes a').length,
               releaseTitles: Array.from(panel.querySelectorAll('.activity-release-notes a')).map((link) => link.textContent.trim()),
               resumeFilename: resumeLink ? resumeLink.getAttribute('download') : null,
               resumeTarget: resumeLink ? resumeLink.getAttribute('target') : null,
               documentOverflowPx: Math.max(0, root.scrollWidth - root.clientWidth),
-              tableScrollable: tableWrap ? tableWrap.scrollWidth > tableWrap.clientWidth : false,
             };
             """
         )
@@ -186,19 +181,10 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             failures.append("Activity dashboard still exists inside Overview")
         if not state["contentVisible"] or state["fallbackVisible"]:
             failures.append("Live activity content did not replace the fallback state")
-        if state["metricCount"] != 4:
-            failures.append(f"Expected 4 metric cards, found {state['metricCount']}")
-        if state["metricLabels"] != [
-            "Committed improvements",
-            "Product improvements",
-            "Quality improvements",
-            "Production releases",
-        ]:
-            failures.append(f"Unexpected commit metric labels: {state['metricLabels']}")
-        if state["monthRows"] != 6:
-            failures.append(f"Expected 6 monthly table rows, found {state['monthRows']}")
-        if state["tableHeaders"] != ["Month", "Commits", "Product", "Quality", "Releases"]:
-            failures.append(f"Unexpected commit table headers: {state['tableHeaders']}")
+        if state["northstarLength"] < 20:
+            failures.append("North-star callout is missing or empty")
+        if state["signalLength"] < 20:
+            failures.append("Activity signal sentence is missing or empty")
         if state["releaseLinks"] < 3:
             failures.append(f"Expected at least 3 release-note links, found {state['releaseLinks']}")
         non_release_prefixes = ("story ", "story:", "feat ", "feat(", "feat:", "feature ", "feature:")
@@ -210,8 +196,6 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             failures.append(f"Resume link should open view-only in a new tab: {state['resumeTarget']}")
         if state["documentOverflowPx"] > 1:
             failures.append(f"Document overflows viewport by {state['documentOverflowPx']}px")
-        if width <= 620 and not state["tableScrollable"]:
-            failures.append("Mobile activity table is not contained in its own horizontal scroller")
         if console_errors:
             failures.append(f"Browser console contains severe errors: {console_errors}")
 
@@ -222,16 +206,13 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
             width=width,
             height=height,
             active_tab=state["activeTab"],
-            metric_count=state["metricCount"],
-            metric_labels=state["metricLabels"],
-            month_rows=state["monthRows"],
-            table_headers=state["tableHeaders"],
+            northstar_length=state["northstarLength"],
+            signal_length=state["signalLength"],
             release_links=state["releaseLinks"],
             release_titles=state["releaseTitles"],
             resume_filename=state["resumeFilename"],
             resume_target=state["resumeTarget"],
             document_overflow_px=state["documentOverflowPx"],
-            table_scrollable=state["tableScrollable"],
             fallback_visible=state["fallbackVisible"],
             console_errors=console_errors,
         )
