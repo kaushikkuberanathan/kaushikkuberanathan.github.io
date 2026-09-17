@@ -108,20 +108,30 @@
     const reports = Array.isArray(data.reports) ? data.reports : [];
     const updated = data.updated ? `<p class="confidential-updated">Updated ${escapeHtml(data.updated)}</p>` : '';
     const cards = reports
-      .map(
-        (report) => `
+      .map((report) => {
+        const accomplishments = Array.isArray(report.accomplishments)
+          ? `<ul class="confidential-report-list">${report.accomplishments
+              .map((item) => `<li>${escapeHtml(item)}</li>`)
+              .join('')}</ul>`
+          : '';
+        const background = report.background
+          ? `<div><span class="confidential-report-label">Background</span><p>${escapeHtml(report.background)}</p></div>`
+          : '';
+        return `
         <article class="confidential-report-card">
           <div class="confidential-report-head">
             <h3>${escapeHtml(report.title)}</h3>
             <span class="pill purple">${escapeHtml(report.tag || 'Confidential')}</span>
           </div>
           <div class="confidential-report-body">
+            ${background}
             <div><span class="confidential-report-label">Problem</span><p>${escapeHtml(report.problem)}</p></div>
             <div><span class="confidential-report-label">Approach</span><p>${escapeHtml(report.approach)}</p></div>
+            <div><span class="confidential-report-label">Accomplishments</span>${accomplishments}</div>
             <div><span class="confidential-report-label">Outcome</span><p>${escapeHtml(report.outcome)}</p></div>
           </div>
-        </article>`,
-      )
+        </article>`;
+      })
       .join('');
     container.innerHTML = `${updated}<div class="confidential-report-grid">${cards}</div>`;
   }
