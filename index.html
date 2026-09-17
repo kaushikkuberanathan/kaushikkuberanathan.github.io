@@ -1214,6 +1214,45 @@
         pointer-events: none;
       }
     }
+
+    .experience-initiatives {
+      margin-top: 14px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+    }
+
+    .experience-initiatives summary {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 750;
+      color: var(--accent);
+      list-style: none;
+    }
+
+    .experience-initiatives summary::-webkit-details-marker { display: none; }
+    .experience-initiatives summary::before { content: '▸ '; }
+    .experience-initiatives[open] summary::before { content: '▾ '; }
+
+    .initiative-theme-group { margin-top: 14px; }
+
+    .initiative-theme-title {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    .initiative-list {
+      margin: 0;
+      padding-left: 18px;
+      font-size: 13.5px;
+      color: var(--ink);
+    }
+
+    .initiative-list li { margin-bottom: 6px; }
+    .initiative-list li:last-child { margin-bottom: 0; }
 </style>
 <link href="assets/product-activity.css" rel="stylesheet"/>
 <link href="assets/confidential-gate.css" rel="stylesheet"/>
@@ -1520,6 +1559,104 @@
 <li>Recognized with the 2024 Winners Circle Award for outstanding digital revenue contribution and customer experience leadership.</li>
 </ul>
 </div>
+<details class="experience-initiatives">
+<summary>View all 35 initiatives</summary>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Regulatory compliance &amp; consumer protection (FTC/FCC)</div>
+<ul class="initiative-list">
+<li><strong>Regulatory Compliance &amp; Transparency (FTC/FCC Alignment)</strong> — Zero regulatory escalations post-launch and a 20% reduction in post-order billing disputes.</li>
+<li><strong>FCC Broadband Facts Label Implementation</strong> — Achieved FCC compliance ahead of deadline, reducing plan-term escalations by 22%.</li>
+<li><strong>Click-to-Cancel (Phase 1)</strong> — Achieved full FTC compliance ahead of the May 2025 deadline, cutting repeat Care calls by 30%.</li>
+<li><strong>Click-to-Cancel (Phase 1.5)</strong> — Elevated compliance transparency and established a new containment KPI baseline for regulatory CX tracking.</li>
+<li><strong>FCC Number Lock Protection</strong> — Achieved FCC compliance while reducing fraud-related escalation volume and increasing security confidence.</li>
+<li><strong>FCC Safe Connections Implementation</strong> — Met FCC Safe Connections Act compliance within the mandate window, strengthening trust and safety perception.</li>
+<li><strong>ACP Wind-Down Support (FCC Program Closure)</strong> — Achieved 100% compliance with FCC ACP wind-down rules with zero customer escalations.</li>
+<li><strong>FCC "All-In Pricing"</strong> — Delivered a 22% reduction in post-order confusion around itemized pricing.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Digital inclusion</div>
+<ul class="initiative-list">
+<li><strong>ACP &amp; Embedded Campaigns for Digital Equity</strong> — 6,356 ACP enrollments via app at a 45.71% conversion rate across 23,007 CTA taps.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Native commerce &amp; platform architecture</div>
+<ul class="initiative-list">
+<li><strong>Add-Ons: Native eCommerce Framework</strong> — 41% of add-on sales initiated in-app with a &gt;94% native commerce automation success rate.</li>
+<li><strong>Mobile App eCommerce Enablement Framework</strong> — Reduced product onboarding time from 8 weeks to under 2 weeks.</li>
+<li><strong>App Offers &amp; Promotions Framework</strong> — Reduced campaign go-live time from 2 weeks to under 5 days while delivering a 2.5x lift in CTR.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Mobile finance &amp; device payment</div>
+<ul class="initiative-list">
+<li><strong>Device Payment Plan (DPP) – Phase 1</strong> — $450K+ annual savings from retiring third-party financing vendor costs.</li>
+<li><strong>Device Payment Plan (DPP) – Phase 2 Enhancements</strong> — Early payoff tagging increased reporting accuracy by 100%; billing-related inquiries fell ~15%.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Retention &amp; value transparency</div>
+<ul class="initiative-list">
+<li><strong>RVP (Rate Value Proposition) &amp; Money-Back Guarantee (MBG)</strong> — Contributed to a 3% YoY improvement in customer retention among Rate Lock-eligible users.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Content &amp; media governance</div>
+<ul class="initiative-list">
+<li><strong>AEM (Adobe Experience Manager) Integration</strong> — Reduced media update cycles by 75% via scalable AEM CDN-delivered campaign imagery.</li>
+<li><strong>AEM Dynamic Media Expansion</strong> — Reduced static image updates by 75% while ensuring enterprise-wide branding consistency.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Self-service &amp; plan management</div>
+<ul class="initiative-list">
+<li><strong>Cox Mobile Data Plan Management (Native Change Plan)</strong> — 16.07% pilot conversion rate; 36% of data plan change orders now originate in-app.</li>
+<li><strong>Family Plans (Regressive Pricing Model)</strong> — Drove ~20% higher adoption of Unlimited plans; 35% of multi-line accounts used the comparison view.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Device &amp; logistics visibility</div>
+<ul class="initiative-list">
+<li><strong>Smartwatch Line Visibility (Mobile Wearables Program)</strong> — Established first-ever wearable visibility in the Cox ecosystem, reducing Care contacts for smartwatch inquiries.</li>
+<li><strong>Wireless Delivery Tracker</strong> — Reduced order-related Care calls by ~20% and increased post-purchase customer satisfaction.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Engagement, preferences &amp; campaign orchestration</div>
+<ul class="initiative-list">
+<li><strong>App Preference Center 2.0 &amp; Push Notifications Redesign</strong> — 15% increase in push opt-in rate and a 3x increase in click-through for targeted campaigns.</li>
+<li><strong>Preference Center 2.0 (CX &amp; Notification Modernization)</strong> — Improved push opt-in rates by 18% while reducing message fatigue and unsubscribe rates.</li>
+<li><strong>Swrve Campaigns Modernization &amp; Message Center API Integration</strong> — Delivered a 13% overall conversion lift post-SDK modernization, including 45.7% conversion for ACP campaigns.</li>
+<li><strong>Cox App Campaign Performance Dashboards (Adobe Analytics)</strong> — Reduced manual campaign reporting time by 90%, enabling real-time optimization decisions.</li>
+<li><strong>App Campaign Optimization &amp; Experimentation Framework</strong> — Drove a 24% increase in campaign-driven conversions and a 53% engagement lift for personalized variants.</li>
+<li><strong>Push Notification Enhancements (Phase 2)</strong> — Delivered a 125% increase in CTR post-update, establishing a template for automated lifecycle notifications.</li>
+<li><strong>Embedded Campaigns Framework Evolution</strong> — Drove 450K campaign interactions at a 5.7% overall conversion rate across Mobile, Fiber, and ACP.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Cox Business App: access, analytics &amp; navigation</div>
+<ul class="initiative-list">
+<li><strong>Role-Based Access Control (RBAC 2.0) – Cox Business App</strong> — Reduced access-related Care calls by 25% and increased digital task completion rates by 40%.</li>
+<li><strong>Enhanced Analytics &amp; Insights Framework – Cox Business App</strong> — Improved event data accuracy by 90%, enabling executive-level visibility into digital containment performance.</li>
+<li><strong>Deep Link Framework (App → CBMA)</strong> — Increased App-to-Web success rate by 24% while reducing navigation drop-offs by 30%.</li>
+<li><strong>Call Forwarding (Phase 1) – Native Management Experience</strong> — Reduced Call Forwarding-related Care requests and created a scalable model for future native voice features.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Program governance &amp; operational excellence</div>
+<ul class="initiative-list">
+<li><strong>App Commerce Governance &amp; Intake Framework</strong> — Improved intake-to-launch velocity by 40% and increased cross-functional stakeholder satisfaction.</li>
+<li><strong>Digital Equity Program Dashboard (Internal Analytics)</strong> — Enabled leadership visibility into 1M+ affordability program participants across ACP and ConnectAssist.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Enterprise impact &amp; business outcomes</div>
+<ul class="initiative-list">
+<li><strong>Performance Summary &amp; 2024–2025 Business Outcomes</strong> — App eCommerce revenue grew +32% YoY with a 4x increase in order volume since App-native launch.</li>
+</ul>
+</div>
+</details>
 
 </article>
 <article class="experience-card" id="role-cox-auto">
@@ -1542,6 +1679,44 @@
 <li>Authored executive business cases and governance models for multi-year modernization investments, improving platform scalability, auditability, and release velocity.</li>
 </ul>
 </div>
+<details class="experience-initiatives">
+<summary>View all 10 initiatives</summary>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Platform &amp; infrastructure modernization</div>
+<ul class="initiative-list">
+<li><strong>Title Platform Modernization (API-First Transformation)</strong> — Reduced title processing time by 75% and cut operational escalations from title-loss issues by over 80%.</li>
+<li><strong>AWS Cloud Migration Strategy</strong> — Improved system uptime to 99.98% while cutting deployment cycles from 2 weeks to under 48 hours.</li>
+<li><strong>API-Driven Multi-Brand Platform Strategy</strong> — Reduced platform maintenance costs by 40% by consolidating shared services into reusable APIs.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Operational &amp; logistics efficiency</div>
+<ul class="initiative-list">
+<li><strong>FedEx Ground Shipping Integration</strong> — $450K in annual cost savings from reduced shipping costs and error elimination across 70+ locations.</li>
+<li><strong>Shared Services Modernization &amp; Process Orchestration</strong> — Cut backlog volume by 30% and improved average processing speed by 25%.</li>
+<li><strong>Title Cleanup &amp; Transfer Initiative</strong> — Prevented duplicate processing and lost-title incidents while eliminating storage overcapacity across locations.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">UX modernization</div>
+<ul class="initiative-list">
+<li><strong>UX Modernization (AngularJS → React Migration)</strong> — Improved user satisfaction scores by 27% while reducing UI defects and technical debt.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Data visibility &amp; governance</div>
+<ul class="initiative-list">
+<li><strong>Operational Reporting &amp; Transparency Framework</strong> — Reduced manual report creation effort by 90%, enabling proactive SLA violation management.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Leadership &amp; strategy</div>
+<ul class="initiative-list">
+<li><strong>Stakeholder Enablement &amp; Product Mentorship</strong> — Improved sprint predictability and stakeholder alignment while enhancing team delivery velocity.</li>
+<li><strong>Strategic Business Case Development</strong> — Secured cross-functional buy-in for cloud and UX modernization programs contributing to measurable revenue lift.</li>
+</ul>
+</div>
+</details>
 
 </article>
 <article class="experience-card" id="role-equifax">
@@ -1564,6 +1739,39 @@
 <li>Improved DevOps and delivery maturity by reducing deployment duration by ~70% and increasing release frequency from quarterly to bi-weekly for key modules.</li>
 </ul>
 </div>
+<details class="experience-initiatives">
+<summary>View all 5 initiatives</summary>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Cloud &amp; SaaS transformation</div>
+<ul class="initiative-list">
+<li><strong>Risk Decisioning Platform (RDP) Cloud Migration Program</strong> — Reduced feature delivery time from 6–8 months to 4–6 weeks through configuration-driven rollout.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Program governance &amp; risk</div>
+<ul class="initiative-list">
+<li><strong>Global Delivery Governance and PMO Alignment</strong> — Reduced governance reporting turnaround from 5 days to under 1 day across 10+ delivery streams.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Customer migration &amp; retention</div>
+<ul class="initiative-list">
+<li><strong>Customer Migration &amp; Change Enablement</strong> — Achieved zero critical defects and 100% SLA adherence migrating 900+ enterprise accounts.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">DevOps &amp; delivery automation</div>
+<ul class="initiative-list">
+<li><strong>Delivery Acceleration through Automation &amp; CI/CD</strong> — Reduced deployment duration by 70% and cut production defects by 45% via automated CI/CD.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Stakeholder leadership</div>
+<ul class="initiative-list">
+<li><strong>Stakeholder Alignment &amp; Cross-Functional Leadership</strong> — Increased alignment between tech and business teams through predictable, transparent delivery cycles.</li>
+</ul>
+</div>
+</details>
 
 </article>
 <article class="experience-card" id="role-cox-auto-2018">
@@ -1586,6 +1794,35 @@
 <li>Led AngularJS-to-React front-end modernization with reusable component libraries, reducing front-end maintenance effort by 35% while increasing feature adoption by 40%.</li>
 </ul>
 </div>
+<details class="experience-initiatives">
+<summary>View all 6 initiatives</summary>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Self-service &amp; digital adoption</div>
+<ul class="initiative-list">
+<li><strong>Web Self-Service Product Modernization</strong> — Increased self-service feature adoption by 40% within six months while cutting support ticket volume by 25%.</li>
+<li><strong>Self-Service Event Kiosk App</strong> — Saved $1.2M annually in event staffing costs while reducing customer wait times by 70%.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Developer productivity &amp; diagnostics</div>
+<ul class="initiative-list">
+<li><strong>API and Database Troubleshooting Application</strong> — Reduced incident resolution time by 86.6% through a self-service diagnostic portal.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">UI modernization</div>
+<ul class="initiative-list">
+<li><strong>AngularJS to React UI Migration (Early Framework Pilot)</strong> — Reduced UI maintenance effort by 30% and improved feature development cycle time by 25%.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Product discovery &amp; collaboration</div>
+<ul class="initiative-list">
+<li><strong>VOC Analysis &amp; Product Discovery Framework</strong> — Established a lasting VOC-led backlog refinement practice that improved roadmap alignment with customer needs.</li>
+<li><strong>Cross-Team Collaboration &amp; Process Integration</strong> — Reduced cross-functional delays by 35% and improved backlog visibility and accountability.</li>
+</ul>
+</div>
+</details>
 
 </article>
 <article class="experience-card" id="role-manheim-qa">
@@ -1608,6 +1845,29 @@
 <li>Standardized defect severity/priority governance and daily cross-functional triage, reducing defect resolution time by 87.5%.</li>
 </ul>
 </div>
+<details class="experience-initiatives">
+<summary>View all 5 initiatives</summary>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">QA strategy &amp; governance</div>
+<ul class="initiative-list">
+<li><strong>ERP Financials QA Strategy &amp; Delivery Framework</strong> — Achieved 100% on-time delivery of all test milestones across the 80+ location ERP rollout.</li>
+<li><strong>Defect Triage and Prioritization Framework</strong> — Reduced average defect resolution time by 87.5% through structured triage and SLAs.</li>
+<li><strong>QA Governance &amp; Reporting Dashboard</strong> — Reduced manual QA reporting time by 90%, enabling proactive risk management ahead of deployment.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Test automation &amp; efficiency</div>
+<ul class="initiative-list">
+<li><strong>Test Data Automation Framework (Jenkins Integration)</strong> — Cut test data preparation time from 8 hours to 12 minutes, shortening the testing window from 10 to 6 days.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Team enablement</div>
+<ul class="initiative-list">
+<li><strong>QA Team Enablement and Process Standardization</strong> — Reduced onboarding time for new QA analysts by 50% while increasing execution consistency across 80+ locations.</li>
+</ul>
+</div>
+</details>
 
 </article>
 <article class="experience-card" id="role-cox-enterprises-early">
@@ -1630,6 +1890,35 @@
 <li>Led ERP month-end close automation for InComm Inc., cutting close time from 6 hours to 90 minutes and delivering NACHA-compliant ACH banking integration at 100% first-cycle compliance.</li>
 </ul>
 </div>
+<details class="experience-initiatives">
+<summary>View all 6 initiatives</summary>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Financial systems &amp; compliance (InComm)</div>
+<ul class="initiative-list">
+<li><strong>Oracle ERP Payments &amp; Month-End Close Automation (InComm Inc.)</strong> — Reduced month-end close time from 6 hours to 90 minutes through automated reconciliation workflows.</li>
+<li><strong>NACHA Banking Compliance Enablement (InComm Inc.)</strong> — Achieved 100% NACHA compliance in the first audit cycle while cutting file rejections by 60%.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Procurement transformation</div>
+<ul class="initiative-list">
+<li><strong>Oracle iProcurement &amp; Punchout Optimization (Cox Enterprises)</strong> — Improved requisition closeout efficiency by 80% and cut approval cycle time from 3 days to under 1 day.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">QA governance &amp; traceability</div>
+<ul class="initiative-list">
+<li><strong>Test Strategy and Coverage Governance (Cox Enterprises)</strong> — Increased test coverage by 30% and reduced post-launch defects by 40%.</li>
+<li><strong>Oracle ERP Traceability &amp; Testing Framework (Mattress Firm Inc.)</strong> — Reduced post-launch defects by 25% while ensuring audit-ready traceability across SIT/UAT stages.</li>
+</ul>
+</div>
+<div class="initiative-theme-group">
+<div class="initiative-theme-title">Multi-industry consulting</div>
+<ul class="initiative-list">
+<li><strong>Cross-Client Consulting Projects (S2 IT Group &amp; RJT Compuquest)</strong> — Delivered on-time, on-budget QA solutions for 100% of assigned client engagements across three verticals.</li>
+</ul>
+</div>
+</details>
 
 </article>
 <article class="experience-card" id="role-builder">
