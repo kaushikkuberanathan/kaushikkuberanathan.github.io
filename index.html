@@ -2031,36 +2031,25 @@ Live app
   id="building-in-public"
 >
   <h2 class="section-title" id="building-public-title">Building in public</h2>
-  <p class="section-intro">A rolling six-month view of how my shipped work — Dugout Lineup and this portfolio site — moves from product decisions into reviewed, released, and continuously improved software.</p>
+  <p class="section-intro">A behind-the-scenes look at how Dugout Lineup and this site evolve day to day — less a scoreboard, more a record of the judgment calls behind each change.</p>
+
+  <div class="activity-northstar">
+    <div class="activity-northstar-label">What I optimize for</div>
+    <p class="activity-northstar-copy">Fewer, more deliberate changes aimed at one thing: making the product trustworthy when it actually matters — a coach at home plate, not a features checklist. Most of the work here is quiet: tightening reliability, simplifying a flow, or walking back something that didn't earn its complexity. Shipping volume is a side effect, not the goal.</p>
+  </div>
 
   <div aria-live="polite" class="activity-status" data-activity-status>Loading current product activity…</div>
 
   <div class="activity-shell" data-activity-content hidden>
-    <div class="activity-summary-grid" data-activity-summary></div>
+    <p class="activity-signal" data-activity-signal></p>
 
-    <div class="activity-layout">
-      <article class="activity-panel">
-        <h3 class="activity-panel-title">Monthly delivery trend</h3>
-        <p class="activity-panel-copy">Each bar splits product work from quality work; the badge marks production releases that shipped that month.</p>
-        <div class="activity-legend" aria-hidden="true">
-          <span class="legend-item legend-product">Product</span>
-          <span class="legend-item legend-quality">Quality</span>
-          <span class="legend-item legend-release">Releases</span>
-        </div>
-        <div class="activity-trend" data-activity-trend></div>
-      </article>
-
-      <aside class="activity-panel">
-        <h3 class="activity-panel-title">Latest product improvements</h3>
-        <p class="activity-panel-copy">The most recent user-facing improvements identified through product labels and pull-request signals.</p>
-        <div data-activity-highlights></div>
-      </aside>
-    </div>
-
-    <div data-activity-table></div>
+    <article class="activity-panel">
+      <h3 class="activity-panel-title">What shipped recently</h3>
+      <p class="activity-panel-copy">A few of the most recent releases, in plain language — not a changelog dump.</p>
+      <div data-activity-highlights></div>
+    </article>
 
     <div class="activity-meta">
-      <p class="activity-definition">Commits exclude merge commits, bots, and generated activity updates. Counts emphasize shipped product progress rather than contribution volume.</p>
       <span data-activity-updated></span>
     </div>
   </div>
