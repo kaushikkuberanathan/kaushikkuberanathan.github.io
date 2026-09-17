@@ -2300,6 +2300,8 @@ Substack
           const isActive = panel.id === 'panel-' + tabName;
           panel.classList.toggle('active', isActive);
         });
+        const heroHeader = document.getElementById('top');
+        if (heroHeader) heroHeader.hidden = tabName !== 'overview';
         if (updateHash) {
           safeReplaceHash('#tab-' + tabName);
         }
