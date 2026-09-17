@@ -21,7 +21,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 SITE_URL = os.environ.get("PORTFOLIO_SITE_URL", "https://kaushikkuberanathan.github.io/").rstrip("/") + "/"
 DATA_URL = os.environ.get(
     "PORTFOLIO_ACTIVITY_URL",
-    "https://raw.githubusercontent.com/kaushikkuberanathan/lineup_generator/activity-data/product-activity.json",
+    "https://raw.githubusercontent.com/kaushikkuberanathan/kaushikkuberanathan.github.io/activity-data/product-activity.json",
 )
 DEPLOY_WAIT_SECONDS = int(os.environ.get("PORTFOLIO_DEPLOY_WAIT_SECONDS", "300"))
 
