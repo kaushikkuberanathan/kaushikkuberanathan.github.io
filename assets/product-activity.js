@@ -188,110 +188,39 @@
     panel.appendChild(section);
     section.classList.add('activity-tab-card');
 
-    const releaseTitle = section.querySelector('.activity-layout aside .activity-panel-title');
-    const releaseCopy = section.querySelector('.activity-layout aside .activity-panel-copy');
-    if (releaseTitle) releaseTitle.textContent = 'Latest release notes';
-    if (releaseCopy) {
-      releaseCopy.textContent = 'The most recent user-facing production releases, summarized from the release notes promoted into main.';
-    }
-
     return section;
   }
 
-  function sparkline(values) {
-    const nums = Array.isArray(values) ? values.map(number) : [];
-    if (nums.length < 2) return '';
-    const min = Math.min(...nums);
-    const max = Math.max(...nums);
-    const range = max - min || 1;
-    const step = 96 / (nums.length - 1);
-    const points = nums
-      .map((v, i) => `${(2 + i * step).toFixed(2)},${(28 - ((v - min) / range) * 26).toFixed(2)}`)
-      .join(' ');
-    const last = points.split(' ').at(-1).split(',');
-    return `
-      <svg class="activity-metric-spark" viewBox="0 0 100 30" preserveAspectRatio="none" aria-hidden="true">
-        <polyline points="${points}" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <circle cx="${last[0]}" cy="${last[1]}" r="2.6" fill="currentColor"/>
-      </svg>`;
-  }
+  function renderSignal(months) {
+    const totals = months.reduce(
+      (acc, month) => {
+        acc.product += number(month.productImprovements);
+        acc.quality += number(month.qualityImprovements);
+        acc.releases += number(month.productionReleases);
+        return acc;
+      },
+      { product: 0, quality: 0, releases: 0 },
+    );
+    const total = totals.product + totals.quality;
+    const qualityShare = total ? totals.quality / total : 0;
 
-  function monthShort(label) {
-    return String(label ?? '').split(' ')[0] || label;
-  }
+    let balance;
+    if (!total) {
+      balance = "It's been quiet lately — no shortage of thinking, just less shipped in this window.";
+    } else if (qualityShare >= 0.7) {
+      balance =
+        'Recent iteration has leaned heavily toward reliability, polish, and paying down complexity — new features ship only once they\'ve earned their place.';
+    } else if (qualityShare >= 0.4) {
+      balance = 'Recent iteration has been a steady balance of new capability and the reliability work that keeps it trustworthy.';
+    } else {
+      balance = 'Recent iteration has focused on new capability, with reliability work close behind rather than an afterthought.';
+    }
 
-  function metricCard(label, value, note, { series, accent, deltaVsPrevious } = {}) {
-    const accentClass = accent ? ` metric-accent-${accent}` : '';
-    const delta = number(deltaVsPrevious?.diff);
-    const deltaHtml = deltaVsPrevious
-      ? `<span class="activity-metric-delta${delta < 0 ? ' is-down' : ''}">${delta > 0 ? '+' : ''}${delta} vs ${escapeHtml(monthShort(deltaVsPrevious.label))}</span>`
+    const cadence = totals.releases
+      ? ' It ships in a handful of deliberate, tested releases rather than a constant stream.'
       : '';
-    return `
-      <article class="activity-metric${accentClass}">
-        <div class="activity-metric-label">${escapeHtml(label)}</div>
-        <div class="activity-metric-num-row">
-          <div class="activity-metric-value">${number(value)}</div>
-          ${deltaHtml}
-        </div>
-        ${sparkline(series)}
-        <div class="activity-metric-note">${escapeHtml(note)}</div>
-      </article>`;
-  }
 
-  function renderTrend(months) {
-    const max = Math.max(1, ...months.map((month) => number(month.developmentCommits)));
-    return months
-      .map((month) => {
-        const commits = number(month.developmentCommits);
-        const product = number(month.productImprovements);
-        const quality = number(month.qualityImprovements);
-        const releases = number(month.productionReleases);
-        const productWidth = (product / max) * 100;
-        const qualityWidth = (quality / max) * 100;
-        return `
-          <div class="activity-trend-row">
-            <div class="activity-month">${escapeHtml(month.label)}</div>
-            <div class="activity-bar-track" aria-hidden="true">
-              <span class="activity-bar-seg activity-bar-product" style="width:${productWidth}%"></span>
-              <span class="activity-bar-seg activity-bar-quality" style="left:${productWidth}%;width:${qualityWidth}%"></span>
-            </div>
-            <div class="activity-pr-count">${commits}</div>
-            <span class="activity-release-chip${releases ? '' : ' is-zero'}" title="${releases} production release${releases === 1 ? '' : 's'}"><span class="dot" aria-hidden="true"></span>${releases}</span>
-          </div>`;
-      })
-      .join('');
-  }
-
-  function renderTable(months) {
-    return `
-      <div class="activity-table-wrap" tabindex="0" aria-label="Scrollable monthly activity table">
-        <table class="activity-table">
-          <caption>Rolling six-month Dugout Lineup commit activity and production releases</caption>
-          <thead>
-            <tr>
-              <th scope="col">Month</th>
-              <th scope="col">Commits</th>
-              <th scope="col">Product</th>
-              <th scope="col">Quality</th>
-              <th scope="col">Releases</th>
-            </tr>
-          </thead>
-          <tbody>
-            ${months
-              .map(
-                (month) => `
-                  <tr>
-                    <td>${escapeHtml(month.label)}</td>
-                    <td>${number(month.developmentCommits)}</td>
-                    <td>${number(month.productImprovements)}</td>
-                    <td>${number(month.qualityImprovements)}</td>
-                    <td>${number(month.productionReleases)}</td>
-                  </tr>`,
-              )
-              .join('')}
-          </tbody>
-        </table>
-      </div>`;
+    return `${balance}${cadence}`;
   }
 
   function renderReleaseNotes(data, currentMonth, repository) {
@@ -318,33 +247,8 @@
   function render(section, data) {
     const months = Array.isArray(data.months) ? data.months : [];
     const current = data.currentMonth || months.at(-1) || {};
-    const currentLabel = current.label || 'Current month';
-    const previous = months.length >= 2 ? months.at(-2) : null;
-    const commitDelta = previous
-      ? { diff: number(current.developmentCommits) - number(previous.developmentCommits), label: previous.label }
-      : null;
 
-    section.querySelector('[data-activity-summary]').innerHTML = [
-      metricCard('Committed improvements', current.developmentCommits, `${currentLabel} individual changes`, {
-        series: months.map((m) => m.developmentCommits),
-        deltaVsPrevious: commitDelta,
-      }),
-      metricCard('Product improvements', current.productImprovements, 'Feature and customer-experience commits', {
-        series: months.map((m) => m.productImprovements),
-        accent: 'green',
-      }),
-      metricCard('Quality improvements', current.qualityImprovements, 'Fixes, tests, security, refactors, and docs', {
-        series: months.map((m) => m.qualityImprovements),
-        accent: 'blue',
-      }),
-      metricCard('Production releases', current.productionReleases, 'User-facing promotions merged into main', {
-        series: months.map((m) => m.productionReleases),
-        accent: 'amber',
-      }),
-    ].join('');
-
-    section.querySelector('[data-activity-trend]').innerHTML = renderTrend(months);
-    section.querySelector('[data-activity-table]').innerHTML = renderTable(months);
+    section.querySelector('[data-activity-signal]').textContent = renderSignal(months);
     section.querySelector('[data-activity-highlights]').innerHTML = renderReleaseNotes(data, current, data.repository);
     section.querySelector('[data-activity-updated]').textContent = `Updated ${formatGeneratedAt(data.generatedAt)}`;
     section.querySelector('[data-activity-status]').hidden = true;
