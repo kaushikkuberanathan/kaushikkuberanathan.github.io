@@ -104,6 +104,22 @@
     return JSON.parse(plaintext);
   }
 
+  function statusPillClass(status) {
+    const normalized = String(status ?? '').toLowerCase();
+    if (normalized === 'shipped') return 'green';
+    if (normalized === 'in progress') return 'amber';
+    return 'gray';
+  }
+
+  function reportSection(label, colorClass, innerHtml) {
+    if (!innerHtml) return '';
+    return `
+      <div class="confidential-report-section">
+        <span class="confidential-report-label ${colorClass}">${label}</span>
+        ${innerHtml}
+      </div>`;
+  }
+
   function renderReports(container, data) {
     const reports = Array.isArray(data.reports) ? data.reports : [];
     const updated = data.updated ? `<p class="confidential-updated">Updated ${escapeHtml(data.updated)}</p>` : '';
@@ -114,21 +130,24 @@
               .map((item) => `<li>${escapeHtml(item)}</li>`)
               .join('')}</ul>`
           : '';
-        const background = report.background
-          ? `<div><span class="confidential-report-label">Background</span><p>${escapeHtml(report.background)}</p></div>`
+        const statusHtml = report.status
+          ? `<span class="pill ${statusPillClass(report.status)} confidential-status-pill">${escapeHtml(report.status)}</span>`
           : '';
         return `
         <article class="confidential-report-card">
           <div class="confidential-report-head">
             <h3>${escapeHtml(report.title)}</h3>
-            <span class="pill purple">${escapeHtml(report.tag || 'Confidential')}</span>
+            <div class="confidential-report-meta">
+              ${statusHtml}
+              <span class="pill purple">${escapeHtml(report.tag || 'Confidential')}</span>
+            </div>
           </div>
           <div class="confidential-report-body">
-            ${background}
-            <div><span class="confidential-report-label">Problem</span><p>${escapeHtml(report.problem)}</p></div>
-            <div><span class="confidential-report-label">Approach</span><p>${escapeHtml(report.approach)}</p></div>
-            <div><span class="confidential-report-label">Accomplishments</span>${accomplishments}</div>
-            <div><span class="confidential-report-label">Outcome</span><p>${escapeHtml(report.outcome)}</p></div>
+            ${reportSection('Background', 'blue', report.background ? `<p>${escapeHtml(report.background)}</p>` : '')}
+            ${reportSection('Problem', 'red', report.problem ? `<p>${escapeHtml(report.problem)}</p>` : '')}
+            ${reportSection('Approach', 'purple', report.approach ? `<p>${escapeHtml(report.approach)}</p>` : '')}
+            ${reportSection('Accomplishments', 'green', accomplishments)}
+            ${reportSection('Outcome', 'amber', report.outcome ? `<p>${escapeHtml(report.outcome)}</p>` : '')}
           </div>
         </article>`;
       })
