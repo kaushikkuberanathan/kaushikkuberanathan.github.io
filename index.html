@@ -2278,10 +2278,10 @@ Substack
 <script src="assets/confidential-gate.js"></script>
 <script>
     (function () {
-      // The activity and confidential tabs insert themselves at the end of
-      // .tabs at runtime (see product-activity.js / confidential-gate.js).
-      // Re-append Contact so it stays the last tab instead of splitting
-      // Product Lab from its Building-in-Public drill-down.
+      // product-activity.js and confidential-gate.js insert their tabs at
+      // specific positions (see those files), so Contact should already be
+      // last. Re-append it anyway as a safety net in case a future dynamic
+      // tab falls back to a blind append.
       const contactButton = document.getElementById('tab-contact');
       if (contactButton) contactButton.parentElement.appendChild(contactButton);
 

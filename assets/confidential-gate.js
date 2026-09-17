@@ -37,7 +37,14 @@
     button.setAttribute('aria-controls', 'panel-confidential');
     button.setAttribute('aria-selected', 'false');
     button.innerHTML = '<span aria-hidden="true">&#128274;</span> Confidential Projects';
-    tabs.appendChild(button);
+    // Sits right after Enterprise Impact -- it's a gated deep-dive on those
+    // same initiatives, not a Product Lab drill-down.
+    const enterpriseButton = document.getElementById('tab-enterprise');
+    if (enterpriseButton) {
+      enterpriseButton.insertAdjacentElement('afterend', button);
+    } else {
+      tabs.appendChild(button);
+    }
 
     const panel = document.createElement('section');
     panel.id = 'panel-confidential';
