@@ -91,7 +91,15 @@ def make_driver(width: int, height: int) -> webdriver.Chrome:
     options.add_argument("--disable-gpu")
     options.add_argument(f"--window-size={width},{height}")
     options.set_capability("goog:loggingPrefs", {"browser": "ALL"})
-    return webdriver.Chrome(options=options)
+    driver = webdriver.Chrome(options=options)
+    # --window-size sets the outer browser window, not the CSS viewport --
+    # the gap between the two varies by platform/Chrome build and produces
+    # false-positive overflow readings. Force the exact viewport via CDP.
+    driver.execute_cdp_cmd(
+        "Emulation.setDeviceMetricsOverride",
+        {"width": width, "height": height, "deviceScaleFactor": 1, "mobile": width < 768},
+    )
+    return driver
 
 
 def smoke_viewport(width: int, height: int) -> ViewportResult:
