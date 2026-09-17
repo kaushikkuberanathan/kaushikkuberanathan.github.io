@@ -1292,12 +1292,20 @@
 
     .initiative-list {
       margin: 0;
-      padding: 0;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      padding-left: 20px;
+      list-style: disc;
     }
+
+    .initiative-list li {
+      margin-bottom: 10px;
+      padding-left: 2px;
+    }
+
+    .initiative-list li::marker {
+      color: var(--muted-2);
+    }
+
+    .initiative-list li:last-child { margin-bottom: 0; }
 
     .initiative-item-name {
       font-weight: 750;
@@ -1512,7 +1520,7 @@
 </ul>
 </div>
 <details class="experience-initiatives">
-<summary>View all 35 initiatives</summary>
+<summary>Enterprise Scale Initiatives</summary>
 <div class="initiative-theme-group theme-green">
 <div class="initiative-theme-title">Regulatory compliance &amp; consumer protection (FTC/FCC)</div>
 <ul class="initiative-list">
@@ -1632,7 +1640,7 @@
 </ul>
 </div>
 <details class="experience-initiatives">
-<summary>View all 10 initiatives</summary>
+<summary>Enterprise Scale Initiatives</summary>
 <div class="initiative-theme-group theme-green">
 <div class="initiative-theme-title">Platform &amp; infrastructure modernization</div>
 <ul class="initiative-list">
@@ -1692,7 +1700,7 @@
 </ul>
 </div>
 <details class="experience-initiatives">
-<summary>View all 5 initiatives</summary>
+<summary>Enterprise Scale Initiatives</summary>
 <div class="initiative-theme-group theme-green">
 <div class="initiative-theme-title">Cloud &amp; SaaS transformation</div>
 <ul class="initiative-list">
@@ -1747,7 +1755,7 @@
 </ul>
 </div>
 <details class="experience-initiatives">
-<summary>View all 6 initiatives</summary>
+<summary>Enterprise Scale Initiatives</summary>
 <div class="initiative-theme-group theme-green">
 <div class="initiative-theme-title">Self-service &amp; digital adoption</div>
 <ul class="initiative-list">
@@ -1798,7 +1806,7 @@
 </ul>
 </div>
 <details class="experience-initiatives">
-<summary>View all 5 initiatives</summary>
+<summary>Enterprise Scale Initiatives</summary>
 <div class="initiative-theme-group theme-green">
 <div class="initiative-theme-title">QA strategy &amp; governance</div>
 <ul class="initiative-list">
@@ -1843,7 +1851,7 @@
 </ul>
 </div>
 <details class="experience-initiatives">
-<summary>View all 6 initiatives</summary>
+<summary>Enterprise Scale Initiatives</summary>
 <div class="initiative-theme-group theme-green">
 <div class="initiative-theme-title">Financial systems &amp; compliance (InComm)</div>
 <ul class="initiative-list">
