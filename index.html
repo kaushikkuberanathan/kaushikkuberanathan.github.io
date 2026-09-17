@@ -602,6 +602,41 @@
 
     .evidence-link::after { content: "→"; font-weight: 900; }
 
+    .explore-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    @media (min-width: 780px) {
+      .explore-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    }
+
+    .explore-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border);
+      border-left: 7px solid var(--accent);
+      border-radius: var(--radius);
+      background: var(--card);
+      padding: 16px 18px;
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.15s ease, transform 0.15s ease;
+    }
+
+    .explore-card:hover { border-color: #cfd5df; transform: translateY(-1px); }
+    .explore-card.green { border-left-color: var(--green); }
+    .explore-card.amber { border-left-color: var(--amber); }
+    .explore-card.blue { border-left-color: var(--blue); }
+    .explore-card.purple { border-left-color: var(--purple); }
+    .explore-card.red { border-left-color: var(--red); }
+
+    .explore-card-title { font-weight: 850; margin-bottom: 4px; }
+    .explore-card-copy { color: var(--muted); font-size: 13px; margin: 0; flex-grow: 1; }
+    .explore-card-cta { margin-top: 10px; color: var(--accent); font-size: 12px; font-weight: 800; }
+    .explore-card-cta::after { content: "→"; font-weight: 900; margin-left: 4px; }
+
     code {
       font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
       background: #f7f7f8;
@@ -1290,6 +1325,7 @@
 <button aria-controls="panel-metrics" aria-selected="false" class="tab-button" data-tab="metrics" id="tab-metrics" role="tab">Metrics</button>
 <button aria-controls="panel-experience" aria-selected="false" class="tab-button" data-tab="experience" id="tab-experience" role="tab">Experience</button>
 <button aria-controls="panel-builder" aria-selected="false" class="tab-button" data-tab="builder" id="tab-builder" role="tab">Product Lab</button>
+<button aria-controls="panel-contact" aria-selected="false" class="tab-button" data-tab="contact" id="tab-contact" role="tab">Contact</button>
 </div>
 </nav>
 <!-- HERO -->
@@ -1330,147 +1366,40 @@
 </header>
 <!-- OVERVIEW TAB -->
 <section aria-labelledby="tab-overview" class="tab-panel active" id="panel-overview" role="tabpanel">
-<section aria-labelledby="glance-title" class="card">
-<h2 class="section-title" id="glance-title">Career at a glance</h2>
-<p class="section-intro">The short version. Quantified proof lives in the Metrics tab, where each number links back to the story behind it.</p>
-<div class="metric-grid">
-<article class="metric"><div class="metric-label">Experience</div><div class="metric-number">15+</div><div class="metric-note">years across consumer, enterprise, app, and platform products</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="role-current" data-tab-target="experience">View role history</button></div></article>
-<article class="metric"><div class="metric-label">Platform scale</div><div class="metric-number">5M+</div><div class="metric-note">monthly active users across the flagship app ecosystem</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View platform story</button></div></article>
-<article class="metric"><div class="metric-label">Revenue growth</div><div class="metric-number">+32%</div><div class="metric-note">YoY app eCommerce growth through native commerce modernization</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View commerce story</button></div></article>
-<article class="metric"><div class="metric-label">Builder mode</div><div class="metric-number">Live</div><div class="metric-note">AI-assisted products shipped outside work, not just conceptual demos</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="project-dugout" data-tab-target="builder">View projects</button></div></article>
-</div>
+<section aria-labelledby="intro-title" class="card">
+<h2 class="section-title" id="intro-title">About</h2>
+<p class="section-intro" style="max-width:760px;">15+ years building, scaling, and modernizing digital products across consumer apps, digital commerce, marketplace platforms, self-service, and enterprise systems. I turn complex customer and operational problems into scalable product strategies, reusable platforms, and measurable business outcomes — while building hands-on with AI to stay close to the craft.</p>
+<p class="section-intro" style="max-width:760px;margin-top:10px;">Builder. Coach. Systems thinker. By day: high-scale, regulated app commerce and self-service platforms. Outside work: I coach 8U baseball and build AI-assisted products. The common thread — simplify complexity, build reusable systems, and make decisions easier for the people who use them.</p>
 </section>
-<section class="card">
-<div class="hero">
-<aside aria-label="About" class="hero-panel">
-<div class="touch-title">About</div>
-<p class="subtitle" style="font-size:15px;">15+ years building, scaling, and modernizing digital products across consumer apps, digital commerce, marketplace platforms, self-service, and enterprise systems. I turn complex customer and operational problems into scalable product strategies, reusable platforms, and measurable business outcomes — while building hands-on with AI to stay close to the craft.</p>
-</aside>
-<aside aria-label="Who I am" class="hero-panel">
-<div class="touch-title">Who I am</div>
-<p class="panel-copy">Builder. Coach. Systems thinker. By day: high-scale, regulated app commerce and self-service platforms. Outside work: I coach 8U baseball and build AI-assisted products. The common thread — simplify complexity, build reusable systems, and make decisions easier for the people who use them.</p>
-</aside>
-<aside aria-label="Open to" class="hero-panel">
-  <div class="touch-title">Open to</div>
-  <p class="touch-copy">Senior product leadership opportunities across digital commerce, consumer platforms, marketplaces, self-service, and enterprise platform modernization — particularly roles combining product strategy, team development, complex systems, and measurable customer/business outcomes.</p>
-  <div class="link-row">
-    <a aria-label="Email Kaushik" class="social-link email" href="mailto:kaushik.kuberanathan@gmail.com?subject=Portfolio%20%2F%20Conversation">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><path d="M5 8.2h14v8.1H5z" fill="none" stroke="#fff" stroke-width="1.7"></path><path d="M5.5 8.7 12 13l6.5-4.3" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>
-      Email
-    </a>
-    <a aria-label="Connect with Kaushik on LinkedIn" class="social-link linkedin" href="https://www.linkedin.com/in/kaushikkumarkuberanathan/" rel="noreferrer" target="_blank">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><text fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" x="6.7" y="17">in</text></svg>
-      LinkedIn
-    </a>
-    <a aria-label="GitHub profile" class="social-link github" href="https://github.com/kaushikkuberanathan" rel="noreferrer" target="_blank">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><circle class="mark-bg" cx="12" cy="12" r="12"></circle><path d="M8.2 18.8c0-.9 0-1.7.1-2.2-1.9.4-2.3-.8-2.3-.8-.3-.8-.8-1-.8-1-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.8.9 2.3.7.1-.5.3-.9.5-1.1-1.5-.2-3.1-.8-3.1-3.4 0-.8.3-1.4.8-1.9-.1-.2-.4-1 .1-1.9 0 0 .7-.2 2.1.8.6-.2 1.3-.3 1.9-.3.7 0 1.3.1 1.9.3 1.5-1 2.1-.8 2.1-.8.4 1 .2 1.7.1 1.9.5.5.8 1.1.8 1.9 0 2.6-1.6 3.2-3.1 3.4.3.3.5.7.5 1.5v2.6" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.45"></path></svg>
-      GitHub
-    </a>
-    <a aria-label="Substack writing" class="social-link web" href="https://kaushikkuberanathan.substack.com/" rel="noreferrer" target="_blank">
-      <svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><path d="M7 8.5h10M7 12h10M7 15.5h6" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.7"></path></svg>
-      Substack
-    </a>
-  </div>
-</aside>
-</div>
-</section>
-
-<section
-  aria-labelledby="building-public-title"
-  class="card"
-  data-activity-url="https://raw.githubusercontent.com/kaushikkuberanathan/kaushikkuberanathan.github.io/activity-data/product-activity.json"
-  data-product-activity
-  id="building-in-public"
->
-  <h2 class="section-title" id="building-public-title">Building in public</h2>
-  <p class="section-intro">A rolling six-month view of how my shipped work — Dugout Lineup and this portfolio site — moves from product decisions into reviewed, released, and continuously improved software.</p>
-
-  <div aria-live="polite" class="activity-status" data-activity-status>Loading current product activity…</div>
-
-  <div class="activity-shell" data-activity-content hidden>
-    <div class="activity-summary-grid" data-activity-summary></div>
-
-    <div class="activity-layout">
-      <article class="activity-panel">
-        <h3 class="activity-panel-title">Monthly delivery trend</h3>
-        <p class="activity-panel-copy">Each bar splits product work from quality work; the badge marks production releases that shipped that month.</p>
-        <div class="activity-legend" aria-hidden="true">
-          <span class="legend-item legend-product">Product</span>
-          <span class="legend-item legend-quality">Quality</span>
-          <span class="legend-item legend-release">Releases</span>
-        </div>
-        <div class="activity-trend" data-activity-trend></div>
-      </article>
-
-      <aside class="activity-panel">
-        <h3 class="activity-panel-title">Latest product improvements</h3>
-        <p class="activity-panel-copy">The most recent user-facing improvements identified through product labels and pull-request signals.</p>
-        <div data-activity-highlights></div>
-      </aside>
-    </div>
-
-    <div data-activity-table></div>
-
-    <div class="activity-meta">
-      <p class="activity-definition">Commits exclude merge commits, bots, and generated activity updates. Counts emphasize shipped product progress rather than contribution volume.</p>
-      <span data-activity-updated></span>
-    </div>
-  </div>
-</section>
-
-<section aria-labelledby="principles-title" class="card">
-<h2 class="section-title" id="principles-title">Operating principles</h2>
-<ol class="action-list">
-<li><div><div class="action-title">Start with the real workflow, under real pressure.</div><div class="action-sub">A customer buying an add-on, a business owner managing call forwarding, or a coach building a lineup mid-inning — the product has to hold up in the moment that matters.</div></div></li>
-<li><div><div class="action-title">Test hypotheses with data before committing to a direction.</div><div class="action-sub">Structured VOC research, competitive benchmarking, and experimentation (A/B tests, pilot cohorts, phased rollouts) validate an assumption before it becomes scope — so investment follows evidence, not opinion.</div></div></li>
-<li><div><div class="action-title">Build reusable systems, not one-off features.</div><div class="action-sub">Catalog flags, treatment matrices, consent components, analytics taxonomies, and role permissions create compounding leverage across journeys.</div></div></li>
-<li><div><div class="action-title">Move teams from ad hoc to governed — without slowing them down.</div><div class="action-sub">Turn scattered intake and reactive work into clear lanes, shared expectations, and measurable outcomes that teams actually adopt.</div></div></li>
-<li><div><div class="action-title">Pair business judgment with builder fluency.</div><div class="action-sub">I don't need to be the engineer to reason about APIs, dependencies, tradeoffs, and edge cases — and increasingly, I build to stay close to the craft.</div></div></li>
-<li><div><div class="action-title">Treat AI collaboration as a real operating discipline, not a shortcut.</div><div class="action-sub">Structured formats for requirements, decisions, and executive communication — with an explicit devil's-advocate check on every recommendation and a clear line between confirmed fact and inference.</div></div></li>
-</ol>
-</section>
-
-<section aria-labelledby="whoiam-title" class="card">
-<h2 class="section-title" id="whoiam-title">Who I am</h2>
-<p style="margin:0 0 16px;color:var(--muted);font-size:14px;max-width:760px;">The same instincts that show up in my product work show up away from it — a pull toward systems, strategy, service, and doing things with care.</p>
-<div class="community">
-<div class="community-item">
-<div class="ci-title"><span class="ci-marker">1</span>Children &amp; youth development</div>
-<div class="ci-sub">
-<span class="ci-line"><span class="ci-org">Youth Rec Baseball Coach</span> · Forsyth County Recreation — player development, fairness, and team culture.</span>
-<span class="ci-line"><span class="ci-org">Chess coach for kids</span> — teaching focus, patience, and strategic thinking.</span>
-<span class="ci-line"><span class="ci-org">Youth mentor</span> — giving kids small side projects to spark discovery, building, and confidence.</span>
-</div>
-<!-- PHOTO SLOT (optional): add a real coaching photo (just you / no other kids' faces — they're minors). Save the file to the repo root, then uncomment:
-<img class="photo-slot" src="coaching-photo.jpg" alt="Coaching youth baseball" loading="lazy" style="max-height:220px;">
--->
-</div>
-<div class="community-item">
-<div class="ci-title"><span class="ci-marker">2</span>Animal welfare</div>
-<div class="ci-sub">
-<span class="ci-line"><span class="ci-org">Atlanta Humane Society</span> — adoption events, outreach, and shelter operations.</span>
-<span class="ci-line"><span class="ci-org">Forsyth County Animal Control</span> — volunteer support for animals in care.</span>
-</div>
-</div>
-<div class="community-item">
-<div class="ci-title"><span class="ci-marker">3</span>Environmental stewardship</div>
-<div class="ci-sub">
-<span class="ci-line"><span class="ci-org">Chattahoochee River bed clearing</span> — waterway cleanup and habitat protection.</span>
-<span class="ci-line"><span class="ci-org">Dunwoody Nature Center</span> — trail and green-space cleanups.</span>
-</div>
-</div>
-<div class="community-item">
-<div class="ci-title"><span class="ci-marker">4</span>How I think for fun</div>
-<div class="ci-sub">Chess and cricket — pattern, position, and the long game. The strategy habits that bleed into how I frame product decisions.</div>
-</div>
-<div class="community-item">
-<div class="ci-title"><span class="ci-marker">5</span>What grounds me</div>
-<div class="ci-sub">Family, two dogs, and an ethical, animal-first way of living. The outdoors — travel, trails, and time away from screens.</div>
-</div>
-<div class="community-item">
-<div class="ci-title"><span class="ci-marker">6</span>What I value</div>
-<div class="ci-sub">Building things that respect people's time and trust — at work, on the field, and in the community.</div>
-</div>
+<section aria-labelledby="explore-title" class="card">
+<h2 class="section-title" id="explore-title">Explore the portfolio</h2>
+<p class="section-intro">Pick a lane — each tab goes deeper on a different slice of the work.</p>
+<div class="explore-grid">
+<a class="explore-card blue" href="#tab-enterprise">
+<div class="explore-card-title">Enterprise Impact</div>
+<p class="explore-card-copy">The through-line stories behind platform scale, regulated commerce, and cross-industry modernization.</p>
+<span class="explore-card-cta">View impact stories</span>
+</a>
+<a class="explore-card green" href="#tab-metrics">
+<div class="explore-card-title">Metrics</div>
+<p class="explore-card-copy">The quantified proof — containment, conversion, velocity, and revenue numbers tied back to the work that drove them.</p>
+<span class="explore-card-cta">View the numbers</span>
+</a>
+<a class="explore-card purple" href="#tab-experience">
+<div class="explore-card-title">Experience</div>
+<p class="explore-card-copy">Role-by-role history, from current scope back through the products and platforms that built up to it.</p>
+<span class="explore-card-cta">View role history</span>
+</a>
+<a class="explore-card amber" href="#tab-builder">
+<div class="explore-card-title">Product Lab</div>
+<p class="explore-card-copy">What I build outside work — live projects, shipped code, and a running view of real product activity.</p>
+<span class="explore-card-cta">View what I've shipped</span>
+</a>
+<a class="explore-card red" href="#tab-contact">
+<div class="explore-card-title">Contact</div>
+<p class="explore-card-copy">What I'm open to, how to reach me, and a bit about who I am outside the résumé.</p>
+<span class="explore-card-cta">Get in touch</span>
+</a>
 </div>
 </section>
 </section>
@@ -2065,6 +1994,18 @@
 </div>
 </section>
 
+<section aria-labelledby="principles-title" class="card">
+<h2 class="section-title" id="principles-title">Operating principles</h2>
+<ol class="action-list">
+<li><div><div class="action-title">Start with the real workflow, under real pressure.</div><div class="action-sub">A customer buying an add-on, a business owner managing call forwarding, or a coach building a lineup mid-inning — the product has to hold up in the moment that matters.</div></div></li>
+<li><div><div class="action-title">Test hypotheses with data before committing to a direction.</div><div class="action-sub">Structured VOC research, competitive benchmarking, and experimentation (A/B tests, pilot cohorts, phased rollouts) validate an assumption before it becomes scope — so investment follows evidence, not opinion.</div></div></li>
+<li><div><div class="action-title">Build reusable systems, not one-off features.</div><div class="action-sub">Catalog flags, treatment matrices, consent components, analytics taxonomies, and role permissions create compounding leverage across journeys.</div></div></li>
+<li><div><div class="action-title">Move teams from ad hoc to governed — without slowing them down.</div><div class="action-sub">Turn scattered intake and reactive work into clear lanes, shared expectations, and measurable outcomes that teams actually adopt.</div></div></li>
+<li><div><div class="action-title">Pair business judgment with builder fluency.</div><div class="action-sub">I don't need to be the engineer to reason about APIs, dependencies, tradeoffs, and edge cases — and increasingly, I build to stay close to the craft.</div></div></li>
+<li><div><div class="action-title">Treat AI collaboration as a real operating discipline, not a shortcut.</div><div class="action-sub">Structured formats for requirements, decisions, and executive communication — with an explicit devil's-advocate check on every recommendation and a clear line between confirmed fact and inference.</div></div></li>
+</ol>
+</section>
+
 </section>
 <!-- BUILDER PROJECTS TAB -->
 <section aria-labelledby="tab-builder" class="tab-panel" id="panel-builder" role="tabpanel">
@@ -2074,6 +2015,50 @@
 <article class="callout purple" id="overview-builder-teaser"><div class="callout-title">Hands-on AI building keeps me close to the craft.</div><p class="callout-text">I build outside work to stay close to real users, technical tradeoffs, and product feedback loops — including Dugout Lineup, a live youth-sports product I founded and built from firsthand coaching pain.</p><div class="link-row"><button class="evidence-link" data-scroll-target="project-dugout" data-tab-target="builder">View Dugout Lineup</button><button class="evidence-link" data-scroll-target="project-career-gpt" data-tab-target="builder">View AI Career GPT</button></div></article>
 </div>
 </section>
+
+<section
+  aria-labelledby="building-public-title"
+  class="card"
+  data-activity-url="https://raw.githubusercontent.com/kaushikkuberanathan/kaushikkuberanathan.github.io/activity-data/product-activity.json"
+  data-product-activity
+  id="building-in-public"
+>
+  <h2 class="section-title" id="building-public-title">Building in public</h2>
+  <p class="section-intro">A rolling six-month view of how my shipped work — Dugout Lineup and this portfolio site — moves from product decisions into reviewed, released, and continuously improved software.</p>
+
+  <div aria-live="polite" class="activity-status" data-activity-status>Loading current product activity…</div>
+
+  <div class="activity-shell" data-activity-content hidden>
+    <div class="activity-summary-grid" data-activity-summary></div>
+
+    <div class="activity-layout">
+      <article class="activity-panel">
+        <h3 class="activity-panel-title">Monthly delivery trend</h3>
+        <p class="activity-panel-copy">Each bar splits product work from quality work; the badge marks production releases that shipped that month.</p>
+        <div class="activity-legend" aria-hidden="true">
+          <span class="legend-item legend-product">Product</span>
+          <span class="legend-item legend-quality">Quality</span>
+          <span class="legend-item legend-release">Releases</span>
+        </div>
+        <div class="activity-trend" data-activity-trend></div>
+      </article>
+
+      <aside class="activity-panel">
+        <h3 class="activity-panel-title">Latest product improvements</h3>
+        <p class="activity-panel-copy">The most recent user-facing improvements identified through product labels and pull-request signals.</p>
+        <div data-activity-highlights></div>
+      </aside>
+    </div>
+
+    <div data-activity-table></div>
+
+    <div class="activity-meta">
+      <p class="activity-definition">Commits exclude merge commits, bots, and generated activity updates. Counts emphasize shipped product progress rather than contribution volume.</p>
+      <span data-activity-updated></span>
+    </div>
+  </div>
+</section>
+
 <section aria-labelledby="builds-title" class="card">
 <h2 class="section-title" id="builds-title">Builder proof: real problem → shipped product</h2>
 <div aria-label="Discovery to build thread" class="thread" id="builder-thread">
@@ -2192,6 +2177,74 @@
 </div>
 </section>
 </section>
+<!-- CONTACT TAB -->
+<section aria-labelledby="tab-contact" class="tab-panel" id="panel-contact" role="tabpanel">
+<section aria-labelledby="contact-title" class="card">
+<h2 class="section-title" id="contact-title">Open to</h2>
+<p class="section-intro" style="max-width:760px;">Senior product leadership opportunities across digital commerce, consumer platforms, marketplaces, self-service, and enterprise platform modernization — particularly roles combining product strategy, team development, complex systems, and measurable customer/business outcomes.</p>
+<div class="link-row">
+<a aria-label="Email Kaushik" class="social-link email" href="mailto:kaushik.kuberanathan@gmail.com?subject=Portfolio%20%2F%20Conversation">
+<svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><path d="M5 8.2h14v8.1H5z" fill="none" stroke="#fff" stroke-width="1.7"></path><path d="M5.5 8.7 12 13l6.5-4.3" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>
+Email
+</a>
+<a aria-label="Connect with Kaushik on LinkedIn" class="social-link linkedin" href="https://www.linkedin.com/in/kaushikkumarkuberanathan/" rel="noreferrer" target="_blank">
+<svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><text fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" x="6.7" y="17">in</text></svg>
+LinkedIn
+</a>
+<a aria-label="GitHub profile" class="social-link github" href="https://github.com/kaushikkuberanathan" rel="noreferrer" target="_blank">
+<svg aria-hidden="true" viewBox="0 0 24 24"><circle class="mark-bg" cx="12" cy="12" r="12"></circle><path d="M8.2 18.8c0-.9 0-1.7.1-2.2-1.9.4-2.3-.8-2.3-.8-.3-.8-.8-1-.8-1-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.8.9 2.3.7.1-.5.3-.9.5-1.1-1.5-.2-3.1-.8-3.1-3.4 0-.8.3-1.4.8-1.9-.1-.2-.4-1 .1-1.9 0 0 .7-.2 2.1.8.6-.2 1.3-.3 1.9-.3.7 0 1.3.1 1.9.3 1.5-1 2.1-.8 2.1-.8.4 1 .2 1.7.1 1.9.5.5.8 1.1.8 1.9 0 2.6-1.6 3.2-3.1 3.4.3.3.5.7.5 1.5v2.6" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.45"></path></svg>
+GitHub
+</a>
+<a aria-label="Substack writing" class="social-link web" href="https://kaushikkuberanathan.substack.com/" rel="noreferrer" target="_blank">
+<svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><path d="M7 8.5h10M7 12h10M7 15.5h6" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.7"></path></svg>
+Substack
+</a>
+</div>
+</section>
+<section aria-labelledby="outside-title" class="card">
+<h2 class="section-title" id="outside-title">Beyond the work</h2>
+<p style="margin:0 0 16px;color:var(--muted);font-size:14px;max-width:760px;">The same instincts that show up in my product work show up away from it — a pull toward systems, strategy, service, and doing things with care.</p>
+<div class="community">
+<div class="community-item">
+<div class="ci-title"><span class="ci-marker">1</span>Children &amp; youth development</div>
+<div class="ci-sub">
+<span class="ci-line"><span class="ci-org">Youth Rec Baseball Coach</span> · Forsyth County Recreation — player development, fairness, and team culture.</span>
+<span class="ci-line"><span class="ci-org">Chess coach for kids</span> — teaching focus, patience, and strategic thinking.</span>
+<span class="ci-line"><span class="ci-org">Youth mentor</span> — giving kids small side projects to spark discovery, building, and confidence.</span>
+</div>
+<!-- PHOTO SLOT (optional): add a real coaching photo (just you / no other kids' faces — they're minors). Save the file to the repo root, then uncomment:
+<img class="photo-slot" src="coaching-photo.jpg" alt="Coaching youth baseball" loading="lazy" style="max-height:220px;">
+-->
+</div>
+<div class="community-item">
+<div class="ci-title"><span class="ci-marker">2</span>Animal welfare</div>
+<div class="ci-sub">
+<span class="ci-line"><span class="ci-org">Atlanta Humane Society</span> — adoption events, outreach, and shelter operations.</span>
+<span class="ci-line"><span class="ci-org">Forsyth County Animal Control</span> — volunteer support for animals in care.</span>
+</div>
+</div>
+<div class="community-item">
+<div class="ci-title"><span class="ci-marker">3</span>Environmental stewardship</div>
+<div class="ci-sub">
+<span class="ci-line"><span class="ci-org">Chattahoochee River bed clearing</span> — waterway cleanup and habitat protection.</span>
+<span class="ci-line"><span class="ci-org">Dunwoody Nature Center</span> — trail and green-space cleanups.</span>
+</div>
+</div>
+<div class="community-item">
+<div class="ci-title"><span class="ci-marker">4</span>How I think for fun</div>
+<div class="ci-sub">Chess and cricket — pattern, position, and the long game. The strategy habits that bleed into how I frame product decisions.</div>
+</div>
+<div class="community-item">
+<div class="ci-title"><span class="ci-marker">5</span>What grounds me</div>
+<div class="ci-sub">Family, two dogs, and an ethical, animal-first way of living. The outdoors — travel, trails, and time away from screens.</div>
+</div>
+<div class="community-item">
+<div class="ci-title"><span class="ci-marker">6</span>What I value</div>
+<div class="ci-sub">Building things that respect people's time and trust — at work, on the field, and in the community.</div>
+</div>
+</div>
+</section>
+</section>
 <footer class="footer">
       Kaushik Kuberanathan · Atlanta, GA · Digital commerce, AI-assisted products, and platform product work. · Last updated: September 2026.
     </footer>
@@ -2200,6 +2253,13 @@
 <script src="assets/confidential-gate.js"></script>
 <script>
     (function () {
+      // The activity and confidential tabs insert themselves at the end of
+      // .tabs at runtime (see product-activity.js / confidential-gate.js).
+      // Re-append Contact so it stays the last tab instead of splitting
+      // Product Lab from its Building-in-Public drill-down.
+      const contactButton = document.getElementById('tab-contact');
+      if (contactButton) contactButton.parentElement.appendChild(contactButton);
+
       const buttons = Array.from(document.querySelectorAll('.tab-button'));
       const panels = Array.from(document.querySelectorAll('.tab-panel'));
 
