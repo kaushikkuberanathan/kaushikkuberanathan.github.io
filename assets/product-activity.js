@@ -172,9 +172,14 @@
     button.setAttribute('aria-selected', 'false');
     button.textContent = 'Building in Public';
 
-    // Appended after the last static tab (Product Lab) so it reads as
-    // a drill-down of that tab rather than sitting between unrelated ones.
-    tabs.appendChild(button);
+    // Inserted right after Product Lab so it reads as a drill-down of
+    // that tab rather than sitting after unrelated ones (e.g. Contact).
+    const builderButton = document.getElementById('tab-builder');
+    if (builderButton) {
+      builderButton.insertAdjacentElement('afterend', button);
+    } else {
+      tabs.appendChild(button);
+    }
 
     const panel = document.createElement('section');
     panel.id = 'panel-building';
