@@ -688,6 +688,7 @@
     .thread-cell.build .thread-step .dot { background: var(--purple); }
     .thread-title { font-weight: 850; margin-bottom: 4px; }
     .thread-copy { color: var(--muted); font-size: 13.5px; margin: 0 0 12px; }
+    .callout .thread { margin-top: 14px; }
 
     .project-grid {
       display: grid;
@@ -1996,7 +1997,29 @@
 <section aria-labelledby="overview-builder-teaser-title" class="card">
 <h2 class="section-title" id="overview-builder-teaser-title">Builder signal</h2>
 <div class="callouts">
-<article class="callout purple" id="overview-builder-teaser"><div class="callout-title">Hands-on AI building keeps me close to the craft.</div><p class="callout-text">I build outside work to stay close to real users, technical tradeoffs, and product feedback loops — including Dugout Lineup, a live youth-sports product I founded and built from firsthand coaching pain.</p><div class="link-row"><button class="evidence-link" data-scroll-target="project-dugout" data-tab-target="builder">View Dugout Lineup</button><button class="evidence-link" data-scroll-target="project-career-gpt" data-tab-target="builder">View AI Career GPT</button></div></article>
+<article class="callout purple" id="overview-builder-teaser">
+<div class="callout-title">Hands-on AI building keeps me close to the craft.</div>
+<p class="callout-text">I build outside work to stay close to real users, technical tradeoffs, and product feedback loops — going from a real coaching problem to a live, shipped product.</p>
+<div aria-label="Discovery to build thread" class="thread" id="builder-thread">
+<div class="thread-cell discovery">
+<div class="thread-step"><span class="dot"></span> The discovery</div>
+<div class="thread-title">Youth Rec Baseball Coach · Forsyth County Recreation</div>
+<p class="thread-copy">Coaching 12 young athletes, I hit the real-time mess firsthand: fair lineups, position rotations, bench management, and keeping parents in the loop — all under game pressure, mostly on paper.</p>
+</div>
+<div class="thread-cell build">
+<div class="thread-step"><span class="dot"></span> The build</div>
+<div class="thread-title">Dugout Lineup · live PWA</div>
+<p class="thread-copy">So I founded and built the product to solve it: automated fair lineups, inning-by-inning positions, bench rotation, and a single source of truth shared with parents and scorekeepers — set the vision, owned the roadmap, and shipped it end-to-end with AI-assisted development.</p>
+</div>
+</div>
+<div class="link-row">
+<a aria-label="Dugout Lineup live app" class="social-link web" href="https://dugoutlineup.com" rel="noreferrer" target="_blank">
+<svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><path d="M6 15.5 18 6.5M8 18l10-10M5 19c2.3-3.7 2.2-7.2 7.2-12.2" fill="none" stroke="#fff" stroke-linecap="round" stroke-width="1.6"></path></svg>
+Live app
+</a>
+<button class="evidence-link" data-scroll-target="project-career-gpt" data-tab-target="builder">View AI Career GPT</button>
+</div>
+</article>
 </div>
 </section>
 
@@ -2043,21 +2066,6 @@
   </div>
 </section>
 
-<section aria-labelledby="builds-title" class="card">
-<h2 class="section-title" id="builds-title">Builder proof: real problem → shipped product</h2>
-<div aria-label="Discovery to build thread" class="thread" id="builder-thread">
-<div class="thread-cell discovery">
-<div class="thread-step"><span class="dot"></span> The discovery</div>
-<div class="thread-title">Youth Rec Baseball Coach · Forsyth County Recreation</div>
-<p class="thread-copy">Coaching 12 young athletes, I hit the real-time mess firsthand: fair lineups, position rotations, bench management, and keeping parents in the loop — all under game pressure, mostly on paper.</p>
-</div>
-<div class="thread-cell build">
-<div class="thread-step"><span class="dot"></span> The build</div>
-<div class="thread-title">Dugout Lineup · live PWA</div>
-<p class="thread-copy">So I founded and built the product to solve it: automated fair lineups, inning-by-inning positions, bench rotation, and a single source of truth shared with parents and scorekeepers — set the vision, owned the roadmap, and shipped it end-to-end with AI-assisted development.</p>
-</div>
-</div>
-</section>
 <section aria-labelledby="projects-title" class="card">
 <h2 class="section-title" id="projects-title">Projects</h2>
 <div class="project-grid">
