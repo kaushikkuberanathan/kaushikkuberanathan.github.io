@@ -88,10 +88,6 @@
   gap: 14px;
 }
 
-@media (min-width: 820px) {
-  .confidential-report-grid { grid-template-columns: 1fr 1fr; }
-}
-
 .confidential-report-card {
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -132,6 +128,16 @@
   color: var(--muted);
   line-height: 1.5;
 }
+
+.confidential-report-list {
+  margin: 0;
+  padding-left: 18px;
+  color: var(--muted);
+  font-size: 13.5px;
+  line-height: 1.5;
+}
+
+.confidential-report-list li { margin-bottom: 4px; }
 
 #tab-confidential span[aria-hidden='true'] {
   margin-right: 2px;
