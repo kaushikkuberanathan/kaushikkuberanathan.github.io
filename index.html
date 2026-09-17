@@ -1155,6 +1155,65 @@
     @media (max-width: 620px) {
       .confidential-figure::after { left: 0; transform: none; }
     }
+
+    .title-info {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 15px;
+      height: 15px;
+      margin-left: 6px;
+      border-radius: 50%;
+      background: var(--border);
+      color: var(--muted);
+      font-size: 10px;
+      font-weight: 800;
+      cursor: help;
+      vertical-align: middle;
+    }
+
+    .title-info::after {
+      content: attr(data-tooltip);
+      position: absolute;
+      bottom: calc(100% + 8px);
+      left: 0;
+      background: var(--ink);
+      color: #fff;
+      font-size: 11.5px;
+      font-weight: 600;
+      line-height: 1.4;
+      padding: 8px 10px;
+      border-radius: 8px;
+      width: max-content;
+      max-width: 240px;
+      text-align: left;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.15s ease;
+      z-index: 20;
+      white-space: normal;
+    }
+
+    .title-info:hover::after,
+    .title-info:focus-visible::after {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (max-width: 779px) {
+      .tabs-shell::after {
+        content: '';
+        position: absolute;
+        top: 10px;
+        right: 0;
+        bottom: 12px;
+        width: 32px;
+        background: linear-gradient(to right, rgba(244, 245, 247, 0), rgba(244, 245, 247, 0.95));
+        pointer-events: none;
+      }
+    }
 </style>
 <link href="assets/product-activity.css" rel="stylesheet"/>
 <link href="assets/confidential-gate.css" rel="stylesheet"/>
@@ -1395,7 +1454,7 @@
 <section aria-labelledby="tab-metrics" class="tab-panel" id="panel-metrics" role="tabpanel">
 <section aria-labelledby="metrics-title" class="card">
 <h2 class="section-title" id="metrics-title">Metrics &amp; evidence</h2>
-<p class="section-intro">Selected career impact through 2026 at Cox Communications and earlier roles — historical accomplishments, not current Charter/Spectrum KPI reporting. Each metric links back to the role or story where it was delivered. Exact figures are reserved for direct conversations; percentages and multipliers shown here are public-safe.</p>
+<p class="section-intro">Career impact through 2026, spanning Cox Communications and earlier roles. Each metric links back to the role or story where it was delivered; exact figures are reserved for direct conversations, with public-safe percentages and multipliers shown here.</p>
 </section>
 <section aria-labelledby="commerce-metrics-title" class="card">
 <h2 class="section-title" id="commerce-metrics-title">Commerce &amp; self-service depth</h2>
@@ -1405,8 +1464,8 @@
 <article class="metric"><div class="metric-label">Content velocity</div><div class="metric-number">75%</div><div class="metric-note">reduction in app media/content update cycle time via AEM Dynamic Media</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-regulated" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">Add-on automation</div><div class="metric-number"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%+</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></div><div class="metric-note">automation rate across native Add-On purchase flows</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">Campaign conversion</div><div class="metric-number">+11%</div><div class="metric-note">lift in in-app campaign conversion through targeted messaging</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
-<article class="metric"><div class="metric-label">Onboarding velocity</div><div class="metric-number">8w→2w</div><div class="metric-note">reduction in add-on onboarding timeline, eight weeks to under two</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">Add-on visits</div><div class="metric-number"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">███K+</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></div><div class="metric-note">visits to the native Add-Ons commerce experience</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
+<article class="metric"><div class="metric-label">Onboarding velocity</div><div class="metric-number">8w→2w</div><div class="metric-note">reduction in add-on onboarding timeline, eight weeks to under two</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">Add-on orders</div><div class="metric-number"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██.█K+</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></div><div class="metric-note">orders placed through the native Add-Ons experience</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 </div>
 </section>
@@ -1511,7 +1570,7 @@
 <div class="experience-top">
 <div>
 <div class="experience-kicker">Field modernization &amp; self-service</div>
-<h3 class="experience-title">Principal Product Owner</h3>
+<h3 class="experience-title">Principal Product Owner<span aria-label="Principal here was an individual-contributor product track, distinct from the people-management ladder that follows." class="title-info" data-tooltip="Principal here was an individual-contributor product track — distinct from the people-management ladder that follows." tabindex="0">ⓘ</span></h3>
 <a class="experience-company" href="https://www.linkedin.com/in/kaushikkumarkuberanathan/details/experience/" rel="noreferrer" target="_blank">Cox Automotive</a>
 <div class="experience-meta">2018–2020 · Atlanta, GA · Auction, logistics, and back-office modernization</div>
 </div>
@@ -1745,7 +1804,7 @@
                 Repo
               </a>
 </div>
-<div class="project-tags"><span class="pill amber">Founder</span><span class="pill green">Live</span><span class="pill blue">PWA</span><span class="pill purple">AI-assisted build</span></div>
+<div class="project-tags"><span class="pill green">Flagship</span><span class="pill amber">Founder</span><span class="pill green">Live</span><span class="pill blue">PWA</span><span class="pill purple">AI-assisted build</span></div>
 </article>
 <article class="project-card" id="project-career-gpt">
 <div class="project-head">
