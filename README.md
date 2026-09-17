@@ -45,14 +45,16 @@ coaching-photo.jpg         # optional coaching photo (commented out by default)
 
 ## Main sections
 
-The site is organized into tabs (some inserted dynamically at runtime, see below):
+The site is organized into tabs, in this order (Confidential Projects is inserted dynamically at runtime, right after Enterprise Impact — see below):
 
-- **Overview** — headline positioning, career-at-a-glance, operating principles, and a "Who I am" section (community, service, and personal interests).
+- **Overview** — a short "About" intro, an "Explore the portfolio" nav grid linking into every other tab, and the "Operating principles" that describe how I approach the work.
 - **Enterprise Impact** — an enterprise proof summary, the full role-level impact stories (commerce, regulated CX, modernization), and named recommendations from colleagues.
-- **Metrics** — an evidence index linking quantified outcomes back to the source story behind each one; a handful of figures are redacted (see Confidential metrics below).
-- **Experience** — role cards with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
-- **Product Lab** — a builder signal, the coaching-to-product discovery story, Dugout Lineup, the AI Career Strategy Team custom GPT, and product/AI writing.
-- **Confidential Projects** — a password-gated tab with detailed reports on select initiatives and the problems they solved (see below).
+- **Confidential Projects** — a password-gated tab with detailed "problem → approach → outcome" reports on select initiatives whose specifics are proprietary (see below).
+- **Metrics** — an evidence index ("Metrics & evidence" plus a "Commerce & self-service depth" section) linking quantified outcomes back to the source story behind each one; a handful of figures are redacted (see Confidential metrics below).
+- **Experience** — role cards ("Roles & experience") with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
+- **Learning** — education history and the certifications and skills behind the practice (agile, analysis, and AI-assisted product work).
+- **Product Lab** — a builder signal (the coaching-to-product discovery-to-build story) and a Projects grid covering Dugout Lineup, the AI Career Strategy Team custom GPT, KidCoord, HomeAtlas, and product/AI writing.
+- **Contact** — an "Open to" card (role interests plus email/LinkedIn/GitHub/Substack links), the "Next chapter" direction I'm headed, and a "Beyond the work" section on community, service, and personal interests.
 
 ## Automated product activity (currently removed)
 
