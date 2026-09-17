@@ -21,7 +21,7 @@ from selenium.webdriver.support.ui import WebDriverWait
 SITE_URL = os.environ.get("PORTFOLIO_SITE_URL", "https://kaushikkuberanathan.github.io/").rstrip("/") + "/"
 DATA_URL = os.environ.get(
     "PORTFOLIO_ACTIVITY_URL",
-    "https://raw.githubusercontent.com/kaushikkuberanathan/lineup_generator/activity-data/product-activity.json",
+    "https://raw.githubusercontent.com/kaushikkuberanathan/kaushikkuberanathan.github.io/activity-data/product-activity.json",
 )
 DEPLOY_WAIT_SECONDS = int(os.environ.get("PORTFOLIO_DEPLOY_WAIT_SECONDS", "300"))
 
@@ -92,7 +92,6 @@ def wait_for_live_deployment() -> dict:
                     data_status == 200,
                     "assets/product-activity.js" in site_html,
                     "installActivityTab" in activity_js,
-                    "Kaushik Kuberanathan.pdf" in activity_js,
                     "Committed improvements" in activity_js,
                     "Latest release notes" in activity_js,
                     ".activity-tab-panel" in activity_css,
@@ -205,10 +204,10 @@ def smoke_viewport(width: int, height: int) -> ViewportResult:
         non_release_prefixes = ("story ", "story:", "feat ", "feat(", "feat:", "feature ", "feature:")
         if any(title.lower().startswith(non_release_prefixes) for title in state["releaseTitles"]):
             failures.append(f"Story/feature PR appeared in release notes: {state['releaseTitles']}")
-        if state["resumeFilename"] != "Kaushik Kuberanathan.pdf":
-            failures.append(f"Unexpected resume download filename: {state['resumeFilename']}")
-        if state["resumeTarget"] is not None:
-            failures.append(f"Resume download should not open a new tab: {state['resumeTarget']}")
+        if state["resumeFilename"] is not None:
+            failures.append(f"Resume link should not force a download: {state['resumeFilename']}")
+        if state["resumeTarget"] != "_blank":
+            failures.append(f"Resume link should open view-only in a new tab: {state['resumeTarget']}")
         if state["documentOverflowPx"] > 1:
             failures.append(f"Document overflows viewport by {state['documentOverflowPx']}px")
         if width <= 620 and not state["tableScrollable"]:

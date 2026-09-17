@@ -51,7 +51,7 @@ jobs:
       - name: Run desktop and mobile smoke test
         env:
           PORTFOLIO_SITE_URL: ${{ github.event_name == 'pull_request' && 'http://127.0.0.1:8000/' || 'https://kaushikkuberanathan.github.io/' }}
-          PORTFOLIO_ACTIVITY_URL: https://raw.githubusercontent.com/kaushikkuberanathan/lineup_generator/activity-data/product-activity.json
+          PORTFOLIO_ACTIVITY_URL: https://raw.githubusercontent.com/kaushikkuberanathan/kaushikkuberanathan.github.io/activity-data/product-activity.json
           PORTFOLIO_DEPLOY_WAIT_SECONDS: ${{ github.event_name == 'pull_request' && '45' || '300' }}
         run: python scripts/live-smoke.py
 

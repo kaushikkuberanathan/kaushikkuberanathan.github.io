@@ -2,3 +2,4 @@
 # output (assets/confidential-projects.json) is committed — see README.
 scripts/confidential-content.local.json
 scripts/*.local.json
+scripts/__pycache__/
