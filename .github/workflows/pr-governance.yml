@@ -1,0 +1,12 @@
+name: PR governance (product-ops)
+
+on:
+  pull_request:
+
+jobs:
+  governance:
+    uses: kaushikkuberanathan/product-ops/.github/workflows/pr-governance-guard.yml@v0.1.1
+    with:
+      profile: portfolio-light
+      require_soak: false
+      require_worktree_field: false
