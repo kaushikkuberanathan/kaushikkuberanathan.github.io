@@ -737,8 +737,56 @@
     .project-icon.amber { background: var(--amber); }
     .project-icon.gray { background: var(--muted); }
 
+    .open-to {
+      color: var(--muted);
+      font-size: 14px;
+      font-weight: 650;
+      margin: 12px 0 0;
+      max-width: 720px;
+      line-height: 1.45;
+    }
+
     .project-card.muted { background: transparent; border-style: dashed; }
     .project-card.muted .project-title { color: var(--muted); }
+
+    .project-card.experiment {
+      background: #f6f7f9;
+      border-style: dashed;
+      border-color: #d5dae3;
+      min-height: 0;
+      padding: 14px;
+      gap: 8px;
+      opacity: 0.92;
+    }
+    .project-card.experiment .project-title { font-size: 15px; color: var(--muted); }
+    .project-card.experiment .project-sub { font-size: 12px; }
+    .project-card.experiment .project-copy { font-size: 13px; }
+    .project-card.experiment .mini-list { font-size: 12.5px; }
+    .project-card.experiment .project-icon { width: 34px; height: 34px; font-size: 12px; border-radius: 9px; }
+
+    .project-grid-secondary {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 10px;
+      margin-top: 14px;
+    }
+    @media (min-width: 760px) {
+      .project-grid-secondary { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    .experiments-label {
+      margin: 18px 0 8px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .experiments-intro {
+      margin: 0 0 10px;
+      color: var(--muted);
+      font-size: 13px;
+      max-width: 720px;
+    }
 
     .project-logo {
       width: 52px;
@@ -1358,6 +1406,7 @@
 <span class="pill blue">Enterprise Modernization</span>
 <span class="pill purple">AI-Assisted Product Building</span>
 </div>
+<p class="open-to">Open to senior product leadership (Lead / Group / Director) across digital commerce, platforms, and enterprise transformation.</p>
 <div aria-label="Primary actions" class="contact-row">
 <a aria-label="Email Kaushik" class="social-link primary-cta" href="mailto:kaushik.kuberanathan@gmail.com?subject=Portfolio%20%2F%20Conversation">
 <svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><path d="M5 8.2h14v8.1H5z" fill="none" stroke="#172033" stroke-width="1.7"></path><path d="M5.5 8.7 12 13l6.5-4.3" fill="none" stroke="#172033" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>
@@ -1406,7 +1455,7 @@
 </a>
 <a class="explore-card amber" href="#tab-builder">
 <div class="explore-card-title">Product Lab</div>
-<p class="explore-card-copy">What I build outside work — live projects, shipped code, and a running view of real product activity.</p>
+<p class="explore-card-copy">Live projects, shipped code, and writing — what I build outside work.</p>
 <span class="explore-card-cta">View what I've shipped</span>
 </a>
 <a class="explore-card red" href="#tab-contact">
@@ -1478,11 +1527,8 @@
 <div class="metric-grid">
 <article class="metric"><div class="metric-label">Digital containment</div><div class="metric-number">~96%</div><div class="metric-note">self-service containment across supported app flows</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">Content velocity</div><div class="metric-number">75%</div><div class="metric-note">reduction in app media/content update cycle time via AEM Dynamic Media</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-regulated" data-tab-target="enterprise">View source story</button></div></article>
-<article class="metric"><div class="metric-label">Add-on automation</div><div class="metric-number"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%+</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></div><div class="metric-note">automation rate across native Add-On purchase flows</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">Campaign conversion</div><div class="metric-number">+11%</div><div class="metric-note">lift in in-app campaign conversion through targeted messaging</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
-<article class="metric"><div class="metric-label">Add-on visits</div><div class="metric-number"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">███K+</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></div><div class="metric-note">visits to the native Add-Ons commerce experience</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 <article class="metric"><div class="metric-label">Onboarding velocity</div><div class="metric-number">8w→2w</div><div class="metric-note">reduction in add-on onboarding timeline, eight weeks to under two</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
-<article class="metric"><div class="metric-label">Add-on orders</div><div class="metric-number"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██.█K+</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></div><div class="metric-note">orders placed through the native Add-Ons experience</div><div class="metric-actions"><button class="evidence-link" data-scroll-target="impact-cox-commerce" data-tab-target="enterprise">View source story</button></div></article>
 </div>
 </section>
 </section>
@@ -1507,9 +1553,9 @@
 <div class="experience-highlight">
 <div class="experience-highlight-title">Current focus areas</div>
 <ul class="achievement-list">
-<li>Leading integration-oriented product work following the Cox–Charter combination — protecting customer continuity across digital self-service, business-app, and commerce experiences during enterprise transition.</li>
-<li>Coordinating platform boundary and system-ownership decisions across legacy Cox and Charter/Spectrum systems, including identity/SSO, role and permission handling, and analytics continuity, to avoid duplicated capability and reduce migration risk.</li>
-<li>Continuing regulated-commerce and self-service product leadership (eligibility, routing, contextual deep linking, Broadband Facts Label considerations) through the integration period.</li>
+<li>Leading integration-oriented product work after the Cox–Charter combination — protecting continuity across digital self-service, business-app, and commerce experiences.</li>
+<li>Coordinating platform boundary and ownership decisions across legacy Cox and Charter/Spectrum systems (identity/SSO, roles/permissions, analytics) to avoid duplicated capability and reduce migration risk.</li>
+<li>Continuing regulated-commerce and self-service leadership (eligibility, routing, deep linking, Broadband Facts Label) through the integration period.</li>
 </ul>
 </div>
 <details class="experience-initiatives">
@@ -1561,11 +1607,11 @@
 <div class="experience-highlight">
 <div class="experience-highlight-title">Most significant accomplishments</div>
 <ul class="achievement-list">
-<li>Turned the Cox App into a repeatable native commerce engine by replacing SSO link-outs with config-driven in-app add-on purchase flows, driving +32% YoY eCommerce growth and 4× order growth while collapsing high-intent web journeys into simpler native experiences.</li>
+<li>Turned the Cox App into a native commerce engine — config-driven in-app add-on purchase replacing SSO link-outs — driving +32% YoY eCommerce growth and 4× order growth.</li>
 <li>Built reusable trust-critical commerce patterns across pricing, disclosures, consent, order confirmation, DPP visibility, All-In Pricing, FCC Broadband Facts Labels, and Click-to-Cancel readiness.</li>
-<li>Elevated the Cox Business App from a viewer channel toward an enterprise self-service platform through RBAC, enhanced analytics, contextual deep links, push modernization, and native voice intent discovery.</li>
-<li>Operated at director-level scope setting portfolio direction across a matrixed team — mentoring product managers, analysts, and interns; supporting hiring panels for Digital Product roles; and leading structured knowledge transfer during a Residential-to-Cox Business App ownership transition, including reusable playbooks, partner maps, intake models, and operating cadences.</li>
-<li>Recognized with the 2024 Winners Circle Award for outstanding digital revenue contribution and customer experience leadership.</li>
+<li>Elevated the Cox Business App toward an enterprise self-service platform through RBAC, analytics, contextual deep links, push modernization, and native voice intent discovery.</li>
+<li>Operated at director-level scope across a matrixed team — mentoring PMs and analysts, supporting Digital Product hiring, and leading knowledge transfer for Residential-to-Cox Business App ownership.</li>
+<li>Recognized with the 2024 Winners Circle Award for digital revenue contribution and customer experience leadership.</li>
 </ul>
 </div>
 <details class="experience-initiatives">
@@ -1586,15 +1632,15 @@
 <div class="initiative-theme-group theme-blue">
 <div class="initiative-theme-title">Digital inclusion</div>
 <ul class="initiative-list">
-<li><div class="initiative-item-name">ACP &amp; Embedded Campaigns for Digital Equity</div><div class="initiative-item-impact"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">█,███</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> ACP enrollments via app at a <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██.██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> conversion rate across <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██,███</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> CTA taps.</div></li>
+<li><div class="initiative-item-name">ACP &amp; Embedded Campaigns for Digital Equity</div><div class="initiative-item-impact">Drove in-app ACP enrollments through embedded campaigns, with measurable conversion across CTA engagement.</div></li>
 </ul>
 </div>
 <div class="initiative-theme-group theme-purple">
 <div class="initiative-theme-title">Native commerce &amp; platform architecture</div>
 <ul class="initiative-list">
-<li><div class="initiative-item-name">Add-Ons: Native eCommerce Framework</div><div class="initiative-item-impact"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> of add-on sales initiated in-app with a native commerce automation success rate above <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span>.</div></li>
+<li><div class="initiative-item-name">Add-Ons: Native eCommerce Framework</div><div class="initiative-item-impact">Majority of add-on sales initiated in-app, with a high native commerce automation success rate.</div></li>
 <li><div class="initiative-item-name">Mobile App eCommerce Enablement Framework</div><div class="initiative-item-impact">Reduced product onboarding time from 8 weeks to under 2 weeks.</div></li>
-<li><div class="initiative-item-name">App Offers &amp; Promotions Framework</div><div class="initiative-item-impact">Reduced campaign go-live time from 2 weeks to under 5 days while delivering a <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">█.█x</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> lift in CTR.</div></li>
+<li><div class="initiative-item-name">App Offers &amp; Promotions Framework</div><div class="initiative-item-impact">Reduced campaign go-live time from 2 weeks to under 5 days while delivering a meaningful lift in CTR.</div></li>
 </ul>
 </div>
 <div class="initiative-theme-group theme-amber">
@@ -1607,7 +1653,7 @@
 <div class="initiative-theme-group theme-green">
 <div class="initiative-theme-title">Retention &amp; value transparency</div>
 <ul class="initiative-list">
-<li><div class="initiative-item-name">RVP (Rate Value Proposition) &amp; Money-Back Guarantee (MBG)</div><div class="initiative-item-impact">Contributed to a <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">█%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> YoY improvement in customer retention among Rate Lock-eligible users.</div></li>
+<li><div class="initiative-item-name">RVP (Rate Value Proposition) &amp; Money-Back Guarantee (MBG)</div><div class="initiative-item-impact">Contributed to a measurable YoY improvement in customer retention among Rate Lock-eligible users.</div></li>
 </ul>
 </div>
 <div class="initiative-theme-group theme-blue">
@@ -1620,8 +1666,8 @@
 <div class="initiative-theme-group theme-purple">
 <div class="initiative-theme-title">Self-service &amp; plan management</div>
 <ul class="initiative-list">
-<li><div class="initiative-item-name">Cox Mobile Data Plan Management (Native Change Plan)</div><div class="initiative-item-impact"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██.██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> pilot conversion rate; <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> of data plan change orders now originate in-app.</div></li>
-<li><div class="initiative-item-name">Family Plans (Regressive Pricing Model)</div><div class="initiative-item-impact">Drove a <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> higher adoption of Unlimited plans; <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> of multi-line accounts used the comparison view.</div></li>
+<li><div class="initiative-item-name">Cox Mobile Data Plan Management (Native Change Plan)</div><div class="initiative-item-impact">Strong pilot conversion; a majority of data plan change orders now originate in-app.</div></li>
+<li><div class="initiative-item-name">Family Plans (Regressive Pricing Model)</div><div class="initiative-item-impact">Drove higher Unlimited plan adoption; multi-line accounts actively used the comparison view.</div></li>
 </ul>
 </div>
 <div class="initiative-theme-group theme-amber">
@@ -1634,13 +1680,13 @@
 <div class="initiative-theme-group theme-green">
 <div class="initiative-theme-title">Engagement, preferences &amp; campaign orchestration</div>
 <ul class="initiative-list">
-<li><div class="initiative-item-name">App Preference Center 2.0 &amp; Push Notifications Redesign</div><div class="initiative-item-impact"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> increase in push opt-in rate and a <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">█x</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> increase in click-through for targeted campaigns.</div></li>
-<li><div class="initiative-item-name">Preference Center 2.0 (CX &amp; Notification Modernization)</div><div class="initiative-item-impact">Improved push opt-in rates by <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> while reducing message fatigue and unsubscribe rates.</div></li>
-<li><div class="initiative-item-name">Swrve Campaigns Modernization &amp; Message Center API Integration</div><div class="initiative-item-impact">Delivered a <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> overall conversion lift post-SDK modernization, including <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██.█%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> conversion for ACP campaigns.</div></li>
+<li><div class="initiative-item-name">App Preference Center 2.0 &amp; Push Notifications Redesign</div><div class="initiative-item-impact">Meaningful increase in push opt-in rate and a substantial click-through lift for targeted campaigns.</div></li>
+<li><div class="initiative-item-name">Preference Center 2.0 (CX &amp; Notification Modernization)</div><div class="initiative-item-impact">Improved push opt-in rates while reducing message fatigue and unsubscribe rates.</div></li>
+<li><div class="initiative-item-name">Swrve Campaigns Modernization &amp; Message Center API Integration</div><div class="initiative-item-impact">Delivered an overall conversion lift post-SDK modernization, including stronger conversion for ACP campaigns.</div></li>
 <li><div class="initiative-item-name">Cox App Campaign Performance Dashboards (Adobe Analytics)</div><div class="initiative-item-impact">Reduced manual campaign reporting time by 90%, enabling real-time optimization decisions.</div></li>
-<li><div class="initiative-item-name">App Campaign Optimization &amp; Experimentation Framework</div><div class="initiative-item-impact">Drove a <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> increase in campaign-driven conversions and a <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> engagement lift for personalized variants.</div></li>
-<li><div class="initiative-item-name">Push Notification Enhancements (Phase 2)</div><div class="initiative-item-impact">Delivered a <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">███%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> increase in CTR post-update, establishing a template for automated lifecycle notifications.</div></li>
-<li><div class="initiative-item-name">Embedded Campaigns Framework Evolution</div><div class="initiative-item-impact">Drove <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">████K</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> campaign interactions at a <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">█.█%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> overall conversion rate across Mobile, Fiber, and ACP.</div></li>
+<li><div class="initiative-item-name">App Campaign Optimization &amp; Experimentation Framework</div><div class="initiative-item-impact">Drove an increase in campaign-driven conversions and engagement lift for personalized variants.</div></li>
+<li><div class="initiative-item-name">Push Notification Enhancements (Phase 2)</div><div class="initiative-item-impact">Delivered a substantial CTR increase post-update, establishing a template for automated lifecycle notifications.</div></li>
+<li><div class="initiative-item-name">Embedded Campaigns Framework Evolution</div><div class="initiative-item-impact">Drove large-scale campaign interactions with solid overall conversion across Mobile, Fiber, and ACP.</div></li>
 </ul>
 </div>
 <div class="initiative-theme-group theme-blue">
@@ -1656,7 +1702,7 @@
 <div class="initiative-theme-title">Program governance &amp; operational excellence</div>
 <ul class="initiative-list">
 <li><div class="initiative-item-name">App Commerce Governance &amp; Intake Framework</div><div class="initiative-item-impact">Improved intake-to-launch velocity by 40% and increased cross-functional stakeholder satisfaction.</div></li>
-<li><div class="initiative-item-name">Digital Equity Program Dashboard (Internal Analytics)</div><div class="initiative-item-impact">Enabled leadership visibility into <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██M+</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> affordability program participants across ACP and ConnectAssist.</div></li>
+<li><div class="initiative-item-name">Digital Equity Program Dashboard (Internal Analytics)</div><div class="initiative-item-impact">Enabled leadership visibility into affordability program participation across ACP and ConnectAssist.</div></li>
 </ul>
 </div>
 <div class="initiative-theme-group theme-amber">
@@ -1695,13 +1741,13 @@
 <ul class="initiative-list">
 <li><div class="initiative-item-name">Title Platform Modernization (API-First Transformation)</div><div class="initiative-item-impact">Reduced title processing time by 75% and cut operational escalations from title-loss issues by over 80%.</div></li>
 <li><div class="initiative-item-name">AWS Cloud Migration Strategy</div><div class="initiative-item-impact">Improved system uptime to 99.98% while cutting deployment cycles from 2 weeks to under 48 hours.</div></li>
-<li><div class="initiative-item-name">API-Driven Multi-Brand Platform Strategy</div><div class="initiative-item-impact">Reduced platform maintenance costs by <span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Automotive performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> by consolidating shared services into reusable APIs.</div></li>
+<li><div class="initiative-item-name">API-Driven Multi-Brand Platform Strategy</div><div class="initiative-item-impact">Reduced platform maintenance costs by consolidating shared services into reusable APIs.</div></li>
 </ul>
 </div>
 <div class="initiative-theme-group theme-blue">
 <div class="initiative-theme-title">Operational &amp; logistics efficiency</div>
 <ul class="initiative-list">
-<li><div class="initiative-item-name">FedEx Ground Shipping Integration</div><div class="initiative-item-impact"><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Automotive performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">$███K</span><span aria-hidden="true" class="confidential-lock">🔒</span></span> in annual cost savings from reduced shipping costs and error elimination across 70+ locations.</div></li>
+<li><div class="initiative-item-name">FedEx Ground Shipping Integration</div><div class="initiative-item-impact">Significant annual cost savings from reduced shipping costs and error elimination across 70+ locations.</div></li>
 <li><div class="initiative-item-name">Shared Services Modernization &amp; Process Orchestration</div><div class="initiative-item-impact">Cut backlog volume by 30% and improved average processing speed by 25%.</div></li>
 <li><div class="initiative-item-name">Title Cleanup &amp; Transfer Initiative</div><div class="initiative-item-impact">Prevented duplicate processing and lost-title incidents while eliminating storage overcapacity across locations.</div></li>
 </ul>
@@ -2119,36 +2165,6 @@ Live app
 </div>
 <div class="project-tags"><span class="pill purple">Custom GPT</span><span class="pill blue">Prompt architecture</span></div>
 </article>
-<article class="project-card" id="project-kidcoord">
-<div class="project-head">
-<div>
-<h3 class="project-title">KidCoord</h3>
-<p class="project-sub">Parent carpool-coordination platform</p>
-</div>
-<div class="project-icon green">KC</div>
-</div>
-<p class="project-copy">Carpool coordination usually lives in a chaotic group chat — no clear view of who's available, who's driving, or who's quietly doing most of the driving. KidCoord replaces the scroll-back-through-texts routine with structured matching and visibility, so fairness doesn't depend on memory.</p>
-<ul class="mini-list">
-<li>Paused after the core data model and reliable-sync foundation were built — on hold, not abandoned.</li>
-<li>Built so a spotty connection at pickup time never creates a duplicate or lost ride request.</li>
-</ul>
-<div class="project-tags"><span class="pill gray">Paused</span><span class="pill blue">React Native</span><span class="pill purple">AI-assisted build</span></div>
-</article>
-<article class="project-card" id="project-homeatlas">
-<div class="project-head">
-<div>
-<h3 class="project-title">HomeAtlas</h3>
-<p class="project-sub">Shared household inventory app</p>
-</div>
-<div class="project-icon amber">HA</div>
-</div>
-<p class="project-copy">Every household loses track of what it owns — and that list, when it exists at all, usually lives in one person's head or one person's phone. HomeAtlas answers what do we have, how many, and where is it, shared across everyone in the household instead of trapped in a single user's list.</p>
-<ul class="mini-list">
-<li>Already usable start to finish — add what you own, organize it by room, and find it again in seconds.</li>
-<li>Built so every person in the household sees and edits the same shared list, not five different ones on five different phones.</li>
-</ul>
-<div class="project-tags"><span class="pill amber">Building</span><span class="pill blue">Next.js</span><span class="pill green">Supabase</span><span class="pill purple">AI-assisted build</span></div>
-</article>
 <article class="project-card" id="project-writing">
 <div class="project-head">
 <div>
@@ -2166,27 +2182,62 @@ Live app
 <div class="project-tags"><span class="pill blue">Writing</span><span class="pill purple">Product thinking</span></div>
 </article>
 </div>
+<div class="experiments-label">Experiments</div>
+<p class="experiments-intro">Paused or early-stage builds — honest labels, no live product claims.</p>
+<div class="project-grid-secondary">
+<article class="project-card experiment" id="project-kidcoord">
+<div class="project-head">
+<div>
+<h3 class="project-title">KidCoord</h3>
+<p class="project-sub">Parent carpool-coordination platform</p>
+</div>
+<div class="project-icon green">KC</div>
+</div>
+<p class="project-copy">Carpool coordination usually lives in a chaotic group chat — no clear view of who's available, who's driving, or who's quietly doing most of the driving. KidCoord replaces the scroll-back-through-texts routine with structured matching and visibility, so fairness doesn't depend on memory.</p>
+<ul class="mini-list">
+<li>Paused after the core data model and reliable-sync foundation were built — on hold, not abandoned.</li>
+<li>Built so a spotty connection at pickup time never creates a duplicate or lost ride request.</li>
+</ul>
+<div class="project-tags"><span class="pill gray">Experiment</span><span class="pill gray">Paused</span><span class="pill blue">React Native</span></div>
+</article>
+<article class="project-card experiment" id="project-homeatlas">
+<div class="project-head">
+<div>
+<h3 class="project-title">HomeAtlas</h3>
+<p class="project-sub">Shared household inventory app</p>
+</div>
+<div class="project-icon amber">HA</div>
+</div>
+<p class="project-copy">Every household loses track of what it owns — and that list, when it exists at all, usually lives in one person's head or one person's phone. HomeAtlas answers what do we have, how many, and where is it, shared across everyone in the household instead of trapped in a single user's list.</p>
+<ul class="mini-list">
+<li>Early prototype: add what you own, organize by room, and find it again — shared household list model.</li>
+<li>Built so every person in the household sees and edits the same shared list, not five different ones on five different phones.</li>
+</ul>
+<div class="project-tags"><span class="pill gray">Experiment</span><span class="pill amber">Early build</span><span class="pill blue">Next.js</span></div>
+</article>
+</div>
 </section>
 </section>
 <!-- CONTACT TAB -->
 <section aria-labelledby="tab-contact" class="tab-panel" id="panel-contact" role="tabpanel">
 <section aria-labelledby="contact-title" class="card">
 <h2 class="section-title" id="contact-title">Get in touch</h2>
-<p class="section-intro" style="max-width:760px;">Senior product leadership opportunities across digital commerce, consumer platforms, marketplaces, self-service, and enterprise platform modernization — particularly roles combining product strategy, team development, complex systems, and measurable customer/business outcomes.</p>
+<p class="section-intro" style="max-width:760px;"><strong>Open to</strong> senior product leadership (Lead / Group / Director) across digital commerce, platforms, and enterprise transformation — roles that combine product strategy, team development, complex systems, and measurable outcomes.</p>
+<p class="section-intro" style="max-width:760px;margin-top:8px;"><strong>Preferred next step:</strong> email for roles and recruiting conversations; LinkedIn for network introductions.</p>
 <div class="link-row">
 <a aria-label="Email Kaushik" class="social-link email" href="mailto:kaushik.kuberanathan@gmail.com?subject=Portfolio%20%2F%20Conversation">
 <svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><path d="M5 8.2h14v8.1H5z" fill="none" stroke="#fff" stroke-width="1.7"></path><path d="M5.5 8.7 12 13l6.5-4.3" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>
-Email
+Email for roles
 </a>
 <a aria-label="Connect with Kaushik on LinkedIn" class="social-link linkedin" href="https://www.linkedin.com/in/kaushikkumarkuberanathan/" rel="noreferrer" target="_blank">
 <svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><text fill="#fff" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="800" x="6.7" y="17">in</text></svg>
-LinkedIn
+LinkedIn for network
 </a>
 </div>
 </section>
 <section aria-labelledby="follow-title" class="card">
 <h2 class="section-title" id="follow-title">Follow the work</h2>
-<p class="section-intro" style="max-width:760px;">The build-in-public thread — Dugout Lineup's code and releases, and essays on product craft and AI-assisted building.</p>
+<p class="section-intro" style="max-width:760px;">Shipped code and releases for Dugout Lineup, plus essays on product craft and AI-assisted building.</p>
 <div class="link-row">
 <a aria-label="GitHub profile" class="social-link github" href="https://github.com/kaushikkuberanathan" rel="noreferrer" target="_blank">
 <svg aria-hidden="true" viewBox="0 0 24 24"><circle class="mark-bg" cx="12" cy="12" r="12"></circle><path d="M8.2 18.8c0-.9 0-1.7.1-2.2-1.9.4-2.3-.8-2.3-.8-.3-.8-.8-1-.8-1-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.2 1.8.9 2.3.7.1-.5.3-.9.5-1.1-1.5-.2-3.1-.8-3.1-3.4 0-.8.3-1.4.8-1.9-.1-.2-.4-1 .1-1.9 0 0 .7-.2 2.1.8.6-.2 1.3-.3 1.9-.3.7 0 1.3.1 1.9.3 1.5-1 2.1-.8 2.1-.8.4 1 .2 1.7.1 1.9.5.5.8 1.1.8 1.9 0 2.6-1.6 3.2-3.1 3.4.3.3.5.7.5 1.5v2.6" fill="none" stroke="#fff" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.45"></path></svg>
