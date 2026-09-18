@@ -14,8 +14,8 @@ I build digital commerce, self-service, and platform products across B2B and B2C
 
 ```
 index.html                              # primary site markup and navigation
-assets/product-activity.css             # Building in Public presentation
-assets/product-activity.js              # activity tab install, JSON rendering, résumé lead gate
+assets/product-activity.js              # résumé lead gate (the Building in Public activity tab it also installed is currently removed, see below)
+assets/product-activity.css             # unused while Building in Public is removed (kept for reinstatement)
 assets/confidential-gate.css            # Confidential Projects tab presentation
 assets/confidential-gate.js             # Confidential Projects tab install, password unlock, report rendering
 assets/confidential-projects.json       # AES-GCM encrypted report content (no plaintext committed)
@@ -45,28 +45,25 @@ coaching-photo.jpg         # optional coaching photo (commented out by default)
 
 ## Main sections
 
-The site is organized into seven tabs, in this order:
+The site is organized into tabs, in this order (Confidential Projects is inserted dynamically at runtime, right after Enterprise Impact — see below):
 
-- **Overview** — headline positioning, career-at-a-glance, operating principles, and a "Who I am" section (community, service, and personal interests).
+- **Overview** — a short "About" intro, an "Explore the portfolio" nav grid linking into every other tab, and the "Operating principles" that describe how I approach the work.
 - **Enterprise Impact** — an enterprise proof summary, the full role-level impact stories (commerce, regulated CX, modernization), and named recommendations from colleagues.
-- **Metrics** — an evidence index linking quantified outcomes back to the source story behind each one; a handful of figures are redacted (see Confidential metrics below).
-- **Experience** — role cards with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
-- **Product Lab** — a builder signal, the coaching-to-product discovery story, Dugout Lineup, the AI Career Strategy Team custom GPT, and product/AI writing.
-- **Building in Public** — a dedicated responsive view of combined Dugout Lineup and portfolio-repo commit activity, monthly trends, production release notes, and the detailed six-month table.
-- **Confidential Projects** — a password-gated tab with detailed reports on select initiatives and the problems they solved (see below).
+- **Confidential Projects** — a password-gated tab with detailed "problem → approach → outcome" reports on select initiatives whose specifics are proprietary (see below).
+- **Metrics** — an evidence index ("Metrics & evidence" plus a "Commerce & self-service depth" section) linking quantified outcomes back to the source story behind each one; a handful of figures are redacted (see Confidential metrics below).
+- **Experience** — role cards ("Roles & experience") with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
+- **Learning** — education history and the certifications and skills behind the practice (agile, analysis, and AI-assisted product work).
+- **Product Lab** — a builder signal (the coaching-to-product discovery-to-build story) and a Projects grid covering Dugout Lineup, the AI Career Strategy Team custom GPT, KidCoord, HomeAtlas, and product/AI writing.
+- **Contact** — an "Open to" card (role interests plus email/LinkedIn/GitHub/Substack links), the "Next chapter" direction I'm headed, and a "Beyond the work" section on community, service, and personal interests.
 
-## Automated product activity
+## Automated product activity (currently removed)
 
-The **Building in Public** tab displays a rolling six-month view of shipped work, combining Dugout Lineup delivery with this portfolio repo's own commit activity into one set of monthly totals.
+Product Lab previously had a **Building in Public** tab installed at runtime, showing a rolling view of shipped work combining Dugout Lineup delivery with this portfolio repo's own commit activity. It's removed for now — the presentation (metric tiles and trend chart, then later a stripped-down "north star" callout) never landed on something worth keeping alongside the rest of the site.
 
-- `assets/product-activity.css` contains the dedicated desktop and mobile presentation.
-- `assets/product-activity.js` installs the tab before the core navigation initializes, moves the dashboard into its own panel, and loads the public activity JSON.
-- The JSON is generated in `kaushikkuberanathan/lineup_generator` (private) — its `generate-product-activity.mjs` fetches commits/PRs from both that repo (`develop`) and this one (`main`) and merges them before publishing — then published to the `activity-data` branch of **this** repo, so the sanitized metrics stay public even though the lineup_generator app source does not. The `repositories` field in the published JSON lists every source included.
-- Delivery volume is commit-driven: each eligible non-merge commit is counted once and classified as either a product improvement or a quality improvement.
-- Product and quality counts reconcile to the committed-improvements total for every month.
-- Production releases and the latest links remain release-note driven, using user-facing promotion PRs rather than story PRs.
-
-The dashboard intentionally emphasizes sustained product-building effort and production evidence rather than PR volume.
+- The `[data-product-activity]` markup section that `installActivityTab()` (in `assets/product-activity.js`) looks for has been deleted from `index.html`, so the tab no longer installs — the function no-ops gracefully rather than erroring.
+- `assets/product-activity.js` is still loaded for `installResumeGate()` (see Résumé download & lead capture below); the activity-tab functions in that file are just currently unused.
+- `assets/product-activity.css` is unreferenced but kept in the repo.
+- The underlying data pipeline is untouched: `kaushikkuberanathan/lineup_generator`'s `generate-product-activity.mjs` still runs on its own schedule and publishes to this repo's `activity-data` branch, so reinstating the tab later is a markup/link-tag change, not a data-pipeline rebuild.
 
 ## Résumé download & lead capture
 
@@ -88,7 +85,7 @@ The **Confidential Projects** tab holds detailed "problem → approach → outco
 **How it works**
 
 - `assets/confidential-projects.json` contains only an AES-GCM ciphertext (plus a random salt/IV), never plaintext. Anyone can `view-source` or download this file and see nothing readable.
-- `assets/confidential-gate.js` installs the tab (mirroring how `product-activity.js` installs "Building in Public"), and on password submit: derives an AES-256 key from the entered password via PBKDF2-SHA256 (200,000 iterations) using WebCrypto's `crypto.subtle`, then attempts to decrypt the ciphertext. A wrong password fails the AES-GCM authentication check and shows "Incorrect password" — nothing about the content is revealed either way.
+- `assets/confidential-gate.js` installs the tab (inserted right after Enterprise Impact at runtime), and on password submit: derives an AES-256 key from the entered password via PBKDF2-SHA256 (200,000 iterations) using WebCrypto's `crypto.subtle`, then attempts to decrypt the ciphertext. A wrong password fails the AES-GCM authentication check and shows "Incorrect password" — nothing about the content is revealed either way.
 - After 3 failed attempts, the Unlock button locks out with a short, increasing countdown (client-side friction only, not real rate limiting).
 - A successful unlock renders the reports into the DOM for that page load only; nothing is cached in `localStorage`/`sessionStorage`, so reloading the tab re-locks it.
 - Visitors without the password can request access via the "Request access" `mailto:` link in the gate (there's no backend/form handler on this static site, so email is the access-request channel).

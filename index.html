@@ -1321,7 +1321,6 @@
       line-height: 1.4;
     }
 </style>
-<link href="assets/product-activity.css" rel="stylesheet"/>
 <link href="assets/confidential-gate.css" rel="stylesheet"/>
 </head>
 <body>
@@ -2066,38 +2065,6 @@ Live app
 </div>
 </section>
 
-<section
-  aria-labelledby="building-public-title"
-  class="card"
-  data-activity-url="https://raw.githubusercontent.com/kaushikkuberanathan/kaushikkuberanathan.github.io/activity-data/product-activity.json"
-  data-product-activity
-  id="building-in-public"
->
-  <h2 class="section-title" id="building-public-title">Building in public</h2>
-  <p class="section-intro">A behind-the-scenes look at how Dugout Lineup and this site evolve day to day — less a scoreboard, more a record of the judgment calls behind each change.</p>
-
-  <div class="activity-northstar">
-    <div class="activity-northstar-label">What I optimize for</div>
-    <p class="activity-northstar-copy">Fewer, more deliberate changes aimed at one thing: making the product trustworthy when it actually matters — a coach at home plate, not a features checklist. Most of the work here is quiet: tightening reliability, simplifying a flow, or walking back something that didn't earn its complexity. Shipping volume is a side effect, not the goal.</p>
-  </div>
-
-  <div aria-live="polite" class="activity-status" data-activity-status>Loading current product activity…</div>
-
-  <div class="activity-shell" data-activity-content hidden>
-    <p class="activity-signal" data-activity-signal></p>
-
-    <article class="activity-panel">
-      <h3 class="activity-panel-title">What shipped recently</h3>
-      <p class="activity-panel-copy">A few of the most recent releases, in plain language — not a changelog dump.</p>
-      <div data-activity-highlights></div>
-    </article>
-
-    <div class="activity-meta">
-      <span data-activity-updated></span>
-    </div>
-  </div>
-</section>
-
 <section aria-labelledby="projects-title" class="card">
 <h2 class="section-title" id="projects-title">Projects</h2>
 <div class="project-grid">
@@ -2299,10 +2266,10 @@ Substack
 <script src="assets/confidential-gate.js"></script>
 <script>
     (function () {
-      // product-activity.js and confidential-gate.js insert their tabs at
-      // specific positions (see those files), so Contact should already be
-      // last. Re-append it anyway as a safety net in case a future dynamic
-      // tab falls back to a blind append.
+      // confidential-gate.js inserts its tab right after Enterprise Impact
+      // (see that file), so Contact should already be last. Re-append it
+      // anyway as a safety net in case a future dynamic tab falls back to
+      // a blind append.
       const contactButton = document.getElementById('tab-contact');
       if (contactButton) contactButton.parentElement.appendChild(contactButton);
 
