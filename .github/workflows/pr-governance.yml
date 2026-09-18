@@ -1,12 +1,48 @@
-name: PR governance (product-ops)
+# Canon: kaushikkuberanathan/product-ops/.github/workflows/pr-governance-guard.yml@v0.1.1
+# profile: portfolio-light (require_soak=false, require_worktree_field=false).
+# Inlined here because GitHub blocks public→private reusable workflow calls
+# (this public repo cannot call private product-ops). Keep in sync with product-ops @ v0.1.1.
+name: PR governance (portfolio-light inline)
 
 on:
   pull_request:
 
 jobs:
-  governance:
-    uses: kaushikkuberanathan/product-ops/.github/workflows/pr-governance-guard.yml@v0.1.1
-    with:
-      profile: portfolio-light
-      require_soak: false
-      require_worktree_field: false
+  pr-body:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'pull_request' || github.event_name == 'pull_request_target'
+    steps:
+      - name: Check PR body required sections
+        uses: actions/github-script@v7
+        with:
+          script: |
+            // portfolio-light: require_soak=false, require_worktree_field=false
+            const profile = 'portfolio-light';
+            const requireSoak = false;
+            const requireWorktree = false;
+            const pr = context.payload.pull_request;
+            if (!pr) {
+              core.info('No pull_request payload; skipping.');
+              return;
+            }
+            const body = pr.body || '';
+            const missing = [];
+            if (!/related issue/i.test(body)) missing.push('Related Issue section');
+            if (!/summary/i.test(body)) missing.push('Summary section');
+            if (requireWorktree && !/worktree/i.test(body)) missing.push('Worktree section');
+            if (!/evidence:/i.test(body) && !/smoke-test evidence/i.test(body)) {
+              missing.push('Smoke-test Evidence (or Evidence:)');
+            }
+            if (requireSoak && !/soak/i.test(body) && !/ship gate/i.test(body)) {
+              missing.push('Ship Gate / soak language (require_soak=true)');
+            }
+            // Negation auto-close anti-pattern
+            if (/\b(does\s+not|doesn't|do\s+not)\s+(fix|close|resolve)s?\s+#\d+/i.test(body)) {
+              core.setFailed('PR body contains "does not fix/close #N" which still auto-closes. Use "See #N" instead.');
+              return;
+            }
+            if (missing.length) {
+              core.setFailed(`Profile ${profile}: missing required PR sections: ${missing.join(', ')}`);
+              return;
+            }
+            core.info(`Profile ${profile}: PR governance checks passed.`);

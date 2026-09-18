@@ -1287,15 +1287,18 @@
     }
 
     @media (max-width: 779px) {
+      .tabs {
+        flex-wrap: wrap;
+        overflow-x: visible;
+        row-gap: 8px;
+      }
+      .tab-button {
+        padding: 7px 11px;
+        font-size: 12px;
+      }
+      /* Fade only applies when tabs scroll horizontally; wrapping removes overflow so hide it. */
       .tabs-shell::after {
-        content: '';
-        position: absolute;
-        top: 10px;
-        right: 0;
-        bottom: 12px;
-        width: 32px;
-        background: linear-gradient(to right, rgba(244, 245, 247, 0), rgba(244, 245, 247, 0.95));
-        pointer-events: none;
+        display: none;
       }
     }
 
