@@ -1,7 +1,7 @@
-name: Post-merge issue closeout (inlined from product-ops v0.2.0)
+name: Post-merge issue closeout (inlined from product-ops v0.2.1)
 
 # Inlined because this public repo cannot `uses:` private kaushikkuberanathan/product-ops.
-# Canon: product-ops/.github/workflows/post-merge-closeout.yml@v0.2.0 — keep in sync on bumps.
+# Canon: product-ops/.github/workflows/post-merge-closeout.yml@v0.2.1 — keep in sync on bumps.
 
 on:
   pull_request:
@@ -109,6 +109,9 @@ jobs:
               return;
             }
 
+            const missingMilestoneIssues = [];
+            const MILESTONE_WARNING_MARK = '<!-- milestone-missing-warning:v1 -->';
+
             for (const issueNumber of issueNumbers) {
               const { data: issue } = await github.rest.issues.get({
                 ...context.repo,
@@ -131,6 +134,7 @@ jobs:
                 });
               }
 
+              // Close completed. Do not set `milestone` — never invent/auto-assign.
               await github.rest.issues.update({
                 ...context.repo,
                 issue_number: issueNumber,
@@ -174,5 +178,53 @@ jobs:
                   'Post-merge closeout removed all `status:*` labels, released the work claim, ' +
                   'cleared assignment, and verified the issue is closed.',
               });
+
+              // Release Hygienist: warn when the closed-out issue has no tranche
+              // milestone. Never invent or auto-assign a milestone here.
+              if (!issue.milestone) {
+                missingMilestoneIssues.push(issueNumber);
+                const alreadyWarned = comments.some((comment) =>
+                  comment.body?.includes(MILESTONE_WARNING_MARK)
+                );
+                if (!alreadyWarned) {
+                  await github.rest.issues.createComment({
+                    ...context.repo,
+                    issue_number: issueNumber,
+                    body:
+                      `${MILESTONE_WARNING_MARK}\n` +
+                      'Release Hygienist: this issue had **no milestone** at closeout. ' +
+                      'Open work is expected on a **tranche milestone**. ' +
+                      'Attach an existing milestone (Story Refiner attach-on-file); ' +
+                      'Mode B does not invent or auto-assign one.',
+                  });
+                }
+                core.warning(
+                  `Issue #${issueNumber} has no milestone; posted Release Hygienist warning (no auto-assign).`
+                );
+              }
+
               core.info(`Closed out issue #${issueNumber} from PR #${pr.number}.`);
+            }
+
+            if (missingMilestoneIssues.length) {
+              const prComments = await github.paginate(github.rest.issues.listComments, {
+                ...context.repo,
+                issue_number: pr.number,
+                per_page: 100,
+              });
+              const alreadyPrWarned = prComments.some((comment) =>
+                comment.body?.includes(MILESTONE_WARNING_MARK)
+              );
+              if (!alreadyPrWarned) {
+                const refs = missingMilestoneIssues.map((n) => `#${n}`).join(', ');
+                await github.rest.issues.createComment({
+                  ...context.repo,
+                  issue_number: pr.number,
+                  body:
+                    `${MILESTONE_WARNING_MARK}\n` +
+                    `Release Hygienist: linked issue(s) ${refs} had **no milestone** at closeout. ` +
+                    'Open work is expected on a tranche milestone — attach an existing one; ' +
+                    'Mode B does not invent or auto-assign milestones.',
+                });
+              }
             }
