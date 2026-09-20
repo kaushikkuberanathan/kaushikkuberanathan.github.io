@@ -53,7 +53,7 @@ The site is organized into tabs, in this order (Confidential Projects is inserte
 - **Metrics** — an evidence index ("Metrics & evidence" plus a "Commerce & self-service depth" section) linking quantified outcomes back to the source story behind each one; a handful of figures are redacted (see Confidential metrics below).
 - **Experience** — role cards ("Roles & experience") with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
 - **Learning** — education history and the certifications and skills behind the practice (agile, analysis, and AI-assisted product work).
-- **Product Lab** — a builder signal (the coaching-to-product discovery-to-build story) and a Projects grid with Dugout Lineup, the AI Career Strategy Team custom GPT, and product/AI writing as primary; KidCoord and HomeAtlas are demoted as Experiments (paused / early-stage, no live product claims).
+- **Product Lab** — a builder signal (the coaching-to-product discovery-to-build story) and a Projects grid with Dugout Lineup, the AI Career Strategy Team custom GPT, HomeAtlas (shared inventory + location QR), and product/AI writing as primary; KidCoord remains under Experiments (paused).
 - **Contact** — "Get in touch" (open-to + preferred next step: email for roles, LinkedIn for network), "Follow the work" (GitHub/Substack), "Next chapter" direction, and "Beyond the work" on community, service, and personal interests.
 
 ## Automated product activity (currently removed)
