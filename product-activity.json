@@ -1,0 +1,367 @@
+{
+  "schemaVersion": 1,
+  "generatedAt": "2026-09-21T17:05:46.508Z",
+  "repository": "kaushikkuberanathan/lineup_generator + kaushikkuberanathan/kaushikkuberanathan.github.io + kaushikkuberanathan/HomeAtlas",
+  "repositories": [
+    "kaushikkuberanathan/lineup_generator",
+    "kaushikkuberanathan/kaushikkuberanathan.github.io",
+    "kaushikkuberanathan/HomeAtlas"
+  ],
+  "sources": [
+    {
+      "repository": "kaushikkuberanathan/lineup_generator",
+      "branch": "develop"
+    },
+    {
+      "repository": "kaushikkuberanathan/kaushikkuberanathan.github.io",
+      "branch": "main"
+    },
+    {
+      "repository": "kaushikkuberanathan/HomeAtlas",
+      "branch": "main"
+    }
+  ],
+  "windowMonths": 6,
+  "definitions": {
+    "mergedPullRequests": "Merged PR count retained for backward compatibility; the public dashboard uses individual commits as the primary delivery measure.",
+    "productImprovements": "Individual non-merge feature commits on the source branch, excluding bots and generated activity refreshes.",
+    "productionReleases": "User-facing release or promotion PRs merged into main.",
+    "qualityImprovements": "All other eligible individual commits, including fixes, tests, security, reliability, accessibility, documentation, refactoring, build work, and technical debt.",
+    "developmentCommits": "All eligible individual non-merge, non-bot commits on the source branch. Product and quality counts reconcile to this total.",
+    "latestReleaseNotes": "The three most recent user-facing production releases, summarized from the first Shipping bullet; internal-only releases are excluded."
+  },
+  "months": [
+    {
+      "key": "2026-04",
+      "label": "Apr 2026",
+      "mergedPullRequests": 25,
+      "productImprovements": 18,
+      "productionReleases": 9,
+      "qualityImprovements": 153,
+      "developmentCommits": 171,
+      "otherPullRequests": 16,
+      "releaseNotes": [
+        {
+          "number": 29,
+          "title": "Release v2.5.2: Game Mode polish — count strip, Toast, mercy banner symmetry",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/29"
+        },
+        {
+          "number": 27,
+          "title": "Release: v2.5.1 to production (bundles v2.4.0 + v2.5.0 + v2.5.1)",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/27"
+        },
+        {
+          "number": 17,
+          "title": "docs: add Pre-release Docs Checklist to CLAUDE.md",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/17"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 29,
+          "title": "Release v2.5.2: Game Mode polish — count strip, Toast, mercy banner symmetry",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/29"
+        },
+        {
+          "number": 27,
+          "title": "Release: v2.5.1 to production (bundles v2.4.0 + v2.5.0 + v2.5.1)",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/27"
+        },
+        {
+          "number": 17,
+          "title": "docs: add Pre-release Docs Checklist to CLAUDE.md",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/17"
+        }
+      ]
+    },
+    {
+      "key": "2026-05",
+      "label": "May 2026",
+      "mergedPullRequests": 150,
+      "productImprovements": 20,
+      "productionReleases": 21,
+      "qualityImprovements": 136,
+      "developmentCommits": 156,
+      "otherPullRequests": 129,
+      "releaseNotes": [
+        {
+          "number": 250,
+          "title": "chore: promote v2.5.23 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/250"
+        },
+        {
+          "number": 239,
+          "title": "release: v2.5.22 — DefenseDiamond + MaintenanceScreen token migration; sync-script CRLF fix",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/239"
+        },
+        {
+          "number": 222,
+          "title": "chore: promote v2.5.21 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/222"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 250,
+          "title": "chore: promote v2.5.23 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/250"
+        },
+        {
+          "number": 239,
+          "title": "release: v2.5.22 — DefenseDiamond + MaintenanceScreen token migration; sync-script CRLF fix",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/239"
+        },
+        {
+          "number": 222,
+          "title": "chore: promote v2.5.21 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/222"
+        }
+      ]
+    },
+    {
+      "key": "2026-06",
+      "label": "Jun 2026",
+      "mergedPullRequests": 47,
+      "productImprovements": 9,
+      "productionReleases": 7,
+      "qualityImprovements": 60,
+      "developmentCommits": 69,
+      "otherPullRequests": 40,
+      "releaseNotes": [
+        {
+          "number": 334,
+          "title": "Release v2.5.30 — Demo All-Stars team",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/334"
+        },
+        {
+          "number": 327,
+          "title": "Release v2.5.29 - brand mark on About tab + printed lineups",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/327"
+        },
+        {
+          "number": 323,
+          "title": "Release v2.5.28 — Dugout Lineup brand mark across app + share surfaces",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/323"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 334,
+          "title": "Release v2.5.30 — Demo All-Stars team",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/334"
+        },
+        {
+          "number": 327,
+          "title": "Release v2.5.29 - brand mark on About tab + printed lineups",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/327"
+        },
+        {
+          "number": 323,
+          "title": "Release v2.5.28 — Dugout Lineup brand mark across app + share surfaces",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/323"
+        }
+      ]
+    },
+    {
+      "key": "2026-07",
+      "label": "Jul 2026",
+      "mergedPullRequests": 82,
+      "productImprovements": 13,
+      "productionReleases": 13,
+      "qualityImprovements": 105,
+      "developmentCommits": 118,
+      "otherPullRequests": 69,
+      "releaseNotes": [
+        {
+          "number": 6,
+          "title": "Show commit-driven Building in Public metrics",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/6"
+        },
+        {
+          "number": 3,
+          "title": "Add automated live portfolio smoke testing",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/3"
+        },
+        {
+          "number": 2,
+          "title": "Move Building in Public into a responsive tab",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/2"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 6,
+          "title": "Show commit-driven Building in Public metrics",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/6"
+        },
+        {
+          "number": 3,
+          "title": "Add automated live portfolio smoke testing",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/3"
+        },
+        {
+          "number": 2,
+          "title": "Move Building in Public into a responsive tab",
+          "url": "https://github.com/kaushikkuberanathan/kaushikkuberanathan.github.io/pull/2"
+        }
+      ]
+    },
+    {
+      "key": "2026-08",
+      "label": "Aug 2026",
+      "mergedPullRequests": 356,
+      "productImprovements": 36,
+      "productionReleases": 15,
+      "qualityImprovements": 387,
+      "developmentCommits": 423,
+      "otherPullRequests": 341,
+      "releaseNotes": [
+        {
+          "number": 991,
+          "title": "release: promote v3.1.1 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/991"
+        },
+        {
+          "number": 959,
+          "title": "release: promote v3.1.0 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/959"
+        },
+        {
+          "number": 912,
+          "title": "docs: correct stale test-count references + FEATURE_MAP row 11 typo (main)",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/912"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 991,
+          "title": "release: promote v3.1.1 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/991"
+        },
+        {
+          "number": 959,
+          "title": "release: promote v3.1.0 to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/959"
+        },
+        {
+          "number": 912,
+          "title": "docs: correct stale test-count references + FEATURE_MAP row 11 typo (main)",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/912"
+        }
+      ]
+    },
+    {
+      "key": "2026-09",
+      "label": "Sep 2026",
+      "mergedPullRequests": 446,
+      "productImprovements": 142,
+      "productionReleases": 27,
+      "qualityImprovements": 445,
+      "developmentCommits": 587,
+      "otherPullRequests": 419,
+      "releaseNotes": [
+        {
+          "number": 165,
+          "title": "docs: check off shipped ROADMAP items (#69, #72, #77, #146)",
+          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/165"
+        },
+        {
+          "number": 163,
+          "title": "feat: household activity feed with five event types (#72)",
+          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/163"
+        },
+        {
+          "number": 159,
+          "title": "feat: track expiration dates on placements (#69)",
+          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/159"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 165,
+          "title": "docs: check off shipped ROADMAP items (#69, #72, #77, #146)",
+          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/165"
+        },
+        {
+          "number": 163,
+          "title": "feat: household activity feed with five event types (#72)",
+          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/163"
+        },
+        {
+          "number": 159,
+          "title": "feat: track expiration dates on placements (#69)",
+          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/159"
+        }
+      ]
+    }
+  ],
+  "totals": {
+    "mergedPullRequests": 1106,
+    "productImprovements": 238,
+    "productionReleases": 92,
+    "qualityImprovements": 1286,
+    "developmentCommits": 1524
+  },
+  "currentMonth": {
+    "key": "2026-09",
+    "label": "Sep 2026",
+    "mergedPullRequests": 446,
+    "productImprovements": 142,
+    "productionReleases": 27,
+    "qualityImprovements": 445,
+    "developmentCommits": 587,
+    "otherPullRequests": 419,
+    "releaseNotes": [
+      {
+        "number": 165,
+        "title": "docs: check off shipped ROADMAP items (#69, #72, #77, #146)",
+        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/165"
+      },
+      {
+        "number": 163,
+        "title": "feat: household activity feed with five event types (#72)",
+        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/163"
+      },
+      {
+        "number": 159,
+        "title": "feat: track expiration dates on placements (#69)",
+        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/159"
+      }
+    ],
+    "highlights": [
+      {
+        "number": 165,
+        "title": "docs: check off shipped ROADMAP items (#69, #72, #77, #146)",
+        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/165"
+      },
+      {
+        "number": 163,
+        "title": "feat: household activity feed with five event types (#72)",
+        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/163"
+      },
+      {
+        "number": 159,
+        "title": "feat: track expiration dates on placements (#69)",
+        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/159"
+      }
+    ]
+  },
+  "latestReleaseNotes": [
+    {
+      "number": 165,
+      "title": "docs: check off shipped ROADMAP items (#69, #72, #77, #146)",
+      "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/165"
+    },
+    {
+      "number": 163,
+      "title": "feat: household activity feed with five event types (#72)",
+      "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/163"
+    },
+    {
+      "number": 159,
+      "title": "feat: track expiration dates on placements (#69)",
+      "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/159"
+    }
+  ]
+}
