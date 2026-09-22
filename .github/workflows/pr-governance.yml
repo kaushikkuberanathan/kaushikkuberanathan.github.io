@@ -6,6 +6,7 @@ name: PR governance (portfolio-light inline)
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened, edited]
 
 jobs:
   pr-body:
