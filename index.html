@@ -807,12 +807,16 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--green);
       color: #fff;
       font-weight: 900;
       font-size: 14px;
       flex: 0 0 auto;
     }
+    .project-logo-fallback.green { background: var(--green); }
+    .project-logo-fallback.blue { background: var(--blue); }
+    .project-logo-fallback.purple { background: var(--purple); }
+    .project-logo-fallback.amber { background: var(--amber); }
+    .project-logo-fallback.gray { background: var(--muted); }
 
     .project-title { font-size: 17px; margin: 0; font-weight: 850; }
     .project-sub { color: var(--muted); font-size: 13px; margin: 2px 0 0; }
@@ -2124,7 +2128,7 @@ Live app
 <p class="project-sub">Youth sports technology · Founder &amp; Product Lead</p>
 </div>
 <img alt="Dugout Lineup logo" class="project-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" src="icons/dugout-lineup-logo.png"/>
-                <div aria-hidden="true" class="project-logo-fallback" style="display:none;">DL</div>
+                <div aria-hidden="true" class="project-logo-fallback green" style="display:none;">DL</div>
 </div>
 <p class="project-copy">Coaches build lineups and track playing-time fairness by hand under real game pressure, with no shared view for parents or scorekeepers. Dugout Lineup fixes that — fair rotations calculate automatically, and everyone sees the same live game plan.</p>
 <ul class="mini-list">
@@ -2147,7 +2151,7 @@ Live app
 <div class="project-head">
 <div>
 <h3 class="project-title">AI Career Strategy Team</h3>
-<p class="project-sub">Multi-persona career decision engine · Custom GPT</p>
+<p class="project-sub">Multi-persona career decision engine · Custom GPT · Builder</p>
 </div>
 <div class="project-icon blue">AI</div>
 </div>
@@ -2166,16 +2170,16 @@ Live app
                 Repo
               </a>
 </div>
-<div class="project-tags"><span class="pill purple">Custom GPT</span><span class="pill blue">Prompt architecture</span></div>
+<div class="project-tags"><span class="pill amber">Builder</span><span class="pill purple">Custom GPT</span><span class="pill blue">Prompt architecture</span></div>
 </article>
 <article class="project-card" id="project-locado">
 <div class="project-head">
 <div>
 <h3 class="project-title">Locado</h3>
-<p class="project-sub">Household inventory platform · rebrand of HomeAtlas</p>
+<p class="project-sub">Household inventory platform · rebrand of HomeAtlas · Founder</p>
 </div>
 <img alt="Locado logo" class="project-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" src="icons/locado-logo.svg"/>
-                <div aria-hidden="true" class="project-logo-fallback" style="display:none;">LC</div>
+                <div aria-hidden="true" class="project-logo-fallback blue" style="display:none;">LC</div>
 </div>
 <p class="project-copy">Households lose track of what they own and where it lives — "do we have this?" and "where did it go?" have no reliable shared answer. Locado (rebranding from HomeAtlas) answers both in seconds: a real physical hierarchy — property → room → location → container — behind a shared, role-based household inventory, with Location and Item QR mapping the physical world straight to the digital record.</p>
 <ul class="mini-list">
@@ -2188,7 +2192,7 @@ Live app
 Live app
 </a>
 </div>
-<div class="project-tags"><span class="pill green">Live</span><span class="pill amber">QR + barcode</span><span class="pill blue">Next.js</span><span class="pill purple">AI-assisted build</span></div>
+<div class="project-tags"><span class="pill amber">Founder</span><span class="pill green">Live</span><span class="pill amber">QR + barcode</span><span class="pill blue">Next.js</span><span class="pill purple">AI-assisted build</span></div>
 </article>
 <article class="project-card" id="project-writing">
 <div class="project-head">
@@ -2214,7 +2218,7 @@ Live app
 <div class="project-head">
 <div>
 <h3 class="project-title">KidCoord</h3>
-<p class="project-sub">Parent carpool-coordination platform</p>
+<p class="project-sub">Parent carpool-coordination platform · Founder</p>
 </div>
 <div class="project-icon green">KC</div>
 </div>
@@ -2223,7 +2227,7 @@ Live app
 <li>Paused after the core data model and reliable-sync foundation were built — on hold, not abandoned.</li>
 <li>Built so a spotty connection at pickup time never creates a duplicate or lost ride request.</li>
 </ul>
-<div class="project-tags"><span class="pill gray">Experiment</span><span class="pill gray">Paused</span><span class="pill blue">React Native</span></div>
+<div class="project-tags"><span class="pill amber">Founder</span><span class="pill gray">Experiment</span><span class="pill gray">Paused</span><span class="pill blue">React Native</span></div>
 </article>
 </div>
 </section>
