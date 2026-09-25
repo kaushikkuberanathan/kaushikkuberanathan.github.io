@@ -1,0 +1,67 @@
+name: Portfolio accessibility
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'assets/**'
+      - 'scripts/a11y-check.mjs'
+      - '.github/workflows/a11y.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-a11y-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  a11y:
+    name: Accessibility (serious/critical)
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # puppeteer downloads a Chrome build that matches this driver.
+      # axe-core is dev-only; the GitHub Pages site has no npm build.
+      - name: Install axe-core runner
+        run: npm install --prefix /tmp/portfolio-a11y --no-save --no-package-lock puppeteer@25.12.0 axe-core@4.13.0
+
+      - name: Start static server
+        run: |
+          python -m http.server 8000 --bind 127.0.0.1 > /tmp/portfolio-http.log 2>&1 &
+          echo $! > /tmp/portfolio-http.pid
+          for _ in 1 2 3 4 5 6 7 8 9 10; do
+            if curl --fail --silent --output /dev/null http://127.0.0.1:8000/; then
+              exit 0
+            fi
+            sleep 0.5
+          done
+          echo "Static server did not become ready" >&2
+          cat /tmp/portfolio-http.log >&2 || true
+          exit 1
+
+      - name: Run axe-core on Overview, Product Lab, and Contact
+        env:
+          NODE_PATH: /tmp/portfolio-a11y/node_modules
+          PORTFOLIO_SITE_URL: http://127.0.0.1:8000/
+          A11Y_REPORT_PATH: a11y-report.json
+        run: node scripts/a11y-check.mjs
+
+      - name: Upload axe report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: a11y-report
+          path: a11y-report.json
+          if-no-files-found: warn
