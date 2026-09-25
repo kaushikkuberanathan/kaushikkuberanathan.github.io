@@ -21,7 +21,9 @@ assets/confidential-gate.js             # Confidential Projects tab install, pas
 assets/confidential-projects.json       # AES-GCM encrypted report content (no plaintext committed)
 scripts/encrypt-confidential.js         # regenerates assets/confidential-projects.json from local plaintext
 scripts/live-smoke.py                   # desktop/mobile browser validation
+scripts/a11y-check.mjs                  # axe-core check for Overview, Product Lab, Contact
 .github/workflows/live-smoke.yml        # local PR smoke + deployed main smoke
+.github/workflows/a11y.yml              # PR axe-core gate (fail on serious/critical)
 kaushik-headshot.jpg                    # hero headshot
 Kaushik Kuberanathan - Resume.pdf       # résumé served by the "View résumé" CTA
 resume-lead-apps-script.gs              # Google Apps Script source for the résumé lead-capture backend (deployed separately, not built by this repo)
@@ -110,6 +112,20 @@ The smoke workflow uses the same browser assertions in two modes:
 
 1. Pull requests start a local static server and validate the proposed branch at desktop and 390px mobile widths.
 2. Pushes to `main` wait for GitHub Pages propagation and validate the deployed site, activity JSON, favicon, navigation, responsive containment, release-note links, and browser console.
+
+## Accessibility check
+
+`.github/workflows/a11y.yml` runs axe-core (`scripts/a11y-check.mjs`) on a local static server for three surfaces. Each view is opened with the same URL hash the site already handles in `hydrateFromHash()` (the same mechanism `scripts/live-smoke.py` uses for `#tab-experience`):
+
+| Surface | Hash | Panel |
+| --- | --- | --- |
+| Overview | `#tab-overview` | `panel-overview` |
+| Product Lab | `#tab-builder` | `panel-builder` |
+| Contact | `#tab-contact` | `panel-contact` |
+
+**Mode: fail on serious and critical.** Moderate and minor violations are printed in the job log and do not fail the check. `A11Y_WARN_ONLY=1` forces warn-only (exit 0); CI leaves that unset. This is a light static-site gate, not a full WCAG audit.
+
+The gate's first green baseline needed three contrast tweaks in `index.html`: footer text and the gray pill were just under 4.5:1, and the paused Product Lab card's `opacity: 0.92` was washing its text out. Product Lab and Contact still report `page-has-heading-one` (moderate) because the hero, including its `h1`, is hidden off Overview. That warning does not fail the job.
 
 ## Updating the site
 

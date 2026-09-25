@@ -526,7 +526,8 @@
     .pill.red { color: var(--red); background: var(--red-soft); border-color: #ffcdc7; }
     .pill.blue { color: var(--blue); background: var(--blue-soft); border-color: #bfdbfe; }
     .pill.purple { color: var(--purple); background: var(--purple-soft); border-color: #ddd0ff; }
-    .pill.gray { color: var(--muted); background: #f1f2f4; border-color: var(--border); }
+    /* --muted on this fill is 4.44:1; 12px bold text needs 4.5:1. */
+    .pill.gray { color: #5d6578; background: #f1f2f4; border-color: var(--border); }
 
     .cert-pill { gap: 6px; }
     .cert-pill-icon { width: 14px; height: 14px; object-fit: contain; flex: 0 0 auto; }
@@ -756,7 +757,6 @@
       min-height: 0;
       padding: 14px;
       gap: 8px;
-      opacity: 0.92;
     }
     .project-card.experiment .project-title { font-size: 15px; color: var(--muted); }
     .project-card.experiment .project-sub { font-size: 12px; }
@@ -936,7 +936,8 @@
 
 
     .footer {
-      color: var(--muted);
+      /* --muted (#667085) is 4.28:1 on --page; 12px text needs 4.5:1. */
+      color: #5d6578;
       font-size: 12px;
       text-align: center;
       margin: 22px 0 4px;

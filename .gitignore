@@ -3,3 +3,6 @@
 scripts/confidential-content.local.json
 scripts/*.local.json
 scripts/__pycache__/
+
+# Local axe-core report from scripts/a11y-check.mjs (CI uploads it as an artifact).
+a11y-report.json
