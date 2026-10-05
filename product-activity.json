@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-09-21T17:05:46.508Z",
+  "generatedAt": "2026-10-05T21:35:28.709Z",
   "repository": "kaushikkuberanathan/lineup_generator + kaushikkuberanathan/kaushikkuberanathan.github.io + kaushikkuberanathan/HomeAtlas",
   "repositories": [
     "kaushikkuberanathan/lineup_generator",
@@ -31,50 +31,6 @@
     "latestReleaseNotes": "The three most recent user-facing production releases, summarized from the first Shipping bullet; internal-only releases are excluded."
   },
   "months": [
-    {
-      "key": "2026-04",
-      "label": "Apr 2026",
-      "mergedPullRequests": 25,
-      "productImprovements": 18,
-      "productionReleases": 9,
-      "qualityImprovements": 153,
-      "developmentCommits": 171,
-      "otherPullRequests": 16,
-      "releaseNotes": [
-        {
-          "number": 29,
-          "title": "Release v2.5.2: Game Mode polish — count strip, Toast, mercy banner symmetry",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/29"
-        },
-        {
-          "number": 27,
-          "title": "Release: v2.5.1 to production (bundles v2.4.0 + v2.5.0 + v2.5.1)",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/27"
-        },
-        {
-          "number": 17,
-          "title": "docs: add Pre-release Docs Checklist to CLAUDE.md",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/17"
-        }
-      ],
-      "highlights": [
-        {
-          "number": 29,
-          "title": "Release v2.5.2: Game Mode polish — count strip, Toast, mercy banner symmetry",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/29"
-        },
-        {
-          "number": 27,
-          "title": "Release: v2.5.1 to production (bundles v2.4.0 + v2.5.0 + v2.5.1)",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/27"
-        },
-        {
-          "number": 17,
-          "title": "docs: add Pre-release Docs Checklist to CLAUDE.md",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/17"
-        }
-      ]
-    },
     {
       "key": "2026-05",
       "label": "May 2026",
@@ -254,114 +210,158 @@
     {
       "key": "2026-09",
       "label": "Sep 2026",
-      "mergedPullRequests": 446,
-      "productImprovements": 142,
-      "productionReleases": 27,
-      "qualityImprovements": 445,
-      "developmentCommits": 587,
-      "otherPullRequests": 419,
+      "mergedPullRequests": 622,
+      "productImprovements": 181,
+      "productionReleases": 52,
+      "qualityImprovements": 694,
+      "developmentCommits": 875,
+      "otherPullRequests": 570,
       "releaseNotes": [
         {
-          "number": 165,
-          "title": "docs: check off shipped ROADMAP items (#69, #72, #77, #146)",
-          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/165"
+          "number": 384,
+          "title": "Publish the QA release evidence and exception runbook",
+          "url": "https://github.com/kaushikkuberanathan/Locado/pull/384"
         },
         {
-          "number": 163,
-          "title": "feat: household activity feed with five event types (#72)",
-          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/163"
+          "number": 381,
+          "title": "Schedule hosted critical-path canaries",
+          "url": "https://github.com/kaushikkuberanathan/Locado/pull/381"
         },
         {
-          "number": 159,
-          "title": "feat: track expiration dates on placements (#69)",
-          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/159"
+          "number": 380,
+          "title": "Add hosted QA project guard and deterministic fixtures",
+          "url": "https://github.com/kaushikkuberanathan/Locado/pull/380"
         }
       ],
       "highlights": [
         {
-          "number": 165,
-          "title": "docs: check off shipped ROADMAP items (#69, #72, #77, #146)",
-          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/165"
+          "number": 384,
+          "title": "Publish the QA release evidence and exception runbook",
+          "url": "https://github.com/kaushikkuberanathan/Locado/pull/384"
         },
         {
-          "number": 163,
-          "title": "feat: household activity feed with five event types (#72)",
-          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/163"
+          "number": 381,
+          "title": "Schedule hosted critical-path canaries",
+          "url": "https://github.com/kaushikkuberanathan/Locado/pull/381"
         },
         {
-          "number": 159,
-          "title": "feat: track expiration dates on placements (#69)",
-          "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/159"
+          "number": 380,
+          "title": "Add hosted QA project guard and deterministic fixtures",
+          "url": "https://github.com/kaushikkuberanathan/Locado/pull/380"
+        }
+      ]
+    },
+    {
+      "key": "2026-10",
+      "label": "Oct 2026",
+      "mergedPullRequests": 80,
+      "productImprovements": 7,
+      "productionReleases": 3,
+      "qualityImprovements": 119,
+      "developmentCommits": 126,
+      "otherPullRequests": 77,
+      "releaseNotes": [
+        {
+          "number": 1941,
+          "title": "Release 2026.10.1: coach fixes, API write-path completion and team icons",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1941"
+        },
+        {
+          "number": 1898,
+          "title": "Release v4.10.0: promote develop to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1898"
+        },
+        {
+          "number": 1833,
+          "title": "Release v4.9.0: promote frozen develop to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1833"
+        }
+      ],
+      "highlights": [
+        {
+          "number": 1941,
+          "title": "Release 2026.10.1: coach fixes, API write-path completion and team icons",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1941"
+        },
+        {
+          "number": 1898,
+          "title": "Release v4.10.0: promote develop to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1898"
+        },
+        {
+          "number": 1833,
+          "title": "Release v4.9.0: promote frozen develop to production",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1833"
         }
       ]
     }
   ],
   "totals": {
-    "mergedPullRequests": 1106,
-    "productImprovements": 238,
-    "productionReleases": 92,
-    "qualityImprovements": 1286,
-    "developmentCommits": 1524
+    "mergedPullRequests": 1337,
+    "productImprovements": 266,
+    "productionReleases": 111,
+    "qualityImprovements": 1501,
+    "developmentCommits": 1767
   },
   "currentMonth": {
-    "key": "2026-09",
-    "label": "Sep 2026",
-    "mergedPullRequests": 446,
-    "productImprovements": 142,
-    "productionReleases": 27,
-    "qualityImprovements": 445,
-    "developmentCommits": 587,
-    "otherPullRequests": 419,
+    "key": "2026-10",
+    "label": "Oct 2026",
+    "mergedPullRequests": 80,
+    "productImprovements": 7,
+    "productionReleases": 3,
+    "qualityImprovements": 119,
+    "developmentCommits": 126,
+    "otherPullRequests": 77,
     "releaseNotes": [
       {
-        "number": 165,
-        "title": "docs: check off shipped ROADMAP items (#69, #72, #77, #146)",
-        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/165"
+        "number": 1941,
+        "title": "Release 2026.10.1: coach fixes, API write-path completion and team icons",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1941"
       },
       {
-        "number": 163,
-        "title": "feat: household activity feed with five event types (#72)",
-        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/163"
+        "number": 1898,
+        "title": "Release v4.10.0: promote develop to production",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1898"
       },
       {
-        "number": 159,
-        "title": "feat: track expiration dates on placements (#69)",
-        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/159"
+        "number": 1833,
+        "title": "Release v4.9.0: promote frozen develop to production",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1833"
       }
     ],
     "highlights": [
       {
-        "number": 165,
-        "title": "docs: check off shipped ROADMAP items (#69, #72, #77, #146)",
-        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/165"
+        "number": 1941,
+        "title": "Release 2026.10.1: coach fixes, API write-path completion and team icons",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1941"
       },
       {
-        "number": 163,
-        "title": "feat: household activity feed with five event types (#72)",
-        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/163"
+        "number": 1898,
+        "title": "Release v4.10.0: promote develop to production",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1898"
       },
       {
-        "number": 159,
-        "title": "feat: track expiration dates on placements (#69)",
-        "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/159"
+        "number": 1833,
+        "title": "Release v4.9.0: promote frozen develop to production",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1833"
       }
     ]
   },
   "latestReleaseNotes": [
     {
-      "number": 165,
-      "title": "docs: check off shipped ROADMAP items (#69, #72, #77, #146)",
-      "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/165"
+      "number": 1941,
+      "title": "Release 2026.10.1: coach fixes, API write-path completion and team icons",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1941"
     },
     {
-      "number": 163,
-      "title": "feat: household activity feed with five event types (#72)",
-      "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/163"
+      "number": 1898,
+      "title": "Release v4.10.0: promote develop to production",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1898"
     },
     {
-      "number": 159,
-      "title": "feat: track expiration dates on placements (#69)",
-      "url": "https://github.com/kaushikkuberanathan/HomeAtlas/pull/159"
+      "number": 1833,
+      "title": "Release v4.9.0: promote frozen develop to production",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1833"
     }
   ]
 }
