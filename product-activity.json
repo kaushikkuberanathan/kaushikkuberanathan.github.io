@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-05T21:35:28.709Z",
+  "generatedAt": "2026-10-12T20:19:01.557Z",
   "repository": "kaushikkuberanathan/lineup_generator + kaushikkuberanathan/kaushikkuberanathan.github.io + kaushikkuberanathan/HomeAtlas",
   "repositories": [
     "kaushikkuberanathan/lineup_generator",
@@ -35,10 +35,10 @@
       "key": "2026-05",
       "label": "May 2026",
       "mergedPullRequests": 150,
-      "productImprovements": 20,
+      "productImprovements": 0,
       "productionReleases": 21,
-      "qualityImprovements": 136,
-      "developmentCommits": 156,
+      "qualityImprovements": 0,
+      "developmentCommits": 0,
       "otherPullRequests": 129,
       "releaseNotes": [
         {
@@ -79,10 +79,10 @@
       "key": "2026-06",
       "label": "Jun 2026",
       "mergedPullRequests": 47,
-      "productImprovements": 9,
+      "productImprovements": 0,
       "productionReleases": 7,
-      "qualityImprovements": 60,
-      "developmentCommits": 69,
+      "qualityImprovements": 31,
+      "developmentCommits": 31,
       "otherPullRequests": 40,
       "releaseNotes": [
         {
@@ -123,10 +123,10 @@
       "key": "2026-07",
       "label": "Jul 2026",
       "mergedPullRequests": 82,
-      "productImprovements": 13,
+      "productImprovements": 12,
       "productionReleases": 13,
-      "qualityImprovements": 105,
-      "developmentCommits": 118,
+      "qualityImprovements": 100,
+      "developmentCommits": 112,
       "otherPullRequests": 69,
       "releaseNotes": [
         {
@@ -254,114 +254,114 @@
     {
       "key": "2026-10",
       "label": "Oct 2026",
-      "mergedPullRequests": 80,
-      "productImprovements": 7,
-      "productionReleases": 3,
-      "qualityImprovements": 119,
-      "developmentCommits": 126,
-      "otherPullRequests": 77,
+      "mergedPullRequests": 267,
+      "productImprovements": 25,
+      "productionReleases": 14,
+      "qualityImprovements": 466,
+      "developmentCommits": 491,
+      "otherPullRequests": 253,
       "releaseNotes": [
         {
-          "number": 1941,
-          "title": "Release 2026.10.1: coach fixes, API write-path completion and team icons",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1941"
+          "number": 2361,
+          "title": "Release 2026.10.9",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2361"
         },
         {
-          "number": 1898,
-          "title": "Release v4.10.0: promote develop to production",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1898"
+          "number": 2328,
+          "title": "Release 2026.10.8 version bump (develop -> main)",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2328"
         },
         {
-          "number": 1833,
-          "title": "Release v4.9.0: promote frozen develop to production",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1833"
+          "number": 2317,
+          "title": "Release 2026.10.8",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2317"
         }
       ],
       "highlights": [
         {
-          "number": 1941,
-          "title": "Release 2026.10.1: coach fixes, API write-path completion and team icons",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1941"
+          "number": 2361,
+          "title": "Release 2026.10.9",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2361"
         },
         {
-          "number": 1898,
-          "title": "Release v4.10.0: promote develop to production",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1898"
+          "number": 2328,
+          "title": "Release 2026.10.8 version bump (develop -> main)",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2328"
         },
         {
-          "number": 1833,
-          "title": "Release v4.9.0: promote frozen develop to production",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1833"
+          "number": 2317,
+          "title": "Release 2026.10.8",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2317"
         }
       ]
     }
   ],
   "totals": {
-    "mergedPullRequests": 1337,
-    "productImprovements": 266,
-    "productionReleases": 111,
-    "qualityImprovements": 1501,
-    "developmentCommits": 1767
+    "mergedPullRequests": 1524,
+    "productImprovements": 254,
+    "productionReleases": 122,
+    "qualityImprovements": 1678,
+    "developmentCommits": 1932
   },
   "currentMonth": {
     "key": "2026-10",
     "label": "Oct 2026",
-    "mergedPullRequests": 80,
-    "productImprovements": 7,
-    "productionReleases": 3,
-    "qualityImprovements": 119,
-    "developmentCommits": 126,
-    "otherPullRequests": 77,
+    "mergedPullRequests": 267,
+    "productImprovements": 25,
+    "productionReleases": 14,
+    "qualityImprovements": 466,
+    "developmentCommits": 491,
+    "otherPullRequests": 253,
     "releaseNotes": [
       {
-        "number": 1941,
-        "title": "Release 2026.10.1: coach fixes, API write-path completion and team icons",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1941"
+        "number": 2361,
+        "title": "Release 2026.10.9",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2361"
       },
       {
-        "number": 1898,
-        "title": "Release v4.10.0: promote develop to production",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1898"
+        "number": 2328,
+        "title": "Release 2026.10.8 version bump (develop -> main)",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2328"
       },
       {
-        "number": 1833,
-        "title": "Release v4.9.0: promote frozen develop to production",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1833"
+        "number": 2317,
+        "title": "Release 2026.10.8",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2317"
       }
     ],
     "highlights": [
       {
-        "number": 1941,
-        "title": "Release 2026.10.1: coach fixes, API write-path completion and team icons",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1941"
+        "number": 2361,
+        "title": "Release 2026.10.9",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2361"
       },
       {
-        "number": 1898,
-        "title": "Release v4.10.0: promote develop to production",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1898"
+        "number": 2328,
+        "title": "Release 2026.10.8 version bump (develop -> main)",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2328"
       },
       {
-        "number": 1833,
-        "title": "Release v4.9.0: promote frozen develop to production",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1833"
+        "number": 2317,
+        "title": "Release 2026.10.8",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2317"
       }
     ]
   },
   "latestReleaseNotes": [
     {
-      "number": 1941,
-      "title": "Release 2026.10.1: coach fixes, API write-path completion and team icons",
-      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1941"
+      "number": 2361,
+      "title": "Release 2026.10.9",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2361"
     },
     {
-      "number": 1898,
-      "title": "Release v4.10.0: promote develop to production",
-      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1898"
+      "number": 2328,
+      "title": "Release 2026.10.8 version bump (develop -> main)",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2328"
     },
     {
-      "number": 1833,
-      "title": "Release v4.9.0: promote frozen develop to production",
-      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/1833"
+      "number": 2317,
+      "title": "Release 2026.10.8",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2317"
     }
   ]
 }
