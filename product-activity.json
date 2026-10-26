@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-10-19T17:30:43.207Z",
+  "generatedAt": "2026-10-26T17:25:17.579Z",
   "repository": "kaushikkuberanathan/lineup_generator + kaushikkuberanathan/kaushikkuberanathan.github.io + kaushikkuberanathan/HomeAtlas",
   "repositories": [
     "kaushikkuberanathan/lineup_generator",
@@ -167,10 +167,10 @@
       "key": "2026-08",
       "label": "Aug 2026",
       "mergedPullRequests": 356,
-      "productImprovements": 16,
+      "productImprovements": 7,
       "productionReleases": 15,
-      "qualityImprovements": 233,
-      "developmentCommits": 249,
+      "qualityImprovements": 127,
+      "developmentCommits": 134,
       "otherPullRequests": 341,
       "releaseNotes": [
         {
@@ -254,114 +254,114 @@
     {
       "key": "2026-10",
       "label": "Oct 2026",
-      "mergedPullRequests": 395,
-      "productImprovements": 42,
-      "productionReleases": 20,
-      "qualityImprovements": 732,
-      "developmentCommits": 774,
-      "otherPullRequests": 375,
+      "mergedPullRequests": 442,
+      "productImprovements": 60,
+      "productionReleases": 22,
+      "qualityImprovements": 902,
+      "developmentCommits": 962,
+      "otherPullRequests": 420,
       "releaseNotes": [
+        {
+          "number": 2690,
+          "title": "Release 2026.10.17",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2690"
+        },
+        {
+          "number": 2655,
+          "title": "Release 2026.10.16",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2655"
+        },
         {
           "number": 2618,
           "title": "Release 2026.10.15",
           "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2618"
-        },
-        {
-          "number": 2577,
-          "title": "Release 2026.10.14",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2577"
-        },
-        {
-          "number": 2494,
-          "title": "Release 2026.10.13",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2494"
         }
       ],
       "highlights": [
         {
+          "number": 2690,
+          "title": "Release 2026.10.17",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2690"
+        },
+        {
+          "number": 2655,
+          "title": "Release 2026.10.16",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2655"
+        },
+        {
           "number": 2618,
           "title": "Release 2026.10.15",
           "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2618"
-        },
-        {
-          "number": 2577,
-          "title": "Release 2026.10.14",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2577"
-        },
-        {
-          "number": 2494,
-          "title": "Release 2026.10.13",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2494"
         }
       ]
     }
   ],
   "totals": {
-    "mergedPullRequests": 1652,
-    "productImprovements": 241,
-    "productionReleases": 128,
-    "qualityImprovements": 1707,
-    "developmentCommits": 1948
+    "mergedPullRequests": 1699,
+    "productImprovements": 250,
+    "productionReleases": 130,
+    "qualityImprovements": 1771,
+    "developmentCommits": 2021
   },
   "currentMonth": {
     "key": "2026-10",
     "label": "Oct 2026",
-    "mergedPullRequests": 395,
-    "productImprovements": 42,
-    "productionReleases": 20,
-    "qualityImprovements": 732,
-    "developmentCommits": 774,
-    "otherPullRequests": 375,
+    "mergedPullRequests": 442,
+    "productImprovements": 60,
+    "productionReleases": 22,
+    "qualityImprovements": 902,
+    "developmentCommits": 962,
+    "otherPullRequests": 420,
     "releaseNotes": [
+      {
+        "number": 2690,
+        "title": "Release 2026.10.17",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2690"
+      },
+      {
+        "number": 2655,
+        "title": "Release 2026.10.16",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2655"
+      },
       {
         "number": 2618,
         "title": "Release 2026.10.15",
         "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2618"
-      },
-      {
-        "number": 2577,
-        "title": "Release 2026.10.14",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2577"
-      },
-      {
-        "number": 2494,
-        "title": "Release 2026.10.13",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2494"
       }
     ],
     "highlights": [
       {
+        "number": 2690,
+        "title": "Release 2026.10.17",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2690"
+      },
+      {
+        "number": 2655,
+        "title": "Release 2026.10.16",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2655"
+      },
+      {
         "number": 2618,
         "title": "Release 2026.10.15",
         "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2618"
-      },
-      {
-        "number": 2577,
-        "title": "Release 2026.10.14",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2577"
-      },
-      {
-        "number": 2494,
-        "title": "Release 2026.10.13",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2494"
       }
     ]
   },
   "latestReleaseNotes": [
     {
+      "number": 2690,
+      "title": "Release 2026.10.17",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2690"
+    },
+    {
+      "number": 2655,
+      "title": "Release 2026.10.16",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2655"
+    },
+    {
       "number": 2618,
       "title": "Release 2026.10.15",
       "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2618"
-    },
-    {
-      "number": 2577,
-      "title": "Release 2026.10.14",
-      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2577"
-    },
-    {
-      "number": 2494,
-      "title": "Release 2026.10.13",
-      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2494"
     }
   ]
 }
