@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-02T20:48:15.889Z",
+  "generatedAt": "2026-11-09T21:28:36.947Z",
   "repository": "kaushikkuberanathan/lineup_generator + kaushikkuberanathan/kaushikkuberanathan.github.io + kaushikkuberanathan/HomeAtlas",
   "repositories": [
     "kaushikkuberanathan/lineup_generator",
@@ -167,10 +167,10 @@
       "key": "2026-09",
       "label": "Sep 2026",
       "mergedPullRequests": 622,
-      "productImprovements": 166,
+      "productImprovements": 109,
       "productionReleases": 52,
-      "qualityImprovements": 647,
-      "developmentCommits": 813,
+      "qualityImprovements": 442,
+      "developmentCommits": 551,
       "otherPullRequests": 570,
       "releaseNotes": [
         {
@@ -254,94 +254,114 @@
     {
       "key": "2026-11",
       "label": "Nov 2026",
-      "mergedPullRequests": 32,
-      "productImprovements": 5,
-      "productionReleases": 2,
-      "qualityImprovements": 43,
-      "developmentCommits": 48,
-      "otherPullRequests": 30,
+      "mergedPullRequests": 152,
+      "productImprovements": 37,
+      "productionReleases": 9,
+      "qualityImprovements": 390,
+      "developmentCommits": 427,
+      "otherPullRequests": 143,
       "releaseNotes": [
         {
-          "number": 2883,
-          "title": "Promote 2026.11.2 — develop → main",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2883"
+          "number": 3185,
+          "title": "Release 2026.11.9: roster settings, pitching and search improvements",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3185"
         },
         {
-          "number": 2844,
-          "title": "Release 2026.11.1",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2844"
+          "number": 3153,
+          "title": "Release 2026.11.8: player development and roster clarity",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3153"
+        },
+        {
+          "number": 3086,
+          "title": "Release 2026.11.7 — per-game attendance and adaptive admin",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3086"
         }
       ],
       "highlights": [
         {
-          "number": 2883,
-          "title": "Promote 2026.11.2 — develop → main",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2883"
+          "number": 3185,
+          "title": "Release 2026.11.9: roster settings, pitching and search improvements",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3185"
         },
         {
-          "number": 2844,
-          "title": "Release 2026.11.1",
-          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2844"
+          "number": 3153,
+          "title": "Release 2026.11.8: player development and roster clarity",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3153"
+        },
+        {
+          "number": 3086,
+          "title": "Release 2026.11.7 — per-game attendance and adaptive admin",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3086"
         }
       ]
     }
   ],
   "totals": {
-    "mergedPullRequests": 1656,
-    "productImprovements": 238,
-    "productionReleases": 115,
-    "qualityImprovements": 1850,
-    "developmentCommits": 2088
+    "mergedPullRequests": 1776,
+    "productImprovements": 213,
+    "productionReleases": 122,
+    "qualityImprovements": 1992,
+    "developmentCommits": 2205
   },
   "currentMonth": {
     "key": "2026-11",
     "label": "Nov 2026",
-    "mergedPullRequests": 32,
-    "productImprovements": 5,
-    "productionReleases": 2,
-    "qualityImprovements": 43,
-    "developmentCommits": 48,
-    "otherPullRequests": 30,
+    "mergedPullRequests": 152,
+    "productImprovements": 37,
+    "productionReleases": 9,
+    "qualityImprovements": 390,
+    "developmentCommits": 427,
+    "otherPullRequests": 143,
     "releaseNotes": [
       {
-        "number": 2883,
-        "title": "Promote 2026.11.2 — develop → main",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2883"
+        "number": 3185,
+        "title": "Release 2026.11.9: roster settings, pitching and search improvements",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3185"
       },
       {
-        "number": 2844,
-        "title": "Release 2026.11.1",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2844"
+        "number": 3153,
+        "title": "Release 2026.11.8: player development and roster clarity",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3153"
+      },
+      {
+        "number": 3086,
+        "title": "Release 2026.11.7 — per-game attendance and adaptive admin",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3086"
       }
     ],
     "highlights": [
       {
-        "number": 2883,
-        "title": "Promote 2026.11.2 — develop → main",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2883"
+        "number": 3185,
+        "title": "Release 2026.11.9: roster settings, pitching and search improvements",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3185"
       },
       {
-        "number": 2844,
-        "title": "Release 2026.11.1",
-        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2844"
+        "number": 3153,
+        "title": "Release 2026.11.8: player development and roster clarity",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3153"
+      },
+      {
+        "number": 3086,
+        "title": "Release 2026.11.7 — per-game attendance and adaptive admin",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3086"
       }
     ]
   },
   "latestReleaseNotes": [
     {
-      "number": 2883,
-      "title": "Promote 2026.11.2 — develop → main",
-      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2883"
+      "number": 3185,
+      "title": "Release 2026.11.9: roster settings, pitching and search improvements",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3185"
     },
     {
-      "number": 2844,
-      "title": "Release 2026.11.1",
-      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2844"
+      "number": 3153,
+      "title": "Release 2026.11.8: player development and roster clarity",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3153"
     },
     {
-      "number": 2798,
-      "title": "Release 2026.10.21",
-      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/2798"
+      "number": 3086,
+      "title": "Release 2026.11.7 — per-game attendance and adaptive admin",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3086"
     }
   ]
 }
