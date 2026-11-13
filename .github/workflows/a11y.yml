@@ -51,7 +51,7 @@ jobs:
           cat /tmp/portfolio-http.log >&2 || true
           exit 1
 
-      - name: Run axe-core on Overview, Product Lab, and Contact
+      - name: Run axe-core on every tab, the skip link, and the mobile tab row
         env:
           NODE_PATH: /tmp/portfolio-a11y/node_modules
           PORTFOLIO_SITE_URL: http://127.0.0.1:8000/

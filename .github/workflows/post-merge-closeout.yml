@@ -105,7 +105,33 @@ jobs:
                 );
                 return;
               }
-              core.setFailed(`PR #${pr.number} has no closing issue reference.`);
+              // Failure text only. The closing-keyword match and the fail/skip
+              // decision are unchanged from product-ops v0.2.1. "Part of #68"
+              // (a pull request, and no Closes #issue) must still fail.
+              const partOfNumbers = [...new Set(
+                [...(pr.body || '').matchAll(/\bpart of\s+#(\d+)/gi)].map((match) => Number(match[1]))
+              )];
+              let detail = 'Cycle PRs must name a repository issue with Closes #N, Fixes #N, or Resolves #N. Part of #N is not a closing keyword, and it does not count when #N is a pull request.';
+              if (partOfNumbers.length) {
+                const notes = [];
+                for (const number of partOfNumbers) {
+                  try {
+                    const { data: linked } = await github.rest.issues.get({
+                      ...context.repo,
+                      issue_number: number,
+                    });
+                    notes.push(linked.pull_request
+                      ? `#${number} is a pull request, not an issue`
+                      : `#${number} is an issue, but Part of is not a closing keyword`);
+                  } catch (error) {
+                    const status = error && error.status ? error.status : 'error';
+                    notes.push(`#${number} could not be resolved (${status})`);
+                  }
+                }
+                const listed = partOfNumbers.map((number) => `#${number}`).join(', ');
+                detail = `The body says "Part of ${listed}" (${notes.join('; ')}). That does not satisfy closeout. Cycle PRs must name a repository issue with Closes #N, Fixes #N, or Resolves #N — not a pull request. Part of may name an issue alongside that keyword; it does not replace it.`;
+              }
+              core.setFailed(`PR #${pr.number} has no closing issue reference. ${detail}`);
               return;
             }
 
@@ -118,7 +144,11 @@ jobs:
                 issue_number: issueNumber,
               });
               if (issue.pull_request) {
-                throw new Error(`#${issueNumber} is not a repository issue.`);
+                throw new Error(
+                  `#${issueNumber} is a pull request, not a repository issue. ` +
+                  `Cycle PRs must name an issue with Closes, Fixes, or Resolves. ` +
+                  `Part of #${issueNumber} does not count when #${issueNumber} is a pull request.`
+                );
               }
 
               const statusLabels = (issue.labels || [])
