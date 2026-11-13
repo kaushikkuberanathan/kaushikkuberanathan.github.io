@@ -23,37 +23,19 @@
   }
 
   function installConfidentialTab() {
-    const tabs = document.querySelector('.tabs');
-    const main = document.querySelector('main.page');
-    if (!tabs || !main) return null;
-    if (document.getElementById('tab-confidential')) return document.getElementById('panel-confidential');
+    const contact = document.getElementById('panel-contact');
+    if (!contact) return null;
+    if (document.getElementById('confidential-brief')) return document.getElementById('confidential-brief');
 
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.id = 'tab-confidential';
-    button.className = 'tab-button';
-    button.dataset.tab = 'confidential';
-    button.setAttribute('role', 'tab');
-    button.setAttribute('aria-controls', 'panel-confidential');
-    button.setAttribute('aria-selected', 'false');
-    button.innerHTML = '<span aria-hidden="true">&#128274;</span> Confidential Projects';
-    // Sits right after Enterprise Impact -- it's a gated deep-dive on those
-    // same initiatives, not a Product Lab drill-down.
-    const enterpriseButton = document.getElementById('tab-enterprise');
-    if (enterpriseButton) {
-      enterpriseButton.insertAdjacentElement('afterend', button);
-    } else {
-      tabs.appendChild(button);
-    }
-
-    const panel = document.createElement('section');
-    panel.id = 'panel-confidential';
-    panel.className = 'tab-panel';
-    panel.setAttribute('role', 'tabpanel');
-    panel.setAttribute('aria-labelledby', 'tab-confidential');
-    panel.innerHTML = `
-      <section class="card confidential-card" aria-labelledby="confidential-title">
-        <h2 class="section-title" id="confidential-title">Confidential Projects</h2>
+    // Same AES-GCM gate as before. It lives on Contact as "Request a deeper
+    // brief" instead of a primary-nav tab, so inserting it cannot reflow the
+    // hero. Decryption, lockout, and report rendering are unchanged.
+    const section = document.createElement('section');
+    section.id = 'confidential-brief';
+    section.className = 'card confidential-card';
+    section.setAttribute('aria-labelledby', 'confidential-title');
+    section.innerHTML = `
+        <h2 class="section-title" id="confidential-title">Request a deeper brief</h2>
         <p class="section-intro">Detailed reports on select initiatives and the problems they solved &mdash; kept access-gated because the specifics are proprietary. Enter the access password to view, or request access below.</p>
         <div class="confidential-gate" data-confidential-gate>
           <form class="confidential-gate-form" data-confidential-form novalidate>
@@ -66,20 +48,22 @@
           </form>
           <div class="confidential-gate-request">
             <span>Don't have the password?</span>
-            <a class="social-link email" href="mailto:kaushik.kuberanathan@gmail.com?subject=Confidential%20Projects%20access%20request" aria-label="Request access to Confidential Projects by email">
+            <a class="social-link email" href="mailto:kaushik.kuberanathan@gmail.com?subject=Confidential%20Projects%20access%20request">
               <svg aria-hidden="true" viewBox="0 0 24 24"><rect class="mark-bg" height="24" rx="5" width="24"></rect><path d="M5 8.2h14v8.1H5z" fill="none" stroke="#172033" stroke-width="1.7"></path><path d="M5.5 8.7 12 13l6.5-4.3" fill="none" stroke="#172033" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.7"></path></svg>
               Request access
             </a>
           </div>
         </div>
-        <div class="confidential-content" data-confidential-content hidden></div>
-      </section>`;
+        <div class="confidential-content" data-confidential-content hidden></div>`;
 
-    const panelParent = main;
-    const footer = panelParent.querySelector('.footer');
-    panelParent.insertBefore(panel, footer || null);
-
-    return panel;
+    const follow = document.getElementById('follow-title');
+    const followCard = follow ? follow.closest('section') : null;
+    if (followCard) {
+      followCard.insertAdjacentElement('beforebegin', section);
+    } else {
+      contact.appendChild(section);
+    }
+    return section;
   }
 
   async function fetchPayload() {
@@ -236,9 +220,9 @@
     });
   }
 
-  // Installed synchronously (not deferred to DOMContentLoaded) so the tab
-  // and panel exist in the DOM before the inline tab-switching script at the
-  // bottom of index.html takes its buttons/panels snapshot.
+  // Installed synchronously so #confidential-brief exists before the inline
+  // tab script binds hash links. The password form is not a tab button, so
+  // the primary nav is complete in the first HTML paint.
   const installedPanel = installConfidentialTab();
   if (installedPanel) installGate(installedPanel);
 })();
