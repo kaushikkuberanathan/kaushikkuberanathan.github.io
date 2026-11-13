@@ -6,18 +6,19 @@ This repository hosts my personal product portfolio on GitHub Pages. The site is
 
 ## Positioning
 
-**Product Manager · Digital Commerce & Platforms — AI-Assisted Builder · Systems Thinker**
+**Lead Product Manager, Digital Commerce & Platforms**
 
-I build digital commerce, self-service, and platform products across B2B and B2C environments. The portfolio covers enterprise platform and commerce work, regulated CX, platform modernization, hands-on AI-assisted building, and shipped projects such as Dugout Lineup.
+Open to senior product leadership (Lead / Group / Director) in Atlanta. The first screen leads with published proof — 5M+ MAU, +32% YoY eCommerce, 4× orders, $35M cloud modernization — plus Email, LinkedIn, and the résumé. The same numbers are the GitHub profile README’s “At a Glance” table.
 
 ## Site structure
 
 ```
 index.html                              # primary site markup and navigation
-assets/product-activity.js              # résumé lead gate (the Building in Public activity tab it also installed is currently removed, see below)
+assets/product-activity.js              # activity-tab installer (unused) and the unused résumé email gate
 assets/product-activity.css             # unused while Building in Public is removed (kept for reinstatement)
-assets/confidential-gate.css            # Confidential Projects tab presentation
-assets/confidential-gate.js             # Confidential Projects tab install, password unlock, report rendering
+assets/fonts/                           # self-hosted Inter (latin, OFL)
+assets/confidential-gate.css            # Confidential Projects presentation
+assets/confidential-gate.js             # password unlock and report rendering; the gate is a Contact section, not a nav tab
 assets/confidential-projects.json       # AES-GCM encrypted report content (no plaintext committed)
 scripts/encrypt-confidential.js         # regenerates assets/confidential-projects.json from local plaintext
 scripts/live-smoke.py                   # desktop/mobile browser validation
@@ -26,7 +27,7 @@ scripts/a11y-check.mjs                  # axe-core check for Overview, Product L
 .github/workflows/a11y.yml              # PR axe-core gate (fail on serious/critical)
 kaushik-headshot.jpg                    # hero headshot
 Kaushik Kuberanathan - Resume.pdf       # résumé served by the "View résumé" CTA
-resume-lead-apps-script.gs              # Google Apps Script source for the résumé lead-capture backend (deployed separately, not built by this repo)
+resume-lead-apps-script.gs              # unused Apps Script for the old résumé email gate (kept in the repo, not called)
 icons/                                  # project, employer, and education logos
   dugout-lineup-logo.png                  # Dugout Lineup project card logo
   anna-university-logo.png                # Anna University education card logo
@@ -47,34 +48,29 @@ coaching-photo.jpg         # optional coaching photo (commented out by default)
 
 ## Main sections
 
-The site is organized into tabs, in this order (Confidential Projects is inserted dynamically at runtime, right after Enterprise Impact — see below):
+The primary nav is five tabs. The name, level, and Email / LinkedIn / résumé actions stay visible on every tab. Old hashes still resolve: `#tab-metrics` opens Impact at the headline proof, `#tab-learning` opens Experience at education, and `#tab-confidential` opens the Contact gate.
 
-- **Overview** — a short "About" intro, an "Explore the portfolio" nav grid linking into every other tab, and the "Operating principles" that describe how I approach the work.
-- **Enterprise Impact** — an enterprise proof summary, the full role-level impact stories (commerce, regulated CX, modernization), and named recommendations from colleagues.
-- **Confidential Projects** — a password-gated tab with detailed "problem → approach → outcome" reports on select initiatives whose specifics are proprietary (see below).
-- **Metrics** — an evidence index ("Metrics & evidence" plus a "Commerce & self-service depth" section) linking quantified outcomes back to the source story behind each one; a handful of figures are redacted (see Confidential metrics below).
-- **Experience** — role cards ("Roles & experience") with title, company, duration, and most significant accomplishments, plus a single link to the full career history on LinkedIn.
-- **Learning** — education history and the certifications and skills behind the practice (agile, analysis, and AI-assisted product work).
-- **Product Lab** — a builder signal (the coaching-to-product discovery-to-build story) and a Projects grid with Dugout Lineup, the AI Career Strategy Team custom GPT, Locado (household inventory platform — property → rooms → sections → items), and KidCoord (parent carpool-coordination platform, paused — kept in the grid with a muted/dashed treatment so its status still reads clearly).
-- **Contact** — "Get in touch" (open-to + preferred next step: email for roles, LinkedIn for network), "Follow the work" (GitHub/Substack plus product/AI writing essays), "Next chapter" direction, and "Beyond the work" on community, service, and personal interests.
+- **Overview** — point of view (the AI operating principle, essay cards, and the 60%+ workflow), a short About, an explore grid, and operating principles.
+- **Impact** (button id `tab-enterprise`) — headline proof (5M+ MAU, +32% YoY, 4×, ~96% containment, ~75% title turnaround, $35M), supporting stats, flagship stories structured as problem / decision / outcome / role, the remaining impact stories, and colleague recommendations.
+- **Experience** — role cards, then education and certifications (formerly the Learning tab).
+- **Lab** (button id `tab-builder`, still the Product Lab panel) — builder signal and the projects grid.
+- **Contact** — Email, LinkedIn, and a direct résumé link; Follow the work; Next chapter; Beyond the work; and **Request a deeper brief**, the password-gated confidential reports (see below).
 
 ## Automated product activity (currently removed)
 
 Product Lab previously had a **Building in Public** tab installed at runtime, showing a rolling view of shipped work combining Dugout Lineup delivery with this portfolio repo's own commit activity. It's removed for now — the presentation (metric tiles and trend chart, then later a stripped-down "north star" callout) never landed on something worth keeping alongside the rest of the site.
 
 - The `[data-product-activity]` markup section that `installActivityTab()` (in `assets/product-activity.js`) looks for has been deleted from `index.html`, so the tab no longer installs — the function no-ops gracefully rather than erroring.
-- `assets/product-activity.js` is still loaded for `installResumeGate()` (see Résumé download & lead capture below); the activity-tab functions in that file are just currently unused.
+- `assets/product-activity.js` is still loaded. `installResumeGate()` is not called. The activity-tab functions are unused because the markup they look for is gone.
 - `assets/product-activity.css` is unreferenced but kept in the repo.
 - The underlying data pipeline is untouched: `kaushikkuberanathan/lineup_generator`'s `generate-product-activity.mjs` still runs on its own schedule and publishes to this repo's `activity-data` branch, so reinstating the tab later is a markup/link-tag change, not a data-pipeline rebuild.
 
-## Résumé download & lead capture
+## Résumé
 
-The "View résumé" CTA opens `Kaushik Kuberanathan - Resume.pdf` view-only in a new tab (no forced download).
+The "View résumé" links open `Kaushik Kuberanathan - Resume.pdf` directly in a new tab. There is no email gate and no forced download.
 
-- First-time visitors are gated behind an email-address form (`installResumeGate` in `assets/product-activity.js`) before the résumé opens; the email is remembered in `localStorage` so returning visitors aren't asked again.
-- On submit, the site fires a `no-cors` POST to a Google Apps Script Web App (URL configured via `data-lead-endpoint` on the résumé link in `index.html`) that logs the request to a Google Sheet and emails the visitor a copy of the live résumé PDF.
-- `resume-lead-apps-script.gs` is the source for that Apps Script — it isn't deployed by this repo; it's pasted into a separate Google Apps Script project and deployed as a Web App from a Google account. See the setup comment at the top of the file.
-- Because Apps Script Web Apps don't return CORS headers, the front end can't confirm the email actually sent — treat the Google Sheet as the source of truth for delivery.
+- `installResumeGate()` remains in `assets/product-activity.js` and is not called.
+- `resume-lead-apps-script.gs` remains in the repo and is not called. It is the old Apps Script that logged an email and sent a PDF copy. Optional “Email me a copy” on Contact is a `mailto:` link, not that script.
 
 ## Confidential metrics
 
@@ -87,7 +83,7 @@ The **Confidential Projects** tab holds detailed "problem → approach → outco
 **How it works**
 
 - `assets/confidential-projects.json` contains only an AES-GCM ciphertext (plus a random salt/IV), never plaintext. Anyone can `view-source` or download this file and see nothing readable.
-- `assets/confidential-gate.js` installs the tab (inserted right after Enterprise Impact at runtime), and on password submit: derives an AES-256 key from the entered password via PBKDF2-SHA256 (200,000 iterations) using WebCrypto's `crypto.subtle`, then attempts to decrypt the ciphertext. A wrong password fails the AES-GCM authentication check and shows "Incorrect password" — nothing about the content is revealed either way.
+- `assets/confidential-gate.js` places the gate in the Contact panel (not in the primary nav) and, on password submit, derives an AES-256 key from the entered password via PBKDF2-SHA256 (200,000 iterations) using WebCrypto's `crypto.subtle`, then attempts to decrypt the ciphertext. A wrong password fails the AES-GCM authentication check and shows "Incorrect password" — nothing about the content is revealed either way. The cipher, iterations, and lockout are unchanged.
 - After 3 failed attempts, the Unlock button locks out with a short, increasing countdown (client-side friction only, not real rate limiting).
 - A successful unlock renders the reports into the DOM for that page load only; nothing is cached in `localStorage`/`sessionStorage`, so reloading the tab re-locks it.
 - Visitors without the password can request access via the "Request access" `mailto:` link in the gate (there's no backend/form handler on this static site, so email is the access-request channel).
@@ -125,7 +121,7 @@ The smoke workflow uses the same browser assertions in two modes:
 
 **Mode: fail on serious and critical.** Moderate and minor violations are printed in the job log and do not fail the check. `A11Y_WARN_ONLY=1` forces warn-only (exit 0); CI leaves that unset. This is a light static-site gate, not a full WCAG audit.
 
-The gate's first green baseline needed three contrast tweaks in `index.html`: footer text and the gray pill were just under 4.5:1, and the paused Product Lab card's `opacity: 0.92` was washing its text out. Product Lab and Contact still report `page-has-heading-one` (moderate) because the hero, including its `h1`, is hidden off Overview. That warning does not fail the job.
+The gate's first green baseline needed three contrast tweaks in `index.html`: footer text and the gray pill were just under 4.5:1, and the paused Product Lab card's `opacity: 0.92` was washing its text out. The hero, including its `h1`, stays visible on every tab. Moderate and minor findings still do not fail the job.
 
 ## Updating the site
 
