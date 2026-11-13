@@ -260,7 +260,9 @@
     section.querySelector('[data-activity-content]').hidden = false;
   }
 
-  installResumeGate();
+  // The résumé opens directly. installResumeGate() stays in this file, and
+  // resume-lead-apps-script.gs stays in the repo, but neither is called.
+  // installResumeGate();
 
   const installedSection = installActivityTab();
 

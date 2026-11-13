@@ -1,3 +1,8 @@
+// UNUSED by the live site as of November 2026.
+// The résumé link opens the PDF directly. This file stays in the repo so the
+// Apps Script can be redeployed if lead capture is turned back on. The site
+// does not call it (installResumeGate is not invoked).
+//
 // Google Apps Script — résumé lead capture + auto-email
 //
 // Setup (one-time):
