@@ -22,7 +22,7 @@ assets/confidential-gate.js             # password unlock and report rendering; 
 assets/confidential-projects.json       # AES-GCM encrypted report content (no plaintext committed)
 scripts/encrypt-confidential.js         # regenerates assets/confidential-projects.json from local plaintext
 scripts/live-smoke.py                   # desktop/mobile browser validation
-scripts/a11y-check.mjs                  # axe-core check for Overview, Product Lab, Contact
+scripts/a11y-check.mjs                  # axe-core check for every tab, the skip link, and the mobile tab row
 .github/workflows/live-smoke.yml        # local PR smoke + deployed main smoke
 .github/workflows/a11y.yml              # PR axe-core gate (fail on serious/critical)
 kaushik-headshot.jpg                    # hero headshot
@@ -111,17 +111,21 @@ The smoke workflow uses the same browser assertions in two modes:
 
 ## Accessibility check
 
-`.github/workflows/a11y.yml` runs axe-core (`scripts/a11y-check.mjs`) on a local static server for three surfaces. Each view is opened with the same URL hash the site already handles in `hydrateFromHash()` (the same mechanism `scripts/live-smoke.py` uses for `#tab-experience`):
+`.github/workflows/a11y.yml` runs axe-core (`scripts/a11y-check.mjs`) on a local static server for every primary tab. Each view is opened with the same URL hash the site already handles in `hydrateFromHash()` (the same mechanism `scripts/live-smoke.py` uses for `#tab-experience`):
 
 | Surface | Hash | Panel |
 | --- | --- | --- |
 | Overview | `#tab-overview` | `panel-overview` |
+| Impact | `#tab-enterprise` | `panel-enterprise` |
+| Experience | `#tab-experience` | `panel-experience` |
 | Product Lab | `#tab-builder` | `panel-builder` |
 | Contact | `#tab-contact` | `panel-contact` |
 
-**Mode: fail on serious and critical.** Moderate and minor violations are printed in the job log and do not fail the check. `A11Y_WARN_ONLY=1` forces warn-only (exit 0); CI leaves that unset. This is a light static-site gate, not a full WCAG audit.
+The same run checks the skip link (it is present, the first Tab focuses it, and activating it moves focus to its target inside `main`) and runs axe on the tab row at a 390px-wide viewport, including that every tab is visible and keyboard-focusable on one row.
 
-The gate's first green baseline needed three contrast tweaks in `index.html`: footer text and the gray pill were just under 4.5:1, and the paused Product Lab card's `opacity: 0.92` was washing its text out. The hero, including its `h1`, stays visible on every tab. Moderate and minor findings still do not fail the job.
+**Mode: fail on serious and critical.** Moderate and minor violations are printed in the job log and do not fail the check. `A11Y_WARN_ONLY=1` forces warn-only for axe impact (exit 0); the skip-link and mobile tab-row assertions still fail the run. CI leaves warn-only unset. This is a light static-site gate, not a full WCAG audit. Rules are not disabled to get a green run.
+
+The gate's first green baseline needed three contrast tweaks in `index.html`: footer text and the gray pill were just under 4.5:1, and the paused Product Lab card's `opacity: 0.92` was washing its text out. Covering Impact also required `role="img"` on the redacted Cox figures: a nameless `span` cannot carry `aria-label`. The skip target (`#top`) is focusable so keyboard activation lands inside `main`, and it keeps `scroll-margin-top` so the sticky tab bar does not cover it. The hero, including its `h1`, stays visible on every tab. Moderate and minor findings still do not fail the job.
 
 ## Updating the site
 

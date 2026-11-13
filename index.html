@@ -1451,6 +1451,10 @@
       font-weight: 750;
     }
     .skip-link:focus { transform: none; }
+    #top:focus {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+    }
 
     a:focus-visible,
     button:focus-visible,
@@ -1592,7 +1596,7 @@
     .copy-note { margin: 12px 0 0; color: var(--muted); font-size: 13.5px; }
     .copy-note a { color: var(--accent); font-weight: 750; }
 
-    #headline-proof, #point-of-view, #learning, #confidential-brief { scroll-margin-top: 92px; }
+    #headline-proof, #point-of-view, #learning, #confidential-brief, #top { scroll-margin-top: 92px; }
 </style>
 <link href="assets/confidential-gate.css" rel="stylesheet"/>
 </head>
@@ -1610,7 +1614,7 @@
 </div>
 </nav>
 <!-- HERO -->
-<header class="card hero-card" id="top">
+<header class="card hero-card" id="top" tabindex="-1">
 <div class="identity-cluster">
   <div class="identity-photo-wrap">
     <img alt="Headshot of Kaushik Kuberanathan" class="identity-photo" height="68" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-flex';" src="kaushik-headshot.jpg" width="68"/>
@@ -1784,7 +1788,7 @@ LinkedIn
 <!-- TODO K: trade-off / team size -->
 <div>
 <h4 class="case-label">The outcome</h4>
-<p>High-intent journeys compressed from <code>5 steps</code> to <code>2 steps</code>, delivering <code>+32% YoY</code> eCommerce growth and <code>4×</code> order growth. Native mobile plan-management conversion reached <code><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██.██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></code> versus <code><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">█.██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></code> after a web link-out model. Exact rates stay reserved for a direct conversation.</p>
+<p>High-intent journeys compressed from <code>5 steps</code> to <code>2 steps</code>, delivering <code>+32% YoY</code> eCommerce growth and <code>4×</code> order growth. Native mobile plan-management conversion reached <code><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" role="img" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">██.██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></code> versus <code><span aria-label="Confidential figure — exact value withheld" class="confidential-figure" role="img" data-tooltip="Exact figure withheld — proprietary Cox Communications performance data. Happy to discuss specifics in conversation." tabindex="0"><span aria-hidden="true" class="confidential-mask">█.██%</span><span aria-hidden="true" class="confidential-lock">🔒</span></span></code> after a web link-out model. Exact rates stay reserved for a direct conversation.</p>
 </div>
 <div>
 <h4 class="case-label">My role</h4>
