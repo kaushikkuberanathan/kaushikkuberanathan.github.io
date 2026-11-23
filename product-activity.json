@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "generatedAt": "2026-11-16T21:04:06.909Z",
+  "generatedAt": "2026-11-23T22:42:03.327Z",
   "repository": "kaushikkuberanathan/lineup_generator + kaushikkuberanathan/kaushikkuberanathan.github.io + kaushikkuberanathan/HomeAtlas",
   "repositories": [
     "kaushikkuberanathan/lineup_generator",
@@ -211,10 +211,10 @@
       "key": "2026-10",
       "label": "Oct 2026",
       "mergedPullRequests": 517,
-      "productImprovements": 59,
+      "productImprovements": 57,
       "productionReleases": 26,
-      "qualityImprovements": 1077,
-      "developmentCommits": 1136,
+      "qualityImprovements": 1005,
+      "developmentCommits": 1062,
       "otherPullRequests": 491,
       "releaseNotes": [
         {
@@ -254,114 +254,114 @@
     {
       "key": "2026-11",
       "label": "Nov 2026",
-      "mergedPullRequests": 230,
-      "productImprovements": 62,
-      "productionReleases": 15,
-      "qualityImprovements": 751,
-      "developmentCommits": 813,
-      "otherPullRequests": 215,
+      "mergedPullRequests": 248,
+      "productImprovements": 80,
+      "productionReleases": 19,
+      "qualityImprovements": 892,
+      "developmentCommits": 972,
+      "otherPullRequests": 229,
       "releaseNotes": [
         {
-          "number": 463,
-          "title": "Release next 2026-11-14-b",
-          "url": "https://github.com/kaushikkuberanathan/Locado/pull/463"
+          "number": 3343,
+          "title": "Release 2026.11.11: schedule delete undo, sign-in wording, and release prep",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3343"
         },
         {
-          "number": 461,
-          "title": "Release next 2026-11-14",
-          "url": "https://github.com/kaushikkuberanathan/Locado/pull/461"
+          "number": 476,
+          "title": "Cleanup release 2026-11-21: EL notes on #473 and ux-events limits",
+          "url": "https://github.com/kaushikkuberanathan/Locado/pull/476"
         },
         {
-          "number": 459,
-          "title": "Release: release/next-2026-11-11 (#455, step 1 #458, time zone fix, link system)",
-          "url": "https://github.com/kaushikkuberanathan/Locado/pull/459"
+          "number": 473,
+          "title": "Release next 2026-11-20-b",
+          "url": "https://github.com/kaushikkuberanathan/Locado/pull/473"
         }
       ],
       "highlights": [
         {
-          "number": 463,
-          "title": "Release next 2026-11-14-b",
-          "url": "https://github.com/kaushikkuberanathan/Locado/pull/463"
+          "number": 3343,
+          "title": "Release 2026.11.11: schedule delete undo, sign-in wording, and release prep",
+          "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3343"
         },
         {
-          "number": 461,
-          "title": "Release next 2026-11-14",
-          "url": "https://github.com/kaushikkuberanathan/Locado/pull/461"
+          "number": 476,
+          "title": "Cleanup release 2026-11-21: EL notes on #473 and ux-events limits",
+          "url": "https://github.com/kaushikkuberanathan/Locado/pull/476"
         },
         {
-          "number": 459,
-          "title": "Release: release/next-2026-11-11 (#455, step 1 #458, time zone fix, link system)",
-          "url": "https://github.com/kaushikkuberanathan/Locado/pull/459"
+          "number": 473,
+          "title": "Release next 2026-11-20-b",
+          "url": "https://github.com/kaushikkuberanathan/Locado/pull/473"
         }
       ]
     }
   ],
   "totals": {
-    "mergedPullRequests": 1854,
-    "productImprovements": 220,
-    "productionReleases": 128,
-    "qualityImprovements": 2161,
-    "developmentCommits": 2381
+    "mergedPullRequests": 1872,
+    "productImprovements": 236,
+    "productionReleases": 132,
+    "qualityImprovements": 2230,
+    "developmentCommits": 2466
   },
   "currentMonth": {
     "key": "2026-11",
     "label": "Nov 2026",
-    "mergedPullRequests": 230,
-    "productImprovements": 62,
-    "productionReleases": 15,
-    "qualityImprovements": 751,
-    "developmentCommits": 813,
-    "otherPullRequests": 215,
+    "mergedPullRequests": 248,
+    "productImprovements": 80,
+    "productionReleases": 19,
+    "qualityImprovements": 892,
+    "developmentCommits": 972,
+    "otherPullRequests": 229,
     "releaseNotes": [
       {
-        "number": 463,
-        "title": "Release next 2026-11-14-b",
-        "url": "https://github.com/kaushikkuberanathan/Locado/pull/463"
+        "number": 3343,
+        "title": "Release 2026.11.11: schedule delete undo, sign-in wording, and release prep",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3343"
       },
       {
-        "number": 461,
-        "title": "Release next 2026-11-14",
-        "url": "https://github.com/kaushikkuberanathan/Locado/pull/461"
+        "number": 476,
+        "title": "Cleanup release 2026-11-21: EL notes on #473 and ux-events limits",
+        "url": "https://github.com/kaushikkuberanathan/Locado/pull/476"
       },
       {
-        "number": 459,
-        "title": "Release: release/next-2026-11-11 (#455, step 1 #458, time zone fix, link system)",
-        "url": "https://github.com/kaushikkuberanathan/Locado/pull/459"
+        "number": 473,
+        "title": "Release next 2026-11-20-b",
+        "url": "https://github.com/kaushikkuberanathan/Locado/pull/473"
       }
     ],
     "highlights": [
       {
-        "number": 463,
-        "title": "Release next 2026-11-14-b",
-        "url": "https://github.com/kaushikkuberanathan/Locado/pull/463"
+        "number": 3343,
+        "title": "Release 2026.11.11: schedule delete undo, sign-in wording, and release prep",
+        "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3343"
       },
       {
-        "number": 461,
-        "title": "Release next 2026-11-14",
-        "url": "https://github.com/kaushikkuberanathan/Locado/pull/461"
+        "number": 476,
+        "title": "Cleanup release 2026-11-21: EL notes on #473 and ux-events limits",
+        "url": "https://github.com/kaushikkuberanathan/Locado/pull/476"
       },
       {
-        "number": 459,
-        "title": "Release: release/next-2026-11-11 (#455, step 1 #458, time zone fix, link system)",
-        "url": "https://github.com/kaushikkuberanathan/Locado/pull/459"
+        "number": 473,
+        "title": "Release next 2026-11-20-b",
+        "url": "https://github.com/kaushikkuberanathan/Locado/pull/473"
       }
     ]
   },
   "latestReleaseNotes": [
     {
-      "number": 463,
-      "title": "Release next 2026-11-14-b",
-      "url": "https://github.com/kaushikkuberanathan/Locado/pull/463"
+      "number": 3343,
+      "title": "Release 2026.11.11: schedule delete undo, sign-in wording, and release prep",
+      "url": "https://github.com/kaushikkuberanathan/lineup_generator/pull/3343"
     },
     {
-      "number": 461,
-      "title": "Release next 2026-11-14",
-      "url": "https://github.com/kaushikkuberanathan/Locado/pull/461"
+      "number": 476,
+      "title": "Cleanup release 2026-11-21: EL notes on #473 and ux-events limits",
+      "url": "https://github.com/kaushikkuberanathan/Locado/pull/476"
     },
     {
-      "number": 459,
-      "title": "Release: release/next-2026-11-11 (#455, step 1 #458, time zone fix, link system)",
-      "url": "https://github.com/kaushikkuberanathan/Locado/pull/459"
+      "number": 473,
+      "title": "Release next 2026-11-20-b",
+      "url": "https://github.com/kaushikkuberanathan/Locado/pull/473"
     }
   ]
 }
